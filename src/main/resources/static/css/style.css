@@ -1,0 +1,443 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Header */
+.header {
+    background: #000;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 50px;
+    text-align: center;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+}
+
+#select:focus{
+    outline: none;
+}
+
+#select select::-ms-expand{
+    display: none;
+}
+
+
+.header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.header .logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header .nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.header .nav ul li {
+    margin: 0 1rem;
+}
+
+.header .nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header .cart-language {
+    display: flex;
+    align-items: center;
+}
+
+
+.cart-icon {
+    margin-right: 1rem;
+}
+
+
+/* Hero Section */
+.hero {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hero .btn {
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    height: 40px;
+    width: 100px;
+}
+
+.hero-image {
+    background: #ccc;
+    height: 500px;
+    margin-top: 1rem;
+}
+
+/* Latest Arrivals */
+.latest-arrivals {
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.latest-arrivals .latest-arrivals-section {
+    justify-items: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    background: #ccc;
+    height: 300px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+/* Modal */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.modal-product-image {
+    width: 300px;
+    height: 300px;
+}
+
+.modal-product-image img {
+    width: 300px; /* Set the width you want */
+    height: 300px; /* Set the height you want */
+    object-fit: cover; /* Ensures the image fills the box while keeping its aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+.modal-product-info .btn{
+    background-color: #fff;
+    border: solid 1px black;
+    height: 30px;
+    padding: 0 10px;
+
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Newsletter Section */
+
+.footer {
+    margin-top: 60px;
+    /* margin-bottom: 30px; */
+    border-top: solid 1px #000;
+
+}
+
+.footer .footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.newsletter .newsletter-containter {
+    justify-items: baseline;
+}
+
+.newsletter .input-area {
+    width: 80%;
+    border: solid 1px black;
+    height: 35px;
+    padding: 0 10px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newsletter .btn {
+    background-color: #fff;
+    border: solid 1px black;
+    height: 37px;
+    width: 15%;
+    padding: 0px 10px;
+}
+
+.map {
+    flex: 1;
+    padding-left: 10%;
+}
+
+.map iframe {
+    height: 300px;
+}
+
+
+/* Cart Section */
+.cart {
+    margin: 0 10%;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.cart h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cart-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fff;
+}
+
+.cart-header,
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-header {
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.cart-item input[type="number"] {
+    width: 60px;
+    padding: 0.3rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.cart-checkbox {
+    justify-self: center;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.cart-summary p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.cart-summary span {
+    font-weight: bold;
+}
+
+.cart-summary .btn {
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.cart-summary .btn:hover {
+    background: #333;
+}
+
+
+/* Contact Section */
+.contact {
+    margin: 0 10%;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact form label {
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.contact form textarea {
+    resize: none; /* Prevents resizing */
+}
+
+.contact form button {
+    background: #000;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact form button:hover {
+    background: #333;
+}
+
+
+.catalogue {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+/* Checkbox Group */
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.checkbox-group div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+}

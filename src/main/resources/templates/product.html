@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MM Tobacco</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        header, footer {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        footer .subscribe-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        footer .subscribe-section form {
+            display: flex;
+            gap: 0.5rem;
+        }
+    </style>
+    <style>
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            footer .subscribe-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        const contactForm = document.querySelector("form");
+        contactForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            const jsonData = Object.fromEntries(formData.entries());
+            try {
+                const response = await fetch("http://localhost:8080/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(jsonData),
+                });
+                if (response.ok) {
+                    alert("Your message has been sent!");
+                } else {
+                    alert("Failed to send the message. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error sending contact form:", error);
+            }
+        });
+
+    </script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">MM Tobacco</a></li>
+            </ul>
+            <ul>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+            <ul>
+                <li><a href="cart.html"><strong>Cart</strong></a></li>
+                <li>
+                    <select name="language" id="language">
+                        <option value="eng">ENG</option>
+                        <option value="rus">RUS</option>
+                        <option value="arm">ARM</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section>
+        <h1>752 Pipe Tobacco (16oz)</h1>
+        <p><strong>Price:</strong> $13.85</p>
+        <p>752 Pipe Tobacco is blended from the best tobaccos grown in America and provides a superb, competitive alternative to generic varieties. The 752 Pipe Tobacco 16oz line is available in Red, Gold, Silver, and Green and is packaged in Fresh-Loc resealable bags to preserve freshness and flavor.</p>
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+        </div>
+        <button>Add to Cart</button>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="subscribe-section">
+            <div>
+                <h3>Sign up for our newsletter</h3>
+                <p>Be the first to know about our special offers, new product launches, and events.</p>
+            </div>
+            <form>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Tobacco - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <h1 class="logo"><a href="/">MM Tobacco</a></h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="cart-language">
+            <a href="cart.html" class="cart-icon">🛒</a>
+            <select name="" id="select">
+                <option value="" selected>ENG</option>
+                <option value="">RUS</option>
+                <option value="">ARM</option>
+            </select>
+
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Best selling offer</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    <button class="btn" href="catalogue.html">Buy now</button>
+    <div class="hero-image"></div>
+</section>
+
+<!-- Latest Arrivals -->
+<section class="latest-arrivals">
+    <div class="latest-arrivals-section">
+        <h2>Our latest arrivals</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </div>
+    <div class="product-grid">
+        <div class="product-card" data-id="1">
+            <div class="product-image"></div>
+            <h3>Product 1</h3>
+            <p>$10.00</p>
+        </div>
+        <div class="product-card" data-id="2">
+            <div class="product-image"></div>
+            <h3>Product 2</h3>
+            <p>$15.00</p>
+        </div>
+        <div class="product-card" data-id="3">
+            <div class="product-image"></div>
+            <h3>Product 3</h3>
+            <p>$20.00</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="newsletter">
+            <div class="newsletter-containter">
+                <h3>Sign up for our newsletter</h3>
+                <p>Be the first to know about our special offers, new product launches, and events.</p>
+            </div>
+            <form>
+                <input class="input-area" type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Sign up</button>
+            </form>
+        </div>
+        <div class="map">
+            <div style="position:relative;overflow:hidden;"><a
+                    href="https://yandex.com/maps/org/mm_tobacco/156062979204/?utm_medium=mapframe&utm_source=maps"
+                    style="color:#eee;font-size:12px;position:absolute;top:0px;">Mm Tobacco</a><a
+                    href="https://yandex.com/maps/10258/vanadzor/category/tobacco_and_smoking_accessories_shop/184107903/?utm_medium=mapframe&utm_source=maps"
+                    style="color:#eee;font-size:12px;position:absolute;top:14px;">Магазин табака и курительных
+                принадлежностей в Ванадзоре</a><a
+                    href="https://yandex.com/maps/10258/vanadzor/category/vape_shop/89800553252/?utm_medium=mapframe&utm_source=maps"
+                    style="color:#eee;font-size:12px;position:absolute;top:28px;">Вейп-шоп в Ванадзоре</a><iframe
+                    src="https://yandex.com/map-widget/v1/?ll=44.494599%2C40.808005&mode=poi&poi%5Bpoint%5D=44.494538%2C40.808044&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D156062979204&z=20.28"
+                    width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal for Product Details -->
+<div id="productModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div id="modalDetails"></div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
