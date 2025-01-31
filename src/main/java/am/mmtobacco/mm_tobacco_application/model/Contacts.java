@@ -1,13 +1,20 @@
 package am.mmtobacco.mm_tobacco_application.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class ContactForm {
+@Entity
+@Table(name = "contacts")
+public class Contacts {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @NotBlank(message = "Имя обязательно")
     private String firstName;
 
@@ -25,18 +32,18 @@ public class ContactForm {
 
     @NotBlank(message = "Выбор мессенджера обязателен")
     private String messenger;
-
+    
     private String message;
 
-    public ContactForm(){}
+    public Contacts(){}
 
-    public ContactForm(String firstName, String lastName, String email, String phone, String messenger, String message) {
+    public Contacts(String firstName, String lastName, String email, String phone, String messenger, String message) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.messenger = messenger;
-        this.message = message;
+        this.message = null;
     }
 
     public String getFirstName() {
@@ -85,5 +92,13 @@ public class ContactForm {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

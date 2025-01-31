@@ -3,18 +3,24 @@ package am.mmtobacco.mm_tobacco_application.repository;
 import am.mmtobacco.mm_tobacco_application.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ProductRepository extends MongoRepository<Product, String> {
+public interface ProductRepository extends JpaRepository<Product, String> {
 
-    @Query("{'price': {$gte: ?0, $lte: ?1}, 'category': {$regex: ?2, $options: 'i'}}")
-    List<Product> findProductsByFilters(double minPrice, double maxPrice, String category);
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice AND LOWER(p.category) LIKE LOWER(CONCAT('%', :category, '%'))")
+    List<Product> findProductsByFilters(@Param("minPrice") double minPrice,
+                                        @Param("maxPrice") double maxPrice,
+                                        @Param("category") String category);
 
-    @Query("{'price': {$gte: ?0, $lte: ?1}, 'category': {$regex: ?2, $options: 'i'}}")
-    Page<Product> findProductsByFiltersWithPagination(double minPrice, double maxPrice, String category, Pageable pageable);
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice AND LOWER(p.category) LIKE LOWER(CONCAT('%', :category, '%'))")
+    Page<Product> findProductsByFiltersWithPagination(@Param("minPrice") double minPrice,
+                                                      @Param("maxPrice") double maxPrice,
+                                                      @Param("category") String category,
+                                                      Pageable pageable);
 
 }
 

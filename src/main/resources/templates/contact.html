@@ -32,27 +32,31 @@
 <!-- Contact Form -->
 <section class="contact">
   <h2>Contact Us</h2>
-  <form>
+  <form action="/api/contact" method="post">
     <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Your name" required>
+    <input type="text" id="name" name="firstName" placeholder="Your name" required>
+
     <label for="surname">Surname:</label>
-    <input type="text" id="surname" placeholder="Your surname" required>
+    <input type="text" id="surname" name="lastName" placeholder="Your surname" required>
+
     <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Your email" required>
+    <input type="email" id="email" name="email" placeholder="Your email" required>
+
     <label for="phone-number">Phone number:</label>
-    <input type="text" id="phone-number" placeholder="Your phone number" required>
+    <input type="text" id="phone-number" name="phone" placeholder="Your phone number" required>
+
     <label>Choose messenger for contact with you:</label>
     <div class="checkbox-group">
       <div>
-        <input type="checkbox" id="telegram" name="messenger" value="Telegram">
+        <input type="radio" id="telegram" name="messenger" value="Telegram">
         <label for="telegram">Telegram</label>
       </div>
       <div>
-        <input type="checkbox" id="whatsapp" name="messenger" value="WhatsApp">
+        <input type="radio" id="whatsapp" name="messenger" value="WhatsApp">
         <label for="whatsapp">WhatsApp</label>
       </div>
       <div>
-        <input type="checkbox" id="viber" name="messenger" value="Viber">
+        <input type="radio" id="viber" name="messenger" value="Viber">
         <label for="viber">Viber</label>
       </div>
     </div>

@@ -1,21 +1,20 @@
 package am.mmtobacco.mm_tobacco_application.model;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-@Document(collection = "products")
+@Entity
+@Table(name = "products")
 public class Product {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotBlank(message = "Название продукта обязательно")
     @Size(max = 100, message = "Название продукта должно быть не длиннее 100 символов")
     private String name;
@@ -34,7 +33,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(String id, String name, String description, double price, String imageUrl) {
+    public Product(Long id, String name, String description, double price, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -42,11 +41,11 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

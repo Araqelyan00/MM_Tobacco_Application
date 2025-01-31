@@ -1,6 +1,6 @@
 package am.mmtobacco.mm_tobacco_application.service;
 
-import am.mmtobacco.mm_tobacco_application.model.ContactForm;
+import am.mmtobacco.mm_tobacco_application.model.Contacts;
 import am.mmtobacco.mm_tobacco_application.repository.ContactFormRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class ContactFormService {
         this.contactFormRepository = contactFormRepository;
     }
 
-    public ContactForm saveForm(ContactForm form) {
+    public Contacts saveForm(Contacts form) {
         return contactFormRepository.save(form);
     }
 }

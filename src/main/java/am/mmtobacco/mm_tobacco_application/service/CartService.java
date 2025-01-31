@@ -18,7 +18,7 @@ public class CartService {
     public List<CartItem> updateCart(List<CartItem> cartItems) {
         // Проверяем, что все товары из корзины существуют
         for (CartItem item : cartItems) {
-            if (!productRepository.existsById(item.getProductId())) {
+            if (!productRepository.existsById(String.valueOf(item.getProductId()))) {
                 throw new RuntimeException("Product with ID " + item.getProductId() + " does not exist");
             }
         }
@@ -28,7 +28,7 @@ public class CartService {
     public double calculateTotal(List<CartItem> cartItems) {
         double total = 0;
         for (CartItem item : cartItems) {
-            Product product = productRepository.findById(item.getProductId())
+            Product product = productRepository.findById(String.valueOf(item.getProductId()))
                     .orElseThrow(() -> new RuntimeException("Product not found: " + item.getProductId()));
             total += product.getPrice() * item.getQuantity();
         }

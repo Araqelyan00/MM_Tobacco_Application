@@ -441,3 +441,8 @@ h1, h2, h3 {
     color: #555;
     cursor: pointer;
 }
+
+.product-image img{
+    width: auto;
+    height: 100%;
+}
