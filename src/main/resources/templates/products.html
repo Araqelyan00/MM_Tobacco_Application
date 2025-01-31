@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Tobacco - Products</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .sidebar {
+            border-top: #eee 1px solid;
+            width: 300px;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sidebar h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar ul a{
+            text-decoration: none;
+            color: white;
+        }
+        .sidebar ul a.activ{
+            color: #000;
+        }
+        
+        .sidebar ul li.active, .sidebar ul li:hover {
+            color: black;
+            background-color: #f4f4f9;
+            border-top: #000 0.25px solid;
+            border-bottom: #000 0.25px solid;
+        }
+        .logout_link{
+            text-decoration: none;
+            color: white;
+        }
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background: #f5f7fa;
+            border-radius: 10px;
+        }
+        .product-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product-card img {
+            width: 50px;
+            height: 50px;
+        }
+        .product-card h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .product-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 20px;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: none;
+            background: #000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pagination button.active {
+            background: #444;
+        }
+        .sidebar_and_content{
+            display: flex;
+        }
+        .sidebar_and_content .content{
+            width: 100%;
+        }
+        .title_of_page{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .content {
+            margin: 30px;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .add_product{
+            border: black 1px solid;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #000;
+        }
+        .edit-btn {
+            background: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+            <div class="logout">
+                <a href="index.html" class="logout_link">Logout</a>
+            </div>
+        </div>
+    </header>
+    <div class="sidebar_and_content">
+        <div class="sidebar">
+            <ul>
+                <a href="dashboard.html"><li>📊 Dashboard</li></a>
+                <a href="#" class="activ"><li class="active">📦 Products</li></a>
+                <a href="requests.html"><li>📄 Requests</li></a>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="title_of_page">
+                <h3>All Products</h3>
+                <!-- <button class="add-product" style="cursor: pointer;">➕ Add New Product</button> -->
+                <a href="addProduct.html" class="add_product">➕ Add New Product</a>
+            </div>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="/img/product-placeholder.png" alt="Product Image">
+                    <h3>Lorem Ipsum</h3>
+                    <p>Battery</p>
+                    <p><strong>₹110.40</strong></p>
+                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
+                    <a href="productDetails.html" class="edit-btn">Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="/img/product-placeholder.png" alt="Product Image">
+                    <h3>Lorem Ipsum</h3>
+                    <p>Battery</p>
+                    <p><strong>₹110.40</strong></p>
+                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
+                    <a href="productDetails.html" class="edit-btn">Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="/img/product-placeholder.png" alt="Product Image">
+                    <h3>Lorem Ipsum</h3>
+                    <p>Battery</p>
+                    <p><strong>₹110.40</strong></p>
+                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
+                    <a href="productDetails.html" class="edit-btn">Details</a>
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>...</button>
+                <button>10</button>
+                <button>NEXT</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,6 +71,10 @@ public class ProductService {
 
     public void deleteProduct(String id) {
         productRepository.deleteById(id);
+    }
+
+    public List<Product> getLatestProducts(int limit) {
+        return productRepository.findLatestProducts(PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "id")));
     }
 }
 

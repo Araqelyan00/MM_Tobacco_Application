@@ -22,5 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
                                                       @Param("category") String category,
                                                       Pageable pageable);
 
+    @Query("SELECT p FROM Product p ORDER BY p.id DESC")
+    List<Product> findLatestProducts(Pageable pageable);
 }
 
