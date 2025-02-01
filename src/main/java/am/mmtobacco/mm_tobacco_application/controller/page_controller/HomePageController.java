@@ -15,7 +15,7 @@ public class HomePageController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String homePage(Model model) {
         List<Product> latestProducts = productService.getLatestProducts(3); // Fetch last 3 products
         model.addAttribute("latestProducts", latestProducts); // Pass to Thymeleaf

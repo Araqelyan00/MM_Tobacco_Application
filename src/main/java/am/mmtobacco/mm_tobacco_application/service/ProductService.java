@@ -50,7 +50,7 @@ public class ProductService {
     }
 
     @Cacheable(value = "product", key = "#id")
-    public Product getProductById(String id) {
+    public Product getProductById(Long id) {
         log.info("Fetching product by ID: {}", id);
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
@@ -60,7 +60,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(String id, Product updatedProduct) {
+    public Product updateProduct(Long id, Product updatedProduct) {
         Product product = getProductById(id);
         product.setName(updatedProduct.getName());
         product.setDescription(updatedProduct.getDescription());
@@ -69,7 +69,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteProduct(String id) {
+    public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 

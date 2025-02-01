@@ -13,12 +13,12 @@
         <h1 class="logo"><a href="/">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="catalogue.html">Catalogue</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="catalogue">Catalogue</a></li>
+                <li><a href="contact">Contact Us</a></li>
             </ul>
         </nav>
         <div class="cart-language">
-            <a href="cart.html" class="cart-icon">🛒</a>
+            <a href="cart" class="cart-icon">🛒</a>
             <select name="" id="select">
                 <option value="" selected>ENG</option>
                 <option value="">RUS</option>
@@ -33,7 +33,7 @@
 <section class="hero">
     <h2>Best selling offer</h2>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    <button class="btn" href="catalogue.html">Buy now</button>
+    <a href="catalogue"><button class="btn">Buy now</button></a>
     <div class="hero-image"></div>
 </section>
 
@@ -57,15 +57,22 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
+        <!-- Newsletter Section -->
         <div class="newsletter">
             <div class="newsletter-containter">
                 <h3>Sign up for our newsletter</h3>
                 <p>Be the first to know about our special offers, new product launches, and events.</p>
             </div>
-            <form>
-                <input class="input-area" type="email" placeholder="Enter your email" required>
+
+            <!-- Newsletter Form -->
+            <form action="/api/newsletter" method="post">
+                <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn">Sign up</button>
             </form>
+
+            <!-- Success/Error Messages -->
+            <p th:if="${message}" style="color: green;">[[${message}]]</p>
+            <p th:if="${error}" style="color: red;">[[${error}]]</p>
         </div>
         <div class="map">
             <div style="position:relative;overflow:hidden;"><a

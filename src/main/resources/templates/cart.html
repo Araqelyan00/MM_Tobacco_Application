@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
 <!-- Header -->
 <header class="header">
     <div class="container">
-        <h1 class="logo"><a href="/">MM Tobacco</a></h1>
+        <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="catalogue.html">Catalogue</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="catalogue">Catalogue</a></li>
+                <li><a href="contact">Contact Us</a></li>
             </ul>
         </nav>
         <div class="cart-language">
-            <a href="cart.html" class="cart-icon">🛒</a>
+            <a href="cart" class="cart-icon">🛒</a>
             <select name="" id="select">
                 <option value="" selected>ENG</option>
                 <option value="">RUS</option>
                 <option value="">ARM</option>
             </select>
-
         </div>
     </div>
 </header>
@@ -34,84 +34,41 @@
     <h2>Your Cart</h2>
     <div class="cart-table">
         <div class="cart-header">
-            <span>Select</span>
             <span>Product</span>
             <span>Price</span>
             <span>Quantity</span>
             <span>Total</span>
+            <span>Actions</span>
         </div>
-        <div class="cart-item">
-            <input type="checkbox" class="cart-checkbox">
-            <span>Product 1</span>
-            <span>$10.00</span>
-            <input type="number" value="1" min="1">
-            <span>$10.00</span>
-        </div>
-        <div class="cart-item">
-            <input type="checkbox" class="cart-checkbox">
-            <span>Product 2</span>
-            <span>$15.00</span>
-            <input type="number" value="1" min="1">
-            <span>$15.00</span>
-        </div>
-        <div class="cart-item">
-            <input type="checkbox" class="cart-checkbox">
-            <span>Product 3</span>
-            <span>$20.00</span>
-            <input type="number" value="1" min="1">
-            <span>$20.00</span>
-        </div>
+        <div id="cartItems"></div> <!-- Cart items will be dynamically loaded here -->
     </div>
     <div class="cart-summary">
-        <p>Subtotal: <span>$45.00</span></p>
-        <p>Tax: <span>$4.50</span></p>
-        <p>Total: <span>$49.50</span></p>
+        <p>Subtotal: <span id="subtotal">$0.00</span></p>
+        <p>Tax (10%): <span id="tax">$0.00</span></p>
+        <p><strong>Total:</strong> <span id="total">$0.00</span></p>
+        <button class="btn checkout-btn">Checkout</button>
     </div>
-</section>
-
-<!-- Contact Form -->
-<section class="contact">
-    <h2>Contact Us</h2>
-    <form action="/api/contact" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Your name" required>
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" placeholder="Your surname" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Your email" required>
-        <label for="phone-number">Phone number:</label>
-        <input type="text" id="phone-number" placeholder="Your phone number" required>
-        <label>Choose messenger for contact with you:</label>
-        <div class="checkbox-group">
-            <div>
-                <input type="checkbox" id="telegram" name="messenger" value="Telegram">
-                <label for="telegram">Telegram</label>
-            </div>
-            <div>
-                <input type="checkbox" id="whatsapp" name="messenger" value="WhatsApp">
-                <label for="whatsapp">WhatsApp</label>
-            </div>
-            <div>
-                <input type="checkbox" id="viber" name="messenger" value="Viber">
-                <label for="viber">Viber</label>
-            </div>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-    </form>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
+        <!-- Newsletter Section -->
         <div class="newsletter">
             <div class="newsletter-containter">
                 <h3>Sign up for our newsletter</h3>
                 <p>Be the first to know about our special offers, new product launches, and events.</p>
             </div>
-            <form>
-                <input class="input-area" type="email" placeholder="Enter your email" required>
+
+            <!-- Newsletter Form -->
+            <form action="/api/newsletter" method="post">
+                <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn">Sign up</button>
             </form>
+
+            <!-- Success/Error Messages -->
+            <p th:if="${message}" style="color: green;">[[${message}]]</p>
+            <p th:if="${error}" style="color: red;">[[${error}]]</p>
         </div>
         <div class="map">
             <div style="position:relative;overflow:hidden;"><a
@@ -132,3 +89,4 @@
 <script src="/js/script.js"></script>
 </body>
 </html>
+

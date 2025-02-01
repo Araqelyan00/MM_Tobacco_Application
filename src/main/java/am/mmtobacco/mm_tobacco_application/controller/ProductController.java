@@ -5,13 +5,15 @@ import am.mmtobacco.mm_tobacco_application.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/products")
+@Controller
+@RequestMapping("/catalogue")
 public class ProductController {
     private final ProductService productService;
 
@@ -19,43 +21,72 @@ public class ProductController {
         this.productService = productService;
     }
 
+    /** 📌 Страница каталога с пагинацией (Thymeleaf) */
     @GetMapping
+    public String catalogue(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "6") int size, // 6 товаров на страницу
+            Model model) {
+
+        Page<Product> productPage = productService.getProducts(page, size);
+        model.addAttribute("products", productPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+
+        return "catalogue"; // Возвращает Thymeleaf-шаблон
+    }
+
+    /** 📌 API: Получить все продукты */
+    @GetMapping("/api/products")
+    @ResponseBody
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
-    public Product getProductById(@PathVariable String id) {
+    /** 📌 API: Получить продукт по ID */
+    @GetMapping("/api/products/{id}")
+    @ResponseBody
+    public Product getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
-    @PostMapping
+    /** 📌 API: Создать продукт */
+    @PostMapping("/api/products")
+    @ResponseBody
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product savedProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
 
-    @PutMapping("/{id}")
+    /** 📌 API: Обновить продукт */
+    @PutMapping("/api/products/{id}")
+    @ResponseBody
     public ResponseEntity<Product> updateProduct(
-            @PathVariable String id,
+            @PathVariable Long id,
             @Valid @RequestBody Product product) {
         Product updatedProduct = productService.updateProduct(id, product);
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable String id) {
+    /** 📌 API: Удалить продукт */
+    @DeleteMapping("/api/products/{id}")
+    @ResponseBody
+    public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
-    @GetMapping("/paginated")
+    /** 📌 API: Получить продукты с пагинацией */
+    @GetMapping("/api/products/paginated")
+    @ResponseBody
     public Page<Product> getPaginatedProducts(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "6") int size) {
         return productService.getProducts(page, size);
     }
 
-    @GetMapping("/filter")
+    /** 📌 API: Фильтр продуктов */
+    @GetMapping("/api/products/filter")
+    @ResponseBody
     public List<Product> filterProducts(
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
@@ -63,16 +94,16 @@ public class ProductController {
         return productService.filterProducts(minPrice, maxPrice, category);
     }
 
-    @GetMapping("/paginated-filtered")
+    /** 📌 API: Фильтр + пагинация */
+    @GetMapping("/api/products/paginated-filtered")
+    @ResponseBody
     public Page<Product> getFilteredAndPaginatedProducts(
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
             @RequestParam(required = false) String category,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "6") int size) {
         return productService.filterProductsWithPagination(minPrice, maxPrice, category, page, size);
     }
-
-
 }
 

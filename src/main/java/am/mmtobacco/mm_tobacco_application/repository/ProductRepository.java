@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product, String> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice AND LOWER(p.category) LIKE LOWER(CONCAT('%', :category, '%'))")
     List<Product> findProductsByFilters(@Param("minPrice") double minPrice,
@@ -24,5 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
     @Query("SELECT p FROM Product p ORDER BY p.id DESC")
     List<Product> findLatestProducts(Pageable pageable);
+
+    Page<Product> findAll(Pageable pageable);
 }
 
