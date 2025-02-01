@@ -2,15 +2,13 @@ package am.mmtobacco.mm_tobacco_application.controller;
 
 import am.mmtobacco.mm_tobacco_application.model.CartItem;
 import am.mmtobacco.mm_tobacco_application.service.CartService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/cart")
+@Controller
+@RequestMapping("/cart")
 public class CartController {
     private final CartService cartService;
 
@@ -18,14 +16,25 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @PostMapping("/update")
+    /** 📌 Рендеринг страницы корзины (Thymeleaf) */
+    @GetMapping
+    public String cartPage() {
+        return "cart"; // Возвращает HTML-страницу корзины
+    }
+
+    /** 📌 API: Обновление корзины */
+    @PostMapping("/api/update")
+    @ResponseBody
     public List<CartItem> updateCart(@RequestBody List<CartItem> cartItems) {
         return cartService.updateCart(cartItems);
     }
 
-    @PostMapping("/total")
+    /** 📌 API: Подсчет итоговой суммы корзины */
+    @PostMapping("/api/total")
+    @ResponseBody
     public double calculateTotal(@RequestBody List<CartItem> cartItems) {
         return cartService.calculateTotal(cartItems);
     }
 }
+
 
