@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Tobacco - Requests</title>
+    <title>MM Tobacco - Product Details</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -50,17 +50,32 @@
             text-decoration: none;
             color: white;
         }
+        .pagination button.active {
+            background: #444;
+        }
+        .sidebar_and_content{
+            display: flex;
+        }
+        .sidebar_and_content .content{
+            width: 100%;
+        }
+        .title_of_page{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .content {
             margin: 30px;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
-        .request-details {
+
+        .product-details {
             background: #f5f7fa;
             padding: 20px;
             border-radius: 10px;
         }
-        .request-form {
+        .product-form {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -78,50 +93,49 @@
             margin-bottom: 5px;
         }
         .form-group input, .form-group textarea {
-            background: #f1f1f1;
-            border: none;
+            background: #fff;
+            border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
             font-size: 14px;
         }
         .form-group textarea {
-            border: #000 1px solid;
             resize: none;
-            height: 80px;
+            height: 200px;
         }
-        .status-badge {
-            background-color:#f1f1f1;
-            color: black;
-            padding: 8px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: bold;
-        }
-
-        .sidebar_and_content{
-            display: flex;
-        }
-        .sidebar_and_content .content{
+        .image-placeholder {
+            background: #ccc;
+            max-width: 740px;
+            max-height: 740px;
             width: 100%;
+            height: 100%;
+            border-radius: 10px;
         }
-        .title_of_page{
+        .button-group {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
         }
-        .content {
-            margin: 30px;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
+        .edit-btn {
+            background: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
         }
-        .submit_button{
-            /* max-width: 300px; */
-            margin-top: 28px;
-            height: 36px;
+        .delete-btn {
+            background: none;
+            border: 1px solid #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        
-        
-        
+        .product-info .form-group{
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +143,7 @@
         <div class="container">
             <h1 class="logo"><a href="#">MM Tobacco</a></h1>
             <div class="logout">
-                <a href="index.html" class="logout_link">Logout</a>
+                <a href="../index.html" class="logout_link">Logout</a>
             </div>
         </div>
     </header>
@@ -137,57 +151,37 @@
         <div class="sidebar">
             <ul>
                 <a href="dashboard.html"><li>📊 Dashboard</li></a>
-                <a href="products.html"><li>📦 Products</li></a>
-                <a href="#" class="active"><li class="active">📄 Requests</li></a>
+                <a href="#" class="activ"><li class="active">📦 Products</li></a>
+                <a href="requests.html"><li>📄 Requests</li></a>
             </ul>
         </div>
         <div class="content">
             <div class="title_of_page">
-                <h2>Request details</h2>
-                <div>
-                    <a href="requests.html" style="text-decoration: none; cursor: pointer;">❌</a>
-                </div>
+                <h3>Product Details</h3>
+                <a href="products.html" style="text-decoration: none; cursor: pointer;">❌</a>
             </div>
-            <div class="request-details">
-                <form class="request-form">
+            
+            <div class="product-details">
+                <form class="product-form">
+                        <div class="image-placeholder"></div>
+                    <div class="product-info">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" value="Adam" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Surname</label>
-                        <input type="text" value="Hussein" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" value="adam@gmail.com" disabled>
+                        <label>Product Name</label>
+                        <input type="text" value="Lorem Ipsum" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Phone number</label>
-                        <input type="text" value="+(374) 99 00 -- 00" disabled>
+                        <label>Description</label>
+                        <textarea disabled>Lorem Ipsum Is A Dummy Text</textarea>
                     </div>
                     <div class="form-group">
-                        <label>Request ID</label>
-                        <input type="text" value="25426" disabled>
+                        <label>Price</label>
+                        <input type="text" value="₹110.40" disabled>
                     </div>
-                    <div class="form-group">
-                        <label>Preferred messenger</label>
-                        <input type="text" value="Telegram" disabled>
+                    <div class="button-group">
+                        <a class="edit-btn" href="editProduct.html">EDIT</a>
+                        <button type="submit" class="delete-btn">DELETE</button>
                     </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="I need more information about 24729 product"></textarea>
-                    </div>
-                    <div class="form-group" id="change_status">
-                        <label>Status</label>
-                        <select class="status-badge">
-                            <option id="new">New</option>
-                            <option id="in_progress">In progress</option>
-                            <option id="cancelled">Cancelled</option>
-                            <option id="completed">Completed</option>
-                        </select>
-                        <button type="submit" class="submit_button">Submit changes</button>
-                    </div>
+                </div>
                 </form>
             </div>
         </div>

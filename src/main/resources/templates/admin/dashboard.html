@@ -101,7 +101,7 @@
         <div class="container">
             <h1 class="logo"><a href="#">MM Tobacco</a></h1>
             <div class="logout">
-                <a href="index.html" class="logout_link">Logout</a>
+                <a href="/index" class="logout_link">Logout</a>
             </div>
         </div>
     </header>
@@ -109,9 +109,9 @@
     <div class="sidebar_and_content">
     <div class="sidebar">
         <ul>
-            <a href="#" class="activ"><li class="active">📊 Dashboard</li></a>
-            <a href="products.html"><li>📦 Products</li></a>
-            <a href="requests.html"><li>📄 Requests</li></a>
+            <a href="#" class="active"><li class="active">📊 Dashboard</li></a>
+            <a href="/admin/products"><li>📦 Products</li></a>
+            <a href="/admin/requests"><li>📄 Requests</li></a>
         </ul>
     </div>
 
@@ -127,13 +127,8 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr><td>25426</td><td>Dec 8th, 2024</td><td>Kavin Maclaren</td><td class="status in-progress">In progress</td></tr>
-                    <tr><td>25425</td><td>Dec 7th, 2024</td><td>Komael Samal</td><td class="status cancelled">Cancelled</td></tr>
-                    <tr><td>25424</td><td>Dec 6th, 2024</td><td>Nikhil Guru</td><td class="status in-progress">In progress</td></tr>
-                    <tr><td>25423</td><td>Dec 5th, 2024</td><td>Shivam Mivami</td><td class="status cancelled">Cancelled</td></tr>
-                    <tr><td>25422</td><td>Dec 4th, 2024</td><td>Shadab Banab</td><td class="status in-progress">In progress</td></tr>
-                    <tr><td>25421</td><td>Dec 2nd, 2024</td><td>Yogesh Logena</td><td class="status completed">Completed</td></tr>
+                <tbody id="requestsTableBody">
+                <!-- Данные загрузятся через JavaScript -->
                 </tbody>
             </table>
         </div>
@@ -141,27 +136,12 @@
             <h2>Requests Graph</h2>
             <canvas id="requestsChart"></canvas>
         </div>
-        <script>
-            const ctx = document.getElementById('requestsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-                    datasets: [{
-                        label: 'Requests',
-                        data: [0, 0, 10, 5, 15, 40],
-                        borderColor: '#007bff',
-                        fill: false
-                    }]
-                }
-            });
-        </script>
-        
     </div>
     </div>
 
 
     <script src="/js/script.js"></script>
+
 
 </body>
 </html>

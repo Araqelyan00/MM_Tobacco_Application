@@ -76,5 +76,9 @@ public class ProductService {
     public List<Product> getLatestProducts(int limit) {
         return productRepository.findLatestProducts(PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "id")));
     }
+
+    public Page<Product> getProducts(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
 }
 

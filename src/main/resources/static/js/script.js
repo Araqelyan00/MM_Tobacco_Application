@@ -5,7 +5,7 @@ function getCart() {
 
         // Конвертация старого формата (если нужно)
         if (Array.isArray(cart) && typeof cart[0] === "number") {
-            cart = cart.map(id => ({ productId: id, quantity: 1 }));
+            cart = cart.map(id => ({productId: id, quantity: 1}));
             saveCart(cart);
         }
         return cart;
@@ -43,7 +43,7 @@ function addToCart(productId) {
     if (existingProduct) {
         existingProduct.quantity++;
     } else {
-        cart.push({ productId, quantity: 1 });
+        cart.push({productId, quantity: 1});
     }
 
     saveCart(cart);
@@ -55,13 +55,23 @@ function addToCart(productId) {
 function removeFromCart(productId) {
     let cart = getCart().filter(item => item.productId !== productId);
     saveCart(cart);
-    showToast("❌ Товар удалён из корзины!", "error"); // Уведомление об удалении
+
+    // ✅ Удаляем продукт из DOM (если он есть)
+    let cartItemElement = document.querySelector(`.cart-item[data-id="${productId}"]`);
+    if (cartItemElement) {
+        cartItemElement.remove();
+    }
+
+    showToast("❌ Товар удалён из корзины!", "error");
+
+    // ✅ Обновляем корзину и общие суммы
     updateCart();
 }
 
+
 // 📌 Открытие модального окна с деталями товара
 function openProductModal(productId) {
-    fetch(`/catalogue/api/products/${productId}`) // 📌 Исправлен путь API
+    fetch(`/api/catalogue/products/${productId}`) // 📌 Исправлен путь API
         .then(response => response.json())
         .then(product => {
             document.getElementById("modalDetails").innerHTML = `
@@ -70,11 +80,11 @@ function openProductModal(productId) {
                         <img src="${product.imageUrl}" alt="${product.name}">
                     </div>
                     <div class="modal-product-info">
-                        <h3>${product.name}</h3>
+                        <h3 style="font-size: 1.5rem">${product.name}</h3>
                         <p>${product.description}</p>
-                        <p><strong>$${product.price.toFixed(2)}</strong></p>
+                        <p><strong>Price : $${product.price.toFixed(2)}</strong></p>
                         <button class="btn add-to-cart" data-id="${product.id}">Add to Cart</button>
-                        <button class="btn remove-from-cart" data-id="${product.id}">Remove from Cart</button>
+                        
                     </div>
                 </div>
             `;
@@ -109,20 +119,21 @@ function updateCart() {
     let cart = getCart();
     let cartContainer = document.getElementById("cartItems");
 
-    if (!cartContainer) return; // 📌 Защита от ошибок, если корзины нет на странице
+    if (!cartContainer) return;
 
     cartContainer.innerHTML = "";
 
     if (cart.length === 0) {
         cartContainer.innerHTML = "<p>🛒 Ваша корзина пуста.</p>";
-        updateTotals(0);
+        updateTotals(0); // ✅ Устанавливаем 0, если корзина пуста
         return;
     }
 
     let subtotal = 0;
+    let promises = [];
 
-    cart.forEach((item, index) => {
-        fetch(`/catalogue/api/products/${item.productId}`)
+    cart.forEach((item) => {
+        let productPromise = fetch(`/api/catalogue/products/${item.productId}`)
             .then(response => response.json())
             .then(product => {
                 let itemTotal = product.price * item.quantity;
@@ -130,46 +141,73 @@ function updateCart() {
 
                 let cartItem = document.createElement("div");
                 cartItem.classList.add("cart-item");
+                cartItem.setAttribute("data-id", product.id); // ✅ Привязываем ID для удаления
                 cartItem.innerHTML = `
                     <span>${product.name}</span>
                     <span>$${product.price.toFixed(2)}</span>
-                    <input type="number" value="${item.quantity}" min="1" class="cart-quantity" data-id="${product.productId}">
+                    <input type="number" value="${item.quantity}" min="1" class="cart-quantity" data-id="${product.id}">
                     <span class="cart-item-total">$${itemTotal.toFixed(2)}</span>
-                    <button class="btn remove-btn" data-id="${product.productId}">Remove</button>
+                    <button class="removeButton remove-btn" data-id="${product.id}">Remove</button>
                 `;
                 cartContainer.appendChild(cartItem);
 
-                // 📌 Обработчик изменения количества товара
-                cartItem.querySelector(".cart-quantity").addEventListener("change", function () {
+                // ✅ Изменение количества
+                cartItem.querySelector(".cart-quantity").addEventListener("input", function () {
                     let newQuantity = parseInt(this.value);
                     if (newQuantity < 1) newQuantity = 1;
+
                     let cart = getCart();
                     let item = cart.find(i => i.productId === Number(this.dataset.id));
                     if (item) item.quantity = newQuantity;
                     saveCart(cart);
-                    updateCart();
+
+                    // ✅ Пересчитываем сумму для одного товара
+                    let itemTotalElement = cartItem.querySelector(".cart-item-total");
+                    let newItemTotal = newQuantity * product.price;
+                    itemTotalElement.textContent = `$${newItemTotal.toFixed(2)}`;
+
+                    updateTotals(); // ✅ Пересчет всех сумм
                 });
 
-                // 📌 Обработчик удаления товара
+                // ✅ Удаление товара
                 cartItem.querySelector(".remove-btn").addEventListener("click", function () {
                     removeFromCart(Number(this.dataset.id));
                 });
-
-                updateTotals(subtotal);
             })
-            .catch(error => console.error("❌ Ошибка при получении данных товара:", error));
+            .catch(error => console.error("❌ Ошибка при получении товара:", error));
+
+        promises.push(productPromise);
+    });
+
+    // ✅ Ждём, пока все товары загрузятся, и пересчитываем итоговую сумму
+    Promise.all(promises).then(() => {
+        updateTotals();
     });
 }
 
-// 📌 Функция обновления итоговой суммы корзины
-function updateTotals(subtotal) {
-    let tax = subtotal * 0.10;
-    let total = subtotal + tax;
 
-    document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-    document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+// 📌 Функция обновления итоговой суммы корзины
+function updateTotals() {
+    let cart = getCart();
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        fetch(`/api/catalogue/products/${item.productId}`)
+            .then(response => response.json())
+            .then(product => {
+                subtotal += product.price * item.quantity;
+
+                let tax = subtotal * 0.10;
+                let total = subtotal + tax;
+
+                document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+                document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+                document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+            })
+            .catch(error => console.error("❌ Ошибка при обновлении итогов:", error));
+    });
 }
+
 
 // 📌 Обновление корзины при загрузке страницы
 document.addEventListener("DOMContentLoaded", updateCart);
@@ -187,4 +225,80 @@ if (checkoutBtn) {
         localStorage.removeItem("cart");
         updateCart();
     });
+}
+
+    document.addEventListener("DOMContentLoaded", function () {
+    fetch('/api/contact/latest')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById("requestsTableBody");
+            tableBody.innerHTML = ""; // Очищаем перед добавлением
+
+            const statusClasses = {
+                "New": "status in-progress",
+                "Cancelled": "status cancelled",
+                "Completed": "status completed"
+            };
+
+            data.forEach(contact => {
+                const row = `<tr>
+                        <td>${contact.id}</td>
+                        <td>${new Date(contact.date).toLocaleDateString()}</td>
+                        <td>${contact.firstName} ${contact.lastName}</td>
+                        <td class="${statusClasses[contact.status] || "status"}">${contact.status}</td>
+                    </tr>`;
+                tableBody.innerHTML += row;
+            });
+
+            // Подготовка данных для графика
+            const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const requestsPerMonth = new Array(12).fill(0);
+
+            data.forEach(contact => {
+                const monthIndex = new Date(contact.date).getMonth();
+                requestsPerMonth[monthIndex]++;
+            });
+
+            // Рендер графика
+            const ctx = document.getElementById('requestsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Requests',
+                        data: requestsPerMonth,
+                        borderColor: '#007bff',
+                        fill: false
+                    }]
+                }
+            });
+        })
+        .catch(error => console.error("Ошибка загрузки заявок:", error));
+});
+
+function showSuccessMessage() {
+    // Показываем сообщение пользователю
+    document.getElementById("successMessage").style.display = "block";
+
+    // Очищаем форму после отправки
+    document.getElementById("contactForm").reset();
+
+    // Через 5 секунд скрываем сообщение
+    setTimeout(() => {
+        document.getElementById("successMessage").style.display = "none";
+    }, 5000);
+}
+
+function previewImage(event) {
+    const preview = document.getElementById("preview");
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.classList.remove("hidden");
+        };
+        reader.readAsDataURL(file);
+    }
 }

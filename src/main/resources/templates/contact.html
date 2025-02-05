@@ -32,7 +32,7 @@
 <!-- Contact Form -->
 <section class="contact">
   <h2>Contact Us</h2>
-  <form action="/api/contact" method="post">
+  <form action="/api/contact/submit" method="post" target="hidden_iframe" id="contactForm">
     <label for="name">Name:</label>
     <input type="text" id="name" name="firstName" placeholder="Your name" required>
 
@@ -48,20 +48,27 @@
     <label>Choose messenger for contact with you:</label>
     <div class="checkbox-group">
       <div>
-        <input type="radio" id="telegram" name="messenger" value="Telegram">
+        <input type="checkbox" id="telegram" name="messenger" value="Telegram">
         <label for="telegram">Telegram</label>
       </div>
       <div>
-        <input type="radio" id="whatsapp" name="messenger" value="WhatsApp">
+        <input type="checkbox" id="whatsapp" name="messenger" value="WhatsApp">
         <label for="whatsapp">WhatsApp</label>
       </div>
       <div>
-        <input type="radio" id="viber" name="messenger" value="Viber">
+        <input type="checkbox" id="viber" name="messenger" value="Viber">
         <label for="viber">Viber</label>
       </div>
     </div>
     <button type="submit" class="btn">Send Message</button>
   </form>
+
+  <!-- Блок с сообщением -->
+  <p id="successMessage" style="display: none; color: green; font-weight: bold;">Ваш запрос успешно отправлен!</p>
+
+  <!-- Скрытый iframe -->
+  <iframe name="hidden_iframe" style="display: none;" onload="showSuccessMessage()"></iframe>
+
 </section>
 
 <!-- Footer -->

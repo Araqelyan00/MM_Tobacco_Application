@@ -32,21 +32,15 @@
             align-items: center;
             gap: 10px;
         }
-        .sidebar ul a{
+        .sidebar ul a {
             text-decoration: none;
             color: white;
         }
-        .sidebar ul a.activ{
+        .sidebar ul .active {
             color: #000;
-        }
-        
-        .sidebar ul li.active, .sidebar ul li:hover {
-            color: black;
             background-color: #f4f4f9;
-            border-top: #000 0.25px solid;
-            border-bottom: #000 0.25px solid;
         }
-        .logout_link{
+        .logout_link {
             text-decoration: none;
             color: white;
         }
@@ -68,8 +62,7 @@
             gap: 10px;
         }
         .product-card img {
-            width: 50px;
-            height: 50px;
+            max-width: 100%;
         }
         .product-card h3 {
             margin: 0;
@@ -98,13 +91,13 @@
         .pagination button.active {
             background: #444;
         }
-        .sidebar_and_content{
+        .sidebar_and_content {
             display: flex;
         }
-        .sidebar_and_content .content{
+        .sidebar_and_content .content {
             width: 100%;
         }
-        .title_of_page{
+        .title_of_page {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -114,7 +107,7 @@
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
-        .add_product{
+        .add_product {
             border: black 1px solid;
             text-decoration: none;
             padding: 5px 10px;
@@ -132,67 +125,77 @@
             cursor: pointer;
             text-decoration: none;
         }
+        .delete-btn {
+            background: #ffffff;
+            color: #ff0000;
+            padding: 10px 20px;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
-            <div class="logout">
-                <a href="index.html" class="logout_link">Logout</a>
-            </div>
-        </div>
-    </header>
-    <div class="sidebar_and_content">
-        <div class="sidebar">
-            <ul>
-                <a href="dashboard.html"><li>📊 Dashboard</li></a>
-                <a href="#" class="activ"><li class="active">📦 Products</li></a>
-                <a href="requests.html"><li>📄 Requests</li></a>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="title_of_page">
-                <h3>All Products</h3>
-                <!-- <button class="add-product" style="cursor: pointer;">➕ Add New Product</button> -->
-                <a href="addProduct.html" class="add_product">➕ Add New Product</a>
-            </div>
-            <div class="products-container">
-                <div class="product-card">
-                    <img src="/img/product-placeholder.png" alt="Product Image">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Battery</p>
-                    <p><strong>₹110.40</strong></p>
-                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
-                    <a href="productDetails.html" class="edit-btn">Details</a>
-                </div>
-                <div class="product-card">
-                    <img src="/img/product-placeholder.png" alt="Product Image">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Battery</p>
-                    <p><strong>₹110.40</strong></p>
-                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
-                    <a href="productDetails.html" class="edit-btn">Details</a>
-                </div>
-                <div class="product-card">
-                    <img src="/img/product-placeholder.png" alt="Product Image">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Battery</p>
-                    <p><strong>₹110.40</strong></p>
-                    <p><strong>Summary</strong><br>Lorem ipsum is placeholder text commonly used in the graphic.</p>
-                    <a href="productDetails.html" class="edit-btn">Details</a>
-                </div>
-            </div>
-            <div class="pagination">
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>...</button>
-                <button>10</button>
-                <button>NEXT</button>
-            </div>
+<header class="header">
+    <div class="container">
+        <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+        <div class="logout">
+            <a href="/" class="logout_link">Logout</a>
         </div>
     </div>
+</header>
+
+<div class="sidebar_and_content">
+    <div class="sidebar">
+        <ul>
+            <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
+            <a href="/admin/products" class="active"><li class="active">📦 Products</li></a>
+            <a href="/admin/requests"><li>📄 Requests</li></a>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="title_of_page">
+            <h3>All Products</h3>
+            <a href="/admin/add-product" class="add_product">➕ Add New Product</a>
+        </div>
+
+        <!-- Products List -->
+        <section class="catalogue">
+            <div class="product-grid">
+                <div class="row" th:each="rowIndex : ${#numbers.sequence(0, products.size() - 1, 3)}">
+                    <div class="product-card" th:each="product, iterStat : ${products}"
+                         th:if="${iterStat.index >= rowIndex and iterStat.index < rowIndex + 3}"
+                         th:data-id="${product.id}">
+                        <div class="product-image">
+                            <img th:src="${product.imageUrl}" alt="Product Image">
+                        </div>
+                        <h3 th:text="${product.name}"></h3>
+                        <p th:text="'$' + ${product.price}"></p>
+
+                        <div class="admin-actions">
+                            <a th:href="@{/admin/product-details/{id}(id=${product.id})}" class="edit-btn">Details</a>
+                            <a th:href="@{/admin/delete-product/{id}(id=${product.id})}" class="delete-btn" onclick="return confirm('Are you sure?')">❌ Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <a th:if="${currentPage > 0}" th:href="@{/admin/products(page=${currentPage - 1})}">« Prev</a>
+
+            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/admin/products(page=${i})}" th:text="${i + 1}"
+                   th:classappend="${i == currentPage} ? 'active' : ''"></a>
+            </span>
+
+            <a th:if="${currentPage < totalPages - 1}" th:href="@{/admin/products(page=${currentPage + 1})}">Next »</a>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

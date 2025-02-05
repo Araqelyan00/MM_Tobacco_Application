@@ -9,9 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
-@RequestMapping("/contact")
+@RequestMapping("/api/contact")
 public class ContactFormController {
     private final ContactFormService contactFormService;
     private final EmailService emailService;
@@ -28,7 +29,7 @@ public class ContactFormController {
     }
 
     /** 📌 API: Обработка формы контакта */
-    @PostMapping("/api/submit")
+    @PostMapping("/submit")
     @ResponseBody
     public ResponseEntity<Contacts> submitForm(@Valid @ModelAttribute Contacts form) {
         // 📌 Сохранение данных в базе
@@ -49,5 +50,11 @@ public class ContactFormController {
         emailService.sendEmail("companies.and.employees@gmail.com", "Новый запрос на сайте", adminEmailBody);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedForm);
+    }
+
+    @GetMapping("/latest")
+    @ResponseBody
+    public List<Contacts> getLatestContacts() {
+        return contactFormService.getLast10Contacts();
     }
 }

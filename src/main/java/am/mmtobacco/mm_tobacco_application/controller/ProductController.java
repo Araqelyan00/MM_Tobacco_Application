@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/catalogue")
+@RequestMapping("/api/catalogue")
 public class ProductController {
     private final ProductService productService;
 
@@ -25,7 +25,7 @@ public class ProductController {
     @GetMapping
     public String catalogue(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "6") int size, // 6 товаров на страницу
+            @RequestParam(defaultValue = "9") int size,
             Model model) {
 
         Page<Product> productPage = productService.getProducts(page, size);
@@ -37,21 +37,21 @@ public class ProductController {
     }
 
     /** 📌 API: Получить все продукты */
-    @GetMapping("/api/products")
+    @GetMapping("/products")
     @ResponseBody
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
     /** 📌 API: Получить продукт по ID */
-    @GetMapping("/api/products/{id}")
+    @GetMapping("/products/{id}")
     @ResponseBody
     public Product getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
     /** 📌 API: Создать продукт */
-    @PostMapping("/api/products")
+    @PostMapping("/products")
     @ResponseBody
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product savedProduct = productService.createProduct(product);
@@ -59,7 +59,7 @@ public class ProductController {
     }
 
     /** 📌 API: Обновить продукт */
-    @PutMapping("/api/products/{id}")
+    @PutMapping("/products/{id}")
     @ResponseBody
     public ResponseEntity<Product> updateProduct(
             @PathVariable Long id,
@@ -69,14 +69,14 @@ public class ProductController {
     }
 
     /** 📌 API: Удалить продукт */
-    @DeleteMapping("/api/products/{id}")
+    @DeleteMapping("/products/{id}")
     @ResponseBody
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
     /** 📌 API: Получить продукты с пагинацией */
-    @GetMapping("/api/products/paginated")
+    @GetMapping("/products/paginated")
     @ResponseBody
     public Page<Product> getPaginatedProducts(
             @RequestParam(defaultValue = "0") int page,
@@ -85,7 +85,7 @@ public class ProductController {
     }
 
     /** 📌 API: Фильтр продуктов */
-    @GetMapping("/api/products/filter")
+    @GetMapping("/products/filter")
     @ResponseBody
     public List<Product> filterProducts(
             @RequestParam(required = false) Double minPrice,
@@ -95,7 +95,7 @@ public class ProductController {
     }
 
     /** 📌 API: Фильтр + пагинация */
-    @GetMapping("/api/products/paginated-filtered")
+    @GetMapping("/products/paginated-filtered")
     @ResponseBody
     public Page<Product> getFilteredAndPaginatedProducts(
             @RequestParam(required = false) Double minPrice,

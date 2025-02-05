@@ -48,14 +48,14 @@
 
     <!-- Блок пагинации -->
     <div class="pagination">
-        <a th:if="${currentPage > 0}" th:href="@{/catalogue(page=${currentPage - 1})}">« Prev</a>
+        <a th:if="${currentPage > 0}" th:href="@{/api/catalogue(page=${currentPage - 1})}">« Prev</a>
 
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-            <a th:href="@{/catalogue(page=${i})}" th:text="${i + 1}"
+            <a th:href="@{/api/catalogue(page=${i})}" th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
         </span>
 
-        <a th:if="${currentPage < totalPages - 1}" th:href="@{/catalogue(page=${currentPage + 1})}">Next »</a>
+        <a th:if="${currentPage < totalPages - 1}" th:href="@{/api/catalogue(page=${currentPage + 1})}">Next »</a>
     </div>
 </section>
 

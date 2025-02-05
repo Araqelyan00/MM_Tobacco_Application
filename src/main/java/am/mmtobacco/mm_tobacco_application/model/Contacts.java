@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -35,15 +36,21 @@ public class Contacts {
     
     private String message;
 
+    private LocalDateTime date;
+
+    private String status;
+
     public Contacts(){}
 
-    public Contacts(String firstName, String lastName, String email, String phone, String messenger, String message) {
+    public Contacts(String firstName, String lastName, String email, String phone, String messenger, String message, LocalDateTime date, String status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.messenger = messenger;
-        this.message = null;
+        this.message = message;
+        this.date = date;
+        this.status = status;
     }
 
     public String getFirstName() {
@@ -100,5 +107,21 @@ public class Contacts {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

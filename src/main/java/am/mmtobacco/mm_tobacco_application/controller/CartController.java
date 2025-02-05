@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/cart")
+@RequestMapping("/api/cart")
 public class CartController {
     private final CartService cartService;
 
@@ -23,14 +23,14 @@ public class CartController {
     }
 
     /** 📌 API: Обновление корзины */
-    @PostMapping("/api/update")
+    @PostMapping("/update")
     @ResponseBody
     public List<CartItem> updateCart(@RequestBody List<CartItem> cartItems) {
         return cartService.updateCart(cartItems);
     }
 
     /** 📌 API: Подсчет итоговой суммы корзины */
-    @PostMapping("/api/total")
+    @PostMapping("/total")
     @ResponseBody
     public double calculateTotal(@RequestBody List<CartItem> cartItems) {
         return cartService.calculateTotal(cartItems);

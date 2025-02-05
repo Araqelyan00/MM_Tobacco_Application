@@ -22,4 +22,3 @@ public class HomePageController {
         return "index";
     }
 }
-
