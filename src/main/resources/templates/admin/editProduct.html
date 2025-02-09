@@ -143,51 +143,63 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+            <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
             <div class="logout">
-                <a href="../index.html" class="logout_link">Logout</a>
+                <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
             </div>
         </div>
     </header>
     <div class="sidebar_and_content">
         <div class="sidebar">
             <ul>
-                <a href="dashboard.html"><li>📊 Dashboard</li></a>
-                <a href="#" class="activ"><li class="active">📦 Products</li></a>
-                <a href="requests.html"><li>📄 Requests</li></a>
+                <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
+                <a href="/admin/products" class="active"><li class="active">📦 Products</li></a>
+                <a href="/admin/requests"><li>📄 Requests</li></a>
             </ul>
         </div>
         <div class="content">
             <div class="title_of_page">
                 <h3>Edit Product</h3>
-                <a href="products.html" style="text-decoration: none; cursor: pointer;">❌</a>
+                <a href="/admin/products" style="text-decoration: none; cursor: pointer;">❌</a>
             </div>
             
             <div class="product-details">
-                <form class="product-form">
-                        <div class="image-placeholder"></div>
+                <form class="product-form" id="updateProductForm" enctype="multipart/form-data">
+                    <input type="hidden" id="productId" th:value="${product.id}">
+
+                    <div class="image-placeholder">
+                        <input type="file" id="productImage" name="image">
+                        <img th:src="${product.imageUrl}" id="previewImage" alt="Product Image" width="100%">
+                    </div>
+
                     <div class="product-info">
-                    <div class="form-group">
-                        <label>Product Name</label>
-                        <input type="text" value="Lorem Ipsum">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" id="productName" name="name" th:value="${product.name}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea id="productDescription" name="description" required>[[${product.description}]]</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <input type="text" id="productCategory" name="category" th:value="${product.category}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="number" id="productPrice" name="price" th:value="${product.price}" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" onclick="updateProduct()" class="edit-btn">UPDATE</button>
+                            <a href="/admin/products" class="cancel-btn">CANCEL</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea>Lorem Ipsum Is A Dummy Text</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" value="₹110.40" >
-                    </div>
-                    <div class="button-group">
-                        <button class="edit-btn">UPDATE</button>
-                        <!-- <a class="edit-btn" href="productDetails.html">UPDATE</a> -->
-                        <a href="productDetails.html" class="cancel-btn">CANCEL</a>
-                    </div>
-                </div>
                 </form>
+
+
             </div>
         </div>
     </div>
+    <script src="/js/script.js"></script>
 </body>
 </html>

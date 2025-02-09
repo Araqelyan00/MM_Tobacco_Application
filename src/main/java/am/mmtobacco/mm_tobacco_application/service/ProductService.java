@@ -4,17 +4,20 @@ import am.mmtobacco.mm_tobacco_application.model.Product;
 import am.mmtobacco.mm_tobacco_application.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class ProductService {
+
     private final ProductRepository productRepository;
     private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
@@ -43,6 +46,7 @@ public class ProductService {
     }
 
 
+    @Transactional
     @Cacheable("products")
     public List<Product> getAllProducts() {
         log.info("Fetching all products");
@@ -64,6 +68,7 @@ public class ProductService {
         Product product = getProductById(id);
         product.setName(updatedProduct.getName());
         product.setDescription(updatedProduct.getDescription());
+        product.setCategory(updatedProduct.getCategory());
         product.setPrice(updatedProduct.getPrice());
         product.setImageUrl(updatedProduct.getImageUrl());
         return productRepository.save(product);
@@ -73,12 +78,18 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    @Transactional
     public List<Product> getLatestProducts(int limit) {
         return productRepository.findLatestProducts(PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "id")));
     }
 
+    @Transactional
     public Page<Product> getProducts(Pageable pageable) {
         return productRepository.findAll(pageable);
+    }
+
+    public boolean existsById(Long id) {
+        return productRepository.existsById(id);
     }
 }
 

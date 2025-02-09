@@ -127,70 +127,71 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+            <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
             <div class="logout">
-                <a href="../index.html" class="logout_link">Logout</a>
+                <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
             </div>
         </div>
     </header>
     <div class="sidebar_and_content">
         <div class="sidebar">
             <ul>
-                <a href="dashboard.html"><li>📊 Dashboard</li></a>
-                <a href="products.html"><li>📦 Products</li></a>
-                <a href="#" class="active"><li class="active">📄 Requests</li></a>
+                <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
+                <a href="/admin/products"><li>📦 Products</li></a>
+                <a href="/admin/requests" class="active"><li class="active">📄 Requests</li></a>
             </ul>
         </div>
         <div class="content">
             <div class="title_of_page">
-                <h2>Request details</h2>
+                <h2>Request Details</h2>
                 <div>
-                    <a href="requests.html" style="text-decoration: none; cursor: pointer;">❌</a>
+                    <a href="/admin/requests" style="text-decoration: none; cursor: pointer;">❌</a>
                 </div>
             </div>
             <div class="request-details">
-                <form class="request-form">
+                <form class="request-form" th:action="@{/admin/update-request/{id}(id=${request.id})}" method="post">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" value="Adam" disabled>
+                        <input type="text" th:value="${request.firstName}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Surname</label>
-                        <input type="text" value="Hussein" disabled>
+                        <input type="text" th:value="${request.lastName}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" value="adam@gmail.com" disabled>
+                        <input type="email" th:value="${request.email}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Phone number</label>
-                        <input type="text" value="+(374) 99 00 -- 00" disabled>
+                        <input type="text" th:value="${request.phone}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Request ID</label>
-                        <input type="text" value="25426" disabled>
+                        <input type="text" th:value="${request.id}" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Preferred messenger</label>
-                        <input type="text" value="Telegram" disabled>
+                        <label>Preferred Messenger</label>
+                        <input type="text" th:value="${request.messenger}" disabled>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea placeholder="I need more information about 24729 product"></textarea>
+                        <textarea name="message" th:text="${request.message}"></textarea>
                     </div>
                     <div class="form-group" id="change_status">
                         <label>Status</label>
-                        <select class="status-badge">
-                            <option id="new">New</option>
-                            <option id="in_progress">In progress</option>
-                            <option id="cancelled">Cancelled</option>
-                            <option id="completed">Completed</option>
+                        <select class="status-badge" name="status">
+                            <option value="New" th:selected="${request.status == 'New'}">New</option>
+                            <option value="In progress" th:selected="${request.status == 'In progress'}">In progress</option>
+                            <option value="Cancelled" th:selected="${request.status == 'Cancelled'}">Cancelled</option>
+                            <option value="Completed" th:selected="${request.status == 'Completed'}">Completed</option>
                         </select>
-                        <button type="submit" class="submit_button">Submit changes</button>
+                        <button type="submit" class="submit_button">Submit Changes</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script src="/js/script.js"></script>
 </body>
 </html>

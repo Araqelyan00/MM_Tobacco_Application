@@ -17,14 +17,17 @@
             flex-direction: column;
             gap: 20px;
         }
+
         .sidebar h2 {
             margin: 0;
             font-size: 18px;
         }
+
         .sidebar ul {
             list-style: none;
             padding: 0;
         }
+
         .sidebar ul li {
             padding: 15px 30px;
             cursor: pointer;
@@ -32,65 +35,78 @@
             align-items: center;
             gap: 10px;
         }
-        .sidebar ul a{
+
+        .sidebar ul a {
             text-decoration: none;
             color: white;
         }
-        .sidebar ul a.activ{
+
+        .sidebar ul a.activ {
             color: #000;
         }
-        
+
         .sidebar ul li.active, .sidebar ul li:hover {
             color: black;
             background-color: #f4f4f9;
             border-top: #000 0.25px solid;
             border-bottom: #000 0.25px solid;
         }
-        .logout_link{
+
+        .logout_link {
             text-decoration: none;
             color: white;
         }
+
         .content {
             margin: 30px;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
+
         .recent-requests, .charts {
             background: #fff;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             max-height: 100%;
-            
-            
+
+
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
+
         th, td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
+
         .status {
             font-weight: bold;
         }
+
         .status.in-progress {
             color: #007bff;
         }
+
         .status.cancelled {
             color: #ff9800;
         }
+
         .status.completed {
             color: #4caf50;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
             gap: 5px;
             padding: 20px;
         }
+
         .pagination button {
             padding: 8px 12px;
             border: none;
@@ -99,55 +115,67 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .pagination button.active {
             background: #444;
         }
-        .sidebar_and_content{
+
+        .sidebar_and_content {
             display: flex;
         }
-        .sidebar_and_content .content{
+
+        .sidebar_and_content .content {
             width: 100%;
         }
-        .title_of_page{
+
+        .title_of_page {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .content {
             margin: 30px;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
-        .filters{
+
+        .filters {
             display: flex;
             font-size: small;
         }
-        .filter_by_status{
+
+        .filter_by_status {
             display: flex;
             align-items: center;
         }
-        .filter_by_status select{
+
+        .filter_by_status select {
             height: 25px;
             margin-left: 3px;
         }
-        .choose_day{
+
+        .choose_day {
             display: flex;
             align-items: center;
             margin-right: 20px;
         }
-        .choose_day input{
+
+        .choose_day input {
             height: 25px;
             width: 18px;
             border: none;
             background-color: #f4f4f9;
             margin-left: 3px;
         }
-        .sub_button{
+
+        .sub_button {
             display: flex;
             align-items: center;
             margin-left: 10px;
         }
-        .sub_button #submit_button{
+
+        .sub_button #submit_button {
             display: flex;
             align-items: center;
             padding: 4px 10px;
@@ -155,7 +183,8 @@
             border-radius: 5px;
             border: 1px black solid;
         }
-        .table_body td a{
+
+        .table_body td a {
             text-decoration: none;
             color: #000;
             cursor: pointer;
@@ -167,81 +196,85 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
-            <div class="logout">
-                <a href="/index" class="logout_link">Logout</a>
-            </div>
-        </div>
-    </header>
-    <div class="sidebar_and_content">
-        <div class="sidebar">
-            <ul>
-                <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
-                <a href="/admin/products"><li>📦 Products</li></a>
-                <a href="#" class="active"><li class="active">📄 Requests</li></a>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="title_of_page">
-                <h2>All Requests</h2>
-                <form class="filters">
-                    <div class="choose_day">
-                        <p>Choose Day</p>
-                        <input type="date" id="day" name="day">
-                    </div>
-                    <div class="filter_by_status">
-                        <p>Choose Status</p>
-                        <select>
-                            <option value="all">⚪ All</option>
-                            <option value="new">🟡 New</option>
-                            <option value="in_progress">⚫ In progress</option>
-                            <option value="completed">🟢 Completed</option>
-                            <option value="cancelled">🔴 Cancelled</option>
-                        </select>
-                    </div>
-                    <div class="sub_button">
-                        <button type="submit" id="submit_button">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div >
-                <div class="recent-requests">
-                    <h3>Requests</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Request ID</th>
-                                <th>Date</th>
-                                <th>Customer</th>
-                                <th>Status</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table_body">
-                            <tr><td>25426</td><td>Dec 8th, 2024</td><td>Kavin Maclaren</td><td >⚫ In progress</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25425</td><td>Dec 7th, 2024</td><td>Komael Samal</td><td >🔴 Cancelled</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25424</td><td>Dec 6th, 2024</td><td>Nikhil Guru</td><td >⚫ In progress</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25423</td><td>Dec 5th, 2024</td><td>Shivam Mivami</td><td >🔴 Cancelled</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25422</td><td>Dec 4th, 2024</td><td>Shadab Banab</td><td >⚫ In progress</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25421</td><td>Dec 2nd, 2024</td><td>Yogesh Logena</td><td >🟢 Completed</td><td><a href="requestDetails.html">View</a></td></tr>
-                            <tr><td>25420</td><td>Dec 2nd, 2024</td><td>Yogesh Logena</td><td >🟡 New</td><td><a href="requestDetails.html">View</a></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            
-            <div class="pagination">
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>...</button>
-                <button>10</button>
-                <button>NEXT</button>
-            </div>
-        </div>
+<header class="header">
+    <div class="container">
+        <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
+        <div class="logout">
+            <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
         </div>
     </div>
+</header>
+<div class="sidebar_and_content">
+    <div class="sidebar">
+        <ul>
+            <a href="/admin/dashboard">
+                <li>📊 Dashboard</li>
+            </a>
+            <a href="/admin/products">
+                <li>📦 Products</li>
+            </a>
+            <a href="#" class="active">
+                <li class="active">📄 Requests</li>
+            </a>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="title_of_page">
+            <h2>All Requests</h2>
+            <form class="filters" method="get" action="/admin/requests">
+                <div class="choose_day">
+                    <p>Choose Day</p>
+                    <input type="date" id="day" name="day" th:value="${selectedDate}">
+                </div>
+                <div class="filter_by_status">
+                    <p>Choose Status</p>
+                    <select name="status">
+                        <option value="all" th:selected="${selectedStatus == 'all'}">⚪ All</option>
+                        <option value="New" th:selected="${selectedStatus == 'New'}">🟡 New</option>
+                        <option value="In progress" th:selected="${selectedStatus == 'In progress'}">⚫ In progress
+                        </option>
+                        <option value="Completed" th:selected="${selectedStatus == 'Completed'}">🟢 Completed</option>
+                        <option value="Cancelled" th:selected="${selectedStatus == 'Cancelled'}">🔴 Cancelled</option>
+                    </select>
+                </div>
+                <div class="sub_button">
+                    <button type="submit" id="submit_button">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody class="table_body">
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.id}"></td>
+                <td th:text="${#temporals.format(request.date, 'yyyy-MM-dd')}"></td>
+                <td th:text="${request.firstName + ' ' + request.lastName}"></td>
+                <td th:text="${request.status}" class="status"></td>
+                <td><a th:href="@{/admin/request-details/{id}(id=${request.id})}">View</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+
+            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/admin/requests(page=${i}, size=10, status=${selectedStatus}, day=${selectedDate})}"
+           th:text="${i + 1}" th:classappend="${i == currentPage} ? 'active' : ''"></a>
+    </span>
+
+        </div>
+
+    </div>
+</div>
+<script src="/js/script.js"></script>
 </body>
 </html>

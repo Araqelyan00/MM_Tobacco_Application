@@ -162,9 +162,9 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+            <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
             <div class="logout">
-                <a href="/index" class="logout_link">Logout</a>
+                <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
             </div>
         </div>
     </header>
@@ -190,10 +190,11 @@
                 <form class="product-form" action="/admin/add-product" method="post" enctype="multipart/form-data">
 <!--                        <div class="image-placeholder"></div>-->
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}">
-                    <div class="form-group">
+                    <div class="image-placeholder">
                         <label>Product Image</label>
-                        <input type="file" name="image" required>
-                        <img id="preview" class="product-image hidden" th:if="${imageUrl}" th:src="${imageUrl}" alt="Product Image">
+                        <input type="file" name="image" id="productImage" required >
+<!--                        <img id="preview" class="product-image hidden" th:if="${imageUrl}" th:src="${imageUrl}" alt="Product Image">-->
+                        <img th:src="${imageUrl}" id="previewImage" alt="Product Image" width="100%">
                     </div>
                     <div class="product-info">
                         <div class="form-group">
@@ -221,5 +222,6 @@
             </div>
         </div>
     </div>
+    <script src="/js/script.js"></script>
 </body>
 </html>

@@ -40,17 +40,15 @@
             color: #000;
             background-color: #f4f4f9;
         }
+        .sidebar ul li.active, .sidebar ul li:hover {
+            color: black;
+            background-color: #f4f4f9;
+            border-top: #000 0.25px solid;
+            border-bottom: #000 0.25px solid;
+        }
         .logout_link {
             text-decoration: none;
             color: white;
-        }
-        .products-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            background: #f5f7fa;
-            border-radius: 10px;
         }
         .product-card {
             background: #fff;
@@ -139,9 +137,9 @@
 <body>
 <header class="header">
     <div class="container">
-        <h1 class="logo"><a href="#">MM Tobacco</a></h1>
+        <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
         <div class="logout">
-            <a href="/" class="logout_link">Logout</a>
+            <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
         </div>
     </div>
 </header>
@@ -150,7 +148,7 @@
     <div class="sidebar">
         <ul>
             <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
-            <a href="/admin/products" class="active"><li class="active">📦 Products</li></a>
+            <a href="/admin/products" class="activ"><li class="active">📦 Products</li></a>
             <a href="/admin/requests"><li>📄 Requests</li></a>
         </ul>
     </div>
@@ -176,7 +174,7 @@
 
                         <div class="admin-actions">
                             <a th:href="@{/admin/product-details/{id}(id=${product.id})}" class="edit-btn">Details</a>
-                            <a th:href="@{/admin/delete-product/{id}(id=${product.id})}" class="delete-btn" onclick="return confirm('Are you sure?')">❌ Delete</a>
+                            <a href="#" class="delete-btn" th:attr="onclick='deleteProduct(\'' + ${product.id} + '\')'">❌ Delete</a>
                         </div>
                     </div>
                 </div>
@@ -197,5 +195,6 @@
 
     </div>
 </div>
+<script src="/js/script.js"></script>
 </body>
 </html>

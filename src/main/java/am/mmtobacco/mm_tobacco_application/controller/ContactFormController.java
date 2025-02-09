@@ -37,17 +37,17 @@ public class ContactFormController {
 
         // 📌 Отправка email пользователю
         String userEmailBody = String.format(
-                "Здравствуйте, %s %s!\n\nВаш запрос был успешно отправлен. Мы скоро свяжемся с вами!",
-                form.getFirstName(), form.getLastName()
+                "Hello %s %s,\n\nYour request has been submitted. We will contact you soon!\n\nYour Order:\n%s",
+                form.getFirstName(), form.getLastName(), form.getMessage()
         );
-        emailService.sendEmail(form.getEmail(), "Ваш запрос принят", userEmailBody);
+        emailService.sendEmail(form.getEmail(), "Your Request is Received", userEmailBody);
 
         // 📌 Отправка уведомления администратору
         String adminEmailBody = String.format(
-                "Новый запрос:\n\nИмя: %s %s\nТелефон: %s\nМессенджер: %s\nE-mail: %s\nСообщение: %s",
-                form.getFirstName(), form.getLastName(), form.getPhone(), form.getMessenger(), form.getEmail(), form.getMessage()
+                "New Order Request:\n\nName: %s %s\nPhone number: %s\nMessenger: %s\nE-mail: %s\nMessage: %s",
+                form.getFirstName(), form.getLastName(), form.getPhone(), form.getMessenger(), form.getEmail(), form.getMessage(), form.getMessage()
         );
-        emailService.sendEmail("companies.and.employees@gmail.com", "Новый запрос на сайте", adminEmailBody);
+        emailService.sendEmail("companies.and.employees@gmail.com", "New Order Received", adminEmailBody);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedForm);
     }
@@ -56,5 +56,11 @@ public class ContactFormController {
     @ResponseBody
     public List<Contacts> getLatestContacts() {
         return contactFormService.getLast10Contacts();
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Contacts> allContacts() {
+        return contactFormService.getAllRequests();
     }
 }

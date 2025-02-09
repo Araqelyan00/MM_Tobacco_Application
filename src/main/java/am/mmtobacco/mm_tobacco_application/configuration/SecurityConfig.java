@@ -31,7 +31,9 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/admin/logout")
-                        .logoutSuccessUrl("/") // Redirect to homepage after logout
+                        .logoutSuccessUrl("/index") // Redirect to homepage after logout
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/admin/**", "/api/**")); // ✅ Disable CSRF for this route

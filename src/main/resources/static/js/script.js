@@ -93,7 +93,6 @@ function openProductModal(productId) {
 
             // 📌 Добавление обработчиков событий для кнопок внутри модального окна
             document.querySelector(".add-to-cart").addEventListener("click", () => addToCart(product.id));
-            document.querySelector(".remove-from-cart").addEventListener("click", () => removeFromCart(product.id));
         })
         .catch(error => console.error("❌ Ошибка при получении продукта:", error));
 }
@@ -213,26 +212,81 @@ function updateTotals() {
 document.addEventListener("DOMContentLoaded", updateCart);
 
 // 📌 Обработчик кнопки оформления заказа
+// const checkoutBtn = document.querySelector(".checkout-btn");
+// if (checkoutBtn) {
+//     checkoutBtn.addEventListener("click", function () {
+//         let cart = getCart();
+//         if (cart.length === 0) {
+//             alert("❌ Ваша корзина пуста.");
+//             return;
+//         }
+//         alert("✅ Оформление заказа...");
+//         localStorage.removeItem("cart");
+//         updateCart();
+//     });
+// }
 const checkoutBtn = document.querySelector(".checkout-btn");
-if (checkoutBtn) {
+if (checkoutBtn) { // ✅ Check if the element exists
     checkoutBtn.addEventListener("click", function () {
         let cart = getCart();
         if (cart.length === 0) {
-            alert("❌ Ваша корзина пуста.");
+            alert("❌ Your cart is empty.");
             return;
         }
-        alert("✅ Оформление заказа...");
-        localStorage.removeItem("cart");
-        updateCart();
+
+        // ✅ Save cart data before redirecting
+        localStorage.setItem("cartData", JSON.stringify(cart));
+
+        // ✅ Redirect to contact form page
+        window.location.href = "/api/contact";
     });
 }
 
-    document.addEventListener("DOMContentLoaded", function () {
-    fetch('/api/contact/latest')
+
+////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem("cartData")) || [];
+    const cartDataInput = document.getElementById("cartData"); // ✅ Check if exists
+
+    if (cartDataInput && cart.length > 0) { // ✅ Ensure cartData exists before setting value
+        fetch("/api/catalogue/products")
+            .then(response => response.json())
+            .then(products => {
+                let cartSummary = cart.map(item => {
+                    let product = products.find(p => p.id == item.productId);
+                    return product ? `${product.name} x ${item.quantity} ($${(product.price * item.quantity).toFixed(2)})` : "";
+                }).join(", ");
+
+                console.log("Cart Summary:", cartSummary); // ✅ Debugging
+
+                // ✅ Save cart items in hidden input
+                cartDataInput.value = cartSummary;
+            })
+            .catch(error => console.error("❌ Error loading products:", error));
+    } else {
+        console.log("Cart is empty or cartData input not found.");
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) { // ✅ Check if form exists
+        contactForm.addEventListener("submit", function () {
+            localStorage.removeItem("cartData"); // ✅ Clear cart data on submission
+            localStorage.removeItem("cart"); // ✅ Clear cart data on submission
+        });
+    }
+});
+////////////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Fetch the last 10 requests for the table
+    fetch('/api/contact/latest') // Ensure this endpoint returns the last 10 requests
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById("requestsTableBody");
-            tableBody.innerHTML = ""; // Очищаем перед добавлением
+            tableBody.innerHTML = ""; // Clear previous data
 
             const statusClasses = {
                 "New": "status in-progress",
@@ -249,33 +303,81 @@ if (checkoutBtn) {
                     </tr>`;
                 tableBody.innerHTML += row;
             });
+        })
+        .catch(error => console.error("❌ Error loading recent requests:", error));
 
-            // Подготовка данных для графика
-            const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            const requestsPerMonth = new Array(12).fill(0);
+    // ✅ Fetch all requests for the graph
+    fetch('/api/contact/all') // Ensure this endpoint returns ALL requests
+        .then(response => response.json())
+        .then(data => {
+            // 📌 Determine the first request date
+            const currentYear = new Date().getFullYear();
+            const currentMonthIndex = new Date().getMonth(); // 0 - Jan, 11 - Dec
 
+            let firstRequestYear = currentYear;
+            let firstRequestMonth = currentMonthIndex;
+
+            if (data.length > 0) {
+                const firstRequestDate = new Date(data[0].date);
+                firstRequestYear = firstRequestDate.getFullYear();
+                firstRequestMonth = firstRequestDate.getMonth();
+            }
+
+            let months = [];
+            let requestsPerMonth = [];
+
+            // 📌 Generate months dynamically
+            for (let year = firstRequestYear; year <= currentYear; year++) {
+                for (let month = (year === firstRequestYear ? firstRequestMonth : 0);
+                     month <= (year === currentYear ? currentMonthIndex : 11);
+                     month++) {
+                    months.push(`${year}-${month + 1 < 10 ? "0" : ""}${month + 1}`);
+                    requestsPerMonth.push(0);
+                }
+            }
+
+            // 📌 Count requests per month
             data.forEach(contact => {
-                const monthIndex = new Date(contact.date).getMonth();
-                requestsPerMonth[monthIndex]++;
+                const date = new Date(contact.date);
+                const formattedMonth = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? "0" : ""}${date.getMonth() + 1}`;
+                const index = months.indexOf(formattedMonth);
+                if (index !== -1) {
+                    requestsPerMonth[index]++;
+                }
             });
 
-            // Рендер графика
+            // 📌 Render the chart
             const ctx = document.getElementById('requestsChart').getContext('2d');
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: months,
+                    labels: months, // Sorted months
                     datasets: [{
                         label: 'Requests',
                         data: requestsPerMonth,
                         borderColor: '#007bff',
-                        fill: false
+                        fill: false,
+                        tension: 0.4
                     }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            suggestedMax: Math.max(...requestsPerMonth) + 5,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
                 }
             });
         })
-        .catch(error => console.error("Ошибка загрузки заявок:", error));
+        .catch(error => console.error("❌ Error loading requests for graph:", error));
 });
+
+
 
 function showSuccessMessage() {
     // Показываем сообщение пользователю
@@ -301,4 +403,66 @@ function previewImage(event) {
         };
         reader.readAsDataURL(file);
     }
+}
+
+
+function deleteProduct(productId) {
+    if (!confirm("Are you sure you want to delete this product?")) {
+        return;
+    }
+
+    fetch(`/admin/delete-product/${productId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("✅ Product deleted successfully!");
+                window.location.reload(); // Reload page after successful deletion
+            } else {
+                response.text().then(errorMsg => alert("❌ Error: " + errorMsg));
+            }
+        })
+        .catch(error => console.error("❌ Error deleting product:", error));
+}
+
+function updateProduct() {
+    let productId = document.getElementById("productId").value;
+    let formData = new FormData(document.getElementById("updateProductForm"));
+
+    fetch(`/admin/update-product/${productId}`, {
+        method: "POST",  // Forms only support POST, not PUT
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("✅ Product updated successfully!");
+                window.location.href = "/admin/products"; // Redirect after update
+            } else {
+                alert("❌ Error updating product.");
+            }
+        })
+        .catch(error => console.error("❌ Error:", error));
+}
+
+// ✅ Preview image before uploading
+document.getElementById("productImage").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("previewImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function logoutUser() {
+    fetch('/admin/logout', { method: 'POST' }) // Force a POST request
+        .then(() => {
+            window.location.href = '/index'; // Redirect after logout
+        })
+        .catch(error => console.error('Logout failed:', error));
 }
