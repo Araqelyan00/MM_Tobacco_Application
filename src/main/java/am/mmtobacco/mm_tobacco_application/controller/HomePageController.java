@@ -15,10 +15,20 @@ public class HomePageController {
         this.productService = productService;
     }
 
+    @GetMapping("/")
+    public String redirectToIndex() {
+        return "redirect:/index";  // Redirect root path to /index
+    }
+
     @GetMapping("/index")
     public String homePage(Model model) {
         List<Product> latestProducts = productService.getLatestProducts(3); // Fetch last 3 products
         model.addAttribute("latestProducts", latestProducts); // Pass to Thymeleaf
-        return "index";
+        return "/index";
+    }
+
+    @GetMapping("/age-restricted")
+    public String showAccessDeniedPage() {
+        return "/age-restricted";  // Load the "Access Denied" page
     }
 }

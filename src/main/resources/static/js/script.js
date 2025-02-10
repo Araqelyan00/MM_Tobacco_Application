@@ -307,74 +307,133 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("❌ Error loading recent requests:", error));
 
     // ✅ Fetch all requests for the graph
-    fetch('/api/contact/all') // Ensure this endpoint returns ALL requests
-        .then(response => response.json())
-        .then(data => {
-            // 📌 Determine the first request date
-            const currentYear = new Date().getFullYear();
-            const currentMonthIndex = new Date().getMonth(); // 0 - Jan, 11 - Dec
+    const ctx = document.getElementById('requestsChart').getContext('2d');
+    let chartInstance; // To store the graph instance
 
-            let firstRequestYear = currentYear;
-            let firstRequestMonth = currentMonthIndex;
-
-            if (data.length > 0) {
-                const firstRequestDate = new Date(data[0].date);
-                firstRequestYear = firstRequestDate.getFullYear();
-                firstRequestMonth = firstRequestDate.getMonth();
-            }
-
-            let months = [];
-            let requestsPerMonth = [];
-
-            // 📌 Generate months dynamically
-            for (let year = firstRequestYear; year <= currentYear; year++) {
-                for (let month = (year === firstRequestYear ? firstRequestMonth : 0);
-                     month <= (year === currentYear ? currentMonthIndex : 11);
-                     month++) {
-                    months.push(`${year}-${month + 1 < 10 ? "0" : ""}${month + 1}`);
-                    requestsPerMonth.push(0);
+    function fetchRequests(view = "monthly") {
+        fetch('/api/contact/all')
+            .then(response => response.json())
+            .then(data => {
+                if (!data || data.length === 0) {
+                    console.error("❌ No request data available for graph");
+                    return;
                 }
-            }
 
-            // 📌 Count requests per month
-            data.forEach(contact => {
-                const date = new Date(contact.date);
-                const formattedMonth = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? "0" : ""}${date.getMonth() + 1}`;
-                const index = months.indexOf(formattedMonth);
-                if (index !== -1) {
-                    requestsPerMonth[index]++;
+                let labels = [];
+                let requestsCount = [];
+
+                if (view === "daily") {
+                    ({ labels, requestsCount } = processDailyData(data));
+                } else if (view === "weekly") {
+                    ({ labels, requestsCount } = processWeeklyData(data));
+                } else {
+                    ({ labels, requestsCount } = processMonthlyData(data));
                 }
-            });
 
-            // 📌 Render the chart
-            const ctx = document.getElementById('requestsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: months, // Sorted months
-                    datasets: [{
-                        label: 'Requests',
-                        data: requestsPerMonth,
-                        borderColor: '#007bff',
-                        fill: false,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            suggestedMax: Math.max(...requestsPerMonth) + 5,
-                            ticks: {
-                                stepSize: 1
-                            }
+                renderChart(labels, requestsCount);
+            })
+            .catch(error => console.error("❌ Error loading requests for graph:", error));
+    }
+
+    function processDailyData(data) {
+        let dailyCounts = {};
+        data.forEach(contact => {
+            let date = contact.date.split("T")[0]; // Format YYYY-MM-DD
+            dailyCounts[date] = (dailyCounts[date] || 0) + 1;
+        });
+
+        let labels = Object.keys(dailyCounts).sort();
+        let requestsCount = labels.map(date => dailyCounts[date]);
+
+        return { labels, requestsCount };
+    }
+
+    function processWeeklyData(data) {
+        function getWeekNumber(date) {
+            const tempDate = new Date(date);
+            tempDate.setHours(0, 0, 0, 0);
+            tempDate.setDate(tempDate.getDate() + 3 - (tempDate.getDay() + 6) % 7);
+            const firstWeek = new Date(tempDate.getFullYear(), 0, 4);
+            return (
+                tempDate.getFullYear() + "-W" +
+                String(Math.round(((tempDate.getTime() - firstWeek.getTime()) / (7 * 86400000)) + 1)).padStart(2, "0")
+            );
+        }
+
+        let weeklyCounts = {};
+        data.forEach(contact => {
+            let week = getWeekNumber(contact.date);
+            weeklyCounts[week] = (weeklyCounts[week] || 0) + 1;
+        });
+
+        let labels = Object.keys(weeklyCounts).sort();
+        let requestsCount = labels.map(week => weeklyCounts[week]);
+
+        return { labels, requestsCount };
+    }
+
+    function processMonthlyData(data) {
+        let monthlyCounts = {};
+        data.forEach(contact => {
+            let date = new Date(contact.date);
+            let month = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}`;
+            monthlyCounts[month] = (monthlyCounts[month] || 0) + 1;
+        });
+
+        let labels = Object.keys(monthlyCounts).sort();
+        let requestsCount = labels.map(month => monthlyCounts[month]);
+
+        return { labels, requestsCount };
+    }
+
+    function renderChart(labels, data) {
+        if (chartInstance) {
+            chartInstance.destroy(); // Destroy old chart instance
+        }
+
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Requests',
+                    data: data,
+                    borderColor: '#007bff',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 45,
+                            minRotation: 30
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: Math.max(...data) + 5,
+                        ticks: {
+                            stepSize: 1
                         }
                     }
                 }
-            });
-        })
-        .catch(error => console.error("❌ Error loading requests for graph:", error));
+            }
+        });
+    }
+
+    // Fetch initial data (Monthly)
+    fetchRequests("monthly");
+
+    // Event Listener for Dropdown Change
+    document.getElementById("timeFilter").addEventListener("change", function () {
+        fetchRequests(this.value);
+    });
 });
 
 
@@ -466,3 +525,6 @@ function logoutUser() {
         })
         .catch(error => console.error('Logout failed:', error));
 }
+
+
+

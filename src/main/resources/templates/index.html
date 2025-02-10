@@ -7,10 +7,51 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+<!-- Age Verification Modal -->
+<div id="ageVerificationModal" class="modal-verification">
+    <div class="modal-for-age-verification">
+        <h2>Are you 18 or older?</h2>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let ageVerified = sessionStorage.getItem("ageVerified");
+        let modal = document.getElementById("ageVerificationModal");
+        let yesBtn = document.getElementById("yesBtn");
+        let noBtn = document.getElementById("noBtn");
+
+        if (!modal || !yesBtn || !noBtn) {
+            console.error("❌ Age verification modal elements not found!");
+            return;
+        }
+
+        if (!ageVerified) {
+            modal.style.display = "flex";
+        } else {
+            modal.style.display = "none";
+        }
+
+        yesBtn.addEventListener("click", function () {
+            sessionStorage.setItem("ageVerified", "true");
+            modal.style.display = "none";
+        });
+
+        noBtn.addEventListener("click", function () {
+            window.location.href = "/age-restricted";
+        });
+    });
+</script>
+
+
+
 <!-- Header -->
 <header class="header">
     <div class="container">
-        <h1 class="logo"><a href="/">MM Tobacco</a></h1>
+        <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
                 <li><a href="/api/catalogue">Catalogue</a></li>
@@ -34,7 +75,7 @@
     <h2>Discover quality</h2>
     <p>The highest quality European tobacco assortment․<br>
         Exclusive offers for unique and demanding customers!</p>
-    <a href="/catalogue" class="hero-btn">Order now</a>
+    <a href="/api/catalogue" class="hero-btn">Order now</a>
 </section>
 
 <!-- Latest Arrivals -->

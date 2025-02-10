@@ -122,6 +122,14 @@
         </div>
         <div class="charts">
             <h2>Requests Graph</h2>
+            <div class="chart_container">
+            <p>Choose time filter:</p>
+            <select id="timeFilter" >
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly" selected>Monthly</option>
+            </select>
+            </div>
             <canvas id="requestsChart"></canvas>
         </div>
     </div>
