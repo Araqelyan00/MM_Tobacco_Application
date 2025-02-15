@@ -53,7 +53,6 @@ public class AdminController {
                                  @RequestParam(defaultValue = "6") int size,
                                  Model model) {
 
-        // Fetch products with pagination
         Page<Product> productPage = productService.getProducts(PageRequest.of(page, size));
 
         model.addAttribute("products", productPage.getContent());
@@ -69,6 +68,7 @@ public class AdminController {
                                  @RequestParam(defaultValue = "all") String status,
                                  @RequestParam(required = false) String day,
                                  Model model) {
+
         LocalDate date = null;
         if (day != null && !day.isEmpty()) {
             try {
@@ -78,7 +78,6 @@ public class AdminController {
             }
         }
 
-        // ✅ Fetch requests with pagination and filters
         Page<Contacts> requestPage = contactFormService.getRequests(status, date, page, size);
 
         model.addAttribute("requests", requestPage.getContent());
@@ -94,16 +93,17 @@ public class AdminController {
     public String requestDetails(@PathVariable Long id, Model model) {
         Contacts request = contactFormService.getRequestById(id);
         if (request == null) {
-            return "redirect:/admin/requests"; // Redirect if request is not found
+            return "redirect:/admin/requests";
         }
         model.addAttribute("request", request);
-        return "admin/requestDetails"; // Ensure this matches the template name
+        return "admin/requestDetails";
     }
 
     @PostMapping("/update-request/{id}")
     public String updateRequestStatus(@PathVariable Long id,
                                       @RequestParam("status") String status,
                                       @RequestParam("message") String message) {
+
         Contacts request = contactFormService.getRequestById(id);
         if (request != null) {
             request.setStatus(status);
@@ -128,29 +128,25 @@ public class AdminController {
                              @RequestParam("image") MultipartFile image,
                              Model model) throws IOException {
 
-        // 📌 Step 1: Save Image in `static/uploads`
         String uploadDir = "src/main/resources/static/uploads/";
         File uploadFolder = new File(uploadDir);
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
 
-        // Generate unique file name
         String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
         Path filePath = Paths.get(uploadDir + fileName);
         Files.write(filePath, image.getBytes());
 
-        // 📌 Step 2: Save Product in Database
         Product product = new Product();
         product.setName(name);
         product.setDescription(description);
         product.setPrice(price);
         product.setCategory(category);
-        product.setImageUrl("/uploads/" + fileName); // Relative URL for frontend
+        product.setImageUrl("/uploads/" + fileName);
 
         productService.createProduct(product);
 
-        // 📌 Step 3: Send Image Path to `add-product.html`
         model.addAttribute("imageUrl", "/uploads/" + fileName);
         model.addAttribute("message", "Product added successfully!");
 
@@ -159,12 +155,12 @@ public class AdminController {
 
     @GetMapping("/product-details/{id}")
     public String productDetails(@PathVariable Long id, Model model) {
-        Product product = productService.getProductById(id); // Fetch product
+        Product product = productService.getProductById(id);
         if (product == null) {
-            return "redirect:/admin/products"; // Redirect if not found
+            return "redirect:/admin/products";
         }
         model.addAttribute("product", product);
-        return "admin/productDetails"; // Make sure this matches the template name
+        return "admin/productDetails";
     }
 
     @GetMapping("/edit-product/{id}")
@@ -192,13 +188,11 @@ public class AdminController {
             return "/admin/productDetails";
         }
 
-        // ✅ Update product details
         existingProduct.setName(name);
         existingProduct.setDescription(description);
         existingProduct.setCategory(category);
         existingProduct.setPrice(price);
 
-        // ✅ Handle image update (if new image is uploaded)
         if (image != null && !image.isEmpty()) {
             String uploadDir = "src/main/resources/static/uploads/";
             File uploadFolder = new File(uploadDir);
@@ -206,16 +200,13 @@ public class AdminController {
                 uploadFolder.mkdirs();
             }
 
-            // Generate a unique file name
             String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
             Path filePath = Paths.get(uploadDir + fileName);
             Files.write(filePath, image.getBytes());
 
-            // Update product image URL
             existingProduct.setImageUrl("/uploads/" + fileName);
         }
 
-        // ✅ Save updated product
         productService.createProduct(existingProduct);
 
         model.addAttribute("message", "Product updated successfully!");
@@ -228,7 +219,7 @@ public class AdminController {
     @DeleteMapping("/delete-product/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         try {
-            productService.deleteProduct(id); // Make sure this method exists in your service
+            productService.deleteProduct(id);
             return ResponseEntity.ok("Product deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting product: " + e.getMessage());

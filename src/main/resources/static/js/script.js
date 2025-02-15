@@ -1,4 +1,4 @@
-// 📌 Функция получения корзины из LocalStorage
+// 📌 Get cart form LocalStorage
 function getCart() {
     try {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -10,18 +10,18 @@ function getCart() {
         }
         return cart;
     } catch (error) {
-        console.error("❌ Ошибка при разборе корзины:", error);
+        console.error("❌ Error parsing cart:", error);
         localStorage.removeItem("cart");
         return [];
     }
 }
 
-// 📌 Функция сохранения корзины в LocalStorage
+// 📌 Save cart to LocalStorage
 function saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// 📌 Функция для показа всплывающего уведомления
+// 📌 Show notification
 function showToast(message, type = "success") {
     let toast = document.createElement("div");
     toast.className = `toast toast-${type}`;
@@ -35,7 +35,7 @@ function showToast(message, type = "success") {
     }, 2000);
 }
 
-// 📌 Функция добавления продукта в корзину (без `alert`)
+// 📌 Add product to cart function
 function addToCart(productId) {
     let cart = getCart();
     let existingProduct = cart.find(item => item.productId === productId);
@@ -47,31 +47,28 @@ function addToCart(productId) {
     }
 
     saveCart(cart);
-    showToast("✅ Товар добавлен в корзину!"); // Используем всплывающее сообщение
+    showToast("✅ The product has been added to the cart!");
     updateCart();
 }
 
-// 📌 Функция удаления продукта из корзины (без `alert`)
+// 📌 Function to remove a product from the cart
 function removeFromCart(productId) {
     let cart = getCart().filter(item => item.productId !== productId);
     saveCart(cart);
 
-    // ✅ Удаляем продукт из DOM (если он есть)
     let cartItemElement = document.querySelector(`.cart-item[data-id="${productId}"]`);
     if (cartItemElement) {
         cartItemElement.remove();
     }
 
-    showToast("❌ Товар удалён из корзины!", "error");
-
-    // ✅ Обновляем корзину и общие суммы
+    showToast("❌ The product has been removed from the cart!", "error");
     updateCart();
 }
 
 
-// 📌 Открытие модального окна с деталями товара
+// 📌 Opening a modal window with product details
 function openProductModal(productId) {
-    fetch(`/api/catalogue/products/${productId}`) // 📌 Исправлен путь API
+    fetch(`/api/catalogue/products/${productId}`)
         .then(response => response.json())
         .then(product => {
             document.getElementById("modalDetails").innerHTML = `
@@ -91,13 +88,12 @@ function openProductModal(productId) {
 
             document.getElementById("productModal").classList.remove("hidden");
 
-            // 📌 Добавление обработчиков событий для кнопок внутри модального окна
             document.querySelector(".add-to-cart").addEventListener("click", () => addToCart(product.id));
         })
-        .catch(error => console.error("❌ Ошибка при получении продукта:", error));
+        .catch(error => console.error("❌ Error receiving product:", error));
 }
 
-// 📌 Обработчики кликов на карточках товаров
+// 📌 Product Card Click Handlers
 document.querySelectorAll(".product-card").forEach(card => {
     card.addEventListener("click", () => {
         const productId = Number(card.dataset.id);
@@ -105,7 +101,7 @@ document.querySelectorAll(".product-card").forEach(card => {
     });
 });
 
-// 📌 Закрытие модального окна
+// 📌 Closing the modal window
 const closeModalBtn = document.querySelector(".close-btn");
 if (closeModalBtn) {
     closeModalBtn.addEventListener("click", () => {
@@ -113,7 +109,7 @@ if (closeModalBtn) {
     });
 }
 
-// 📌 Обновление отображения корзины
+// 📌 Updating the cart display
 function updateCart() {
     let cart = getCart();
     let cartContainer = document.getElementById("cartItems");
@@ -123,8 +119,8 @@ function updateCart() {
     cartContainer.innerHTML = "";
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>🛒 Ваша корзина пуста.</p>";
-        updateTotals(0); // ✅ Устанавливаем 0, если корзина пуста
+        cartContainer.innerHTML = "<p>🛒 Your cart is empty.</p>";
+        updateTotals(0);
         return;
     }
 
@@ -140,7 +136,7 @@ function updateCart() {
 
                 let cartItem = document.createElement("div");
                 cartItem.classList.add("cart-item");
-                cartItem.setAttribute("data-id", product.id); // ✅ Привязываем ID для удаления
+                cartItem.setAttribute("data-id", product.id);
                 cartItem.innerHTML = `
                     <span>${product.name}</span>
                     <span>$${product.price.toFixed(2)}</span>
@@ -149,8 +145,6 @@ function updateCart() {
                     <button class="removeButton remove-btn" data-id="${product.id}">Remove</button>
                 `;
                 cartContainer.appendChild(cartItem);
-
-                // ✅ Изменение количества
                 cartItem.querySelector(".cart-quantity").addEventListener("input", function () {
                     let newQuantity = parseInt(this.value);
                     if (newQuantity < 1) newQuantity = 1;
@@ -160,32 +154,29 @@ function updateCart() {
                     if (item) item.quantity = newQuantity;
                     saveCart(cart);
 
-                    // ✅ Пересчитываем сумму для одного товара
                     let itemTotalElement = cartItem.querySelector(".cart-item-total");
                     let newItemTotal = newQuantity * product.price;
                     itemTotalElement.textContent = `$${newItemTotal.toFixed(2)}`;
 
-                    updateTotals(); // ✅ Пересчет всех сумм
+                    updateTotals();
                 });
 
-                // ✅ Удаление товара
                 cartItem.querySelector(".remove-btn").addEventListener("click", function () {
                     removeFromCart(Number(this.dataset.id));
                 });
             })
-            .catch(error => console.error("❌ Ошибка при получении товара:", error));
+            .catch(error => console.error("❌ Error while receiving the goods:", error));
 
         promises.push(productPromise);
     });
 
-    // ✅ Ждём, пока все товары загрузятся, и пересчитываем итоговую сумму
     Promise.all(promises).then(() => {
         updateTotals();
     });
 }
 
 
-// 📌 Функция обновления итоговой суммы корзины
+// 📌 Cart Total Update Function
 function updateTotals() {
     let cart = getCart();
     let subtotal = 0;
@@ -203,30 +194,15 @@ function updateTotals() {
                 document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
                 document.getElementById("total").textContent = `$${total.toFixed(2)}`;
             })
-            .catch(error => console.error("❌ Ошибка при обновлении итогов:", error));
+            .catch(error => console.error("❌ Error updating totals:", error));
     });
 }
 
 
-// 📌 Обновление корзины при загрузке страницы
+// 📌 Refresh cart on page load
 document.addEventListener("DOMContentLoaded", updateCart);
-
-// 📌 Обработчик кнопки оформления заказа
-// const checkoutBtn = document.querySelector(".checkout-btn");
-// if (checkoutBtn) {
-//     checkoutBtn.addEventListener("click", function () {
-//         let cart = getCart();
-//         if (cart.length === 0) {
-//             alert("❌ Ваша корзина пуста.");
-//             return;
-//         }
-//         alert("✅ Оформление заказа...");
-//         localStorage.removeItem("cart");
-//         updateCart();
-//     });
-// }
 const checkoutBtn = document.querySelector(".checkout-btn");
-if (checkoutBtn) { // ✅ Check if the element exists
+if (checkoutBtn) {
     checkoutBtn.addEventListener("click", function () {
         let cart = getCart();
         if (cart.length === 0) {
@@ -234,10 +210,8 @@ if (checkoutBtn) { // ✅ Check if the element exists
             return;
         }
 
-        // ✅ Save cart data before redirecting
         localStorage.setItem("cartData", JSON.stringify(cart));
 
-        // ✅ Redirect to contact form page
         window.location.href = "/api/contact";
     });
 }
@@ -246,9 +220,9 @@ if (checkoutBtn) { // ✅ Check if the element exists
 ////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem("cartData")) || [];
-    const cartDataInput = document.getElementById("cartData"); // ✅ Check if exists
+    const cartDataInput = document.getElementById("cartData");
 
-    if (cartDataInput && cart.length > 0) { // ✅ Ensure cartData exists before setting value
+    if (cartDataInput && cart.length > 0) {
         fetch("/api/catalogue/products")
             .then(response => response.json())
             .then(products => {
@@ -257,9 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     return product ? `${product.name} x ${item.quantity} ($${(product.price * item.quantity).toFixed(2)})` : "";
                 }).join(", ");
 
-                console.log("Cart Summary:", cartSummary); // ✅ Debugging
+                console.log("Cart Summary:", cartSummary);
 
-                // ✅ Save cart items in hidden input
                 cartDataInput.value = cartSummary;
             })
             .catch(error => console.error("❌ Error loading products:", error));
@@ -271,22 +244,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.getElementById("contactForm");
-    if (contactForm) { // ✅ Check if form exists
+    if (contactForm) {
         contactForm.addEventListener("submit", function () {
-            localStorage.removeItem("cartData"); // ✅ Clear cart data on submission
-            localStorage.removeItem("cart"); // ✅ Clear cart data on submission
+            localStorage.removeItem("cartData");
+            localStorage.removeItem("cart");
         });
     }
 });
 ////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
-    // ✅ Fetch the last 10 requests for the table
-    fetch('/api/contact/latest') // Ensure this endpoint returns the last 10 requests
+    fetch('/api/contact/latest')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById("requestsTableBody");
-            tableBody.innerHTML = ""; // Clear previous data
+            tableBody.innerHTML = "";
 
             const statusClasses = {
                 "New": "status in-progress",
@@ -306,9 +278,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("❌ Error loading recent requests:", error));
 
-    // ✅ Fetch all requests for the graph
     const ctx = document.getElementById('requestsChart').getContext('2d');
-    let chartInstance; // To store the graph instance
+    let chartInstance;
 
     function fetchRequests(view = "monthly") {
         fetch('/api/contact/all')
@@ -427,10 +398,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Fetch initial data (Monthly)
     fetchRequests("monthly");
 
-    // Event Listener for Dropdown Change
     document.getElementById("timeFilter").addEventListener("change", function () {
         fetchRequests(this.value);
     });
@@ -439,13 +408,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function showSuccessMessage() {
-    // Показываем сообщение пользователю
     document.getElementById("successMessage").style.display = "block";
 
-    // Очищаем форму после отправки
     document.getElementById("contactForm").reset();
 
-    // Через 5 секунд скрываем сообщение
     setTimeout(() => {
         document.getElementById("successMessage").style.display = "none";
     }, 5000);
@@ -492,13 +458,13 @@ function updateProduct() {
     let formData = new FormData(document.getElementById("updateProductForm"));
 
     fetch(`/admin/update-product/${productId}`, {
-        method: "POST",  // Forms only support POST, not PUT
+        method: "POST",
         body: formData
     })
         .then(response => {
             if (response.ok) {
                 alert("✅ Product updated successfully!");
-                window.location.href = "/admin/products"; // Redirect after update
+                window.location.href = "/admin/products";
             } else {
                 alert("❌ Error updating product.");
             }
@@ -506,7 +472,7 @@ function updateProduct() {
         .catch(error => console.error("❌ Error:", error));
 }
 
-// ✅ Preview image before uploading
+
 document.getElementById("productImage").addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (file) {
@@ -519,9 +485,9 @@ document.getElementById("productImage").addEventListener("change", function (eve
 });
 
 function logoutUser() {
-    fetch('/admin/logout', { method: 'POST' }) // Force a POST request
+    fetch('/admin/logout', { method: 'POST' })
         .then(() => {
-            window.location.href = '/index'; // Redirect after logout
+            window.location.href = '/index';
         })
         .catch(error => console.error('Logout failed:', error));
 }

@@ -16,20 +16,18 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    /** 📌 Рендеринг страницы корзины (Thymeleaf) */
+
     @GetMapping
     public String cartPage() {
-        return "cart"; // Возвращает HTML-страницу корзины
+        return "cart";
     }
 
-    /** 📌 API: Обновление корзины */
     @PostMapping("/update")
     @ResponseBody
     public List<CartItem> updateCart(@RequestBody List<CartItem> cartItems) {
         return cartService.updateCart(cartItems);
     }
 
-    /** 📌 API: Подсчет итоговой суммы корзины */
     @PostMapping("/total")
     @ResponseBody
     public double calculateTotal(@RequestBody List<CartItem> cartItems) {

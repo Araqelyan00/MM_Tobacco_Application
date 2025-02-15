@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Tobacco - Home</title>
+    <title>MM Tobacco | Home</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<!-- Age Verification Modal -->
 <div id="ageVerificationModal" class="modal-verification">
     <div class="modal-for-age-verification">
         <h2>Are you 18 or older?</h2>
@@ -46,9 +45,6 @@
     });
 </script>
 
-
-
-<!-- Header -->
 <header class="header">
     <div class="container">
         <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
@@ -70,7 +66,6 @@
     </div>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
     <h2>Discover quality</h2>
     <p>The highest quality European tobacco assortment․<br>
@@ -78,13 +73,11 @@
     <a href="/api/catalogue" class="hero-btn">Order now</a>
 </section>
 
-<!-- Latest Arrivals -->
 <section class="latest-arrivals">
     <div class="latest-arrivals-section">
         <h2>Our Latest Arrivals</h2>
     </div>
     <div class="product-grid">
-        <!-- Loop through latestProducts dynamically -->
         <div class="product-card" th:each="product : ${latestProducts}" th:data-id="${product.id}">
             <div class="product-image">
                 <img th:src="${product.imageUrl}" alt="Product Image">
@@ -95,23 +88,19 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
-        <!-- Newsletter Section -->
         <div class="newsletter">
             <div class="newsletter-containter">
                 <h3>Sign up for our newsletter</h3>
                 <p>Be the first to know about our special offers, new product launches, and events.</p>
             </div>
 
-            <!-- Newsletter Form -->
             <form action="/api/newsletter" method="post">
                 <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn">Sign up</button>
             </form>
 
-            <!-- Success/Error Messages -->
             <p th:if="${message}" style="color: green;">[[${message}]]</p>
             <p th:if="${error}" style="color: red;">[[${error}]]</p>
         </div>
@@ -131,7 +120,6 @@
     </div>
 </footer>
 
-<!-- Modal for Product Details -->
 <div id="productModal" class="modal hidden">
     <div class="modal-content">
         <span class="close-btn">❌</span>

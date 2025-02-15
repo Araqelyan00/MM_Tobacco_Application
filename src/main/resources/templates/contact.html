@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MM Tobacco - Contact Us</title>
+  <title>MM Tobacco | Contact Us</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<!-- Header -->
 <header class="header">
   <div class="container">
     <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
     <nav class="nav">
       <ul>
-        <li><a href="catalogue">Catalogue</a></li>
-        <li><a href="contact">Contact Us</a></li>
+        <li><a href="/api/catalogue">Catalogue</a></li>
+        <li><a href="/api/contact">Contact Us</a></li>
       </ul>
     </nav>
     <div class="cart-language">
-      <a href="cart" class="cart-icon">🛒</a>
+      <a href="/api/cart" class="cart-icon">🛒</a>
       <select name="" id="select">
         <option value="" selected>ENG</option>
         <option value="">RUS</option>
@@ -28,8 +27,6 @@
     </div>
   </div>
 </header>
-
-<!-- Contact Form -->
 <section class="contact">
   <h2>Contact Us</h2>
   <form action="/api/contact/submit" method="post" target="hidden_iframe" id="contactForm">
@@ -61,37 +58,29 @@
       </div>
     </div>
     <div>
-      <!-- 🔥 Hidden field to store cart items -->
       <input type="hidden" id="cartData" name="message">
     </div>
     <button type="submit" class="btn">Send Message</button>
   </form>
 
-  <!-- Блок с сообщением -->
   <p id="successMessage" style="display: none; color: green; font-weight: bold;">Ваш запрос успешно отправлен!</p>
 
-  <!-- Скрытый iframe -->
   <iframe name="hidden_iframe" style="display: none;" onload="showSuccessMessage()"></iframe>
 
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-container">
-    <!-- Newsletter Section -->
     <div class="newsletter">
       <div class="newsletter-containter">
         <h3>Sign up for our newsletter</h3>
         <p>Be the first to know about our special offers, new product launches, and events.</p>
       </div>
 
-      <!-- Newsletter Form -->
       <form action="/api/newsletter" method="post">
         <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
         <button type="submit" class="btn">Sign up</button>
       </form>
-
-      <!-- Success/Error Messages -->
       <p th:if="${message}" style="color: green;">[[${message}]]</p>
       <p th:if="${error}" style="color: red;">[[${error}]]</p>
     </div>

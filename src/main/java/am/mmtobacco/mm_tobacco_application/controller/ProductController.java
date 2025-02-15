@@ -21,7 +21,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-    /** 📌 Страница каталога с пагинацией (Thymeleaf) */
     @GetMapping
     public String catalogue(
             @RequestParam(defaultValue = "0") int page,
@@ -33,24 +32,21 @@ public class ProductController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
 
-        return "catalogue"; // Возвращает Thymeleaf-шаблон
+        return "catalogue";
     }
 
-    /** 📌 API: Получить все продукты */
     @GetMapping("/products")
     @ResponseBody
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
-    /** 📌 API: Получить продукт по ID */
     @GetMapping("/products/{id}")
     @ResponseBody
     public Product getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
-    /** 📌 API: Создать продукт */
     @PostMapping("/products")
     @ResponseBody
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
@@ -58,7 +54,6 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
 
-    /** 📌 API: Обновить продукт */
     @PutMapping("/products/{id}")
     @ResponseBody
     public ResponseEntity<Product> updateProduct(
@@ -68,14 +63,12 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
-    /** 📌 API: Удалить продукт */
     @DeleteMapping("/products/{id}")
     @ResponseBody
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
-    /** 📌 API: Получить продукты с пагинацией */
     @GetMapping("/products/paginated")
     @ResponseBody
     public Page<Product> getPaginatedProducts(
@@ -84,7 +77,6 @@ public class ProductController {
         return productService.getProducts(page, size);
     }
 
-    /** 📌 API: Фильтр продуктов */
     @GetMapping("/products/filter")
     @ResponseBody
     public List<Product> filterProducts(
@@ -94,7 +86,6 @@ public class ProductController {
         return productService.filterProducts(minPrice, maxPrice, category);
     }
 
-    /** 📌 API: Фильтр + пагинация */
     @GetMapping("/products/paginated-filtered")
     @ResponseBody
     public Page<Product> getFilteredAndPaginatedProducts(

@@ -16,13 +16,12 @@ public class CartService {
     }
 
     public List<CartItem> updateCart(List<CartItem> cartItems) {
-        // Проверяем, что все товары из корзины существуют
         for (CartItem item : cartItems) {
             if (!productRepository.existsById(item.getProductId())) {
                 throw new RuntimeException("Product with ID " + item.getProductId() + " does not exist");
             }
         }
-        return cartItems; // На стороне клиента обновляем cookies
+        return cartItems;
     }
 
     public double calculateTotal(List<CartItem> cartItems) {

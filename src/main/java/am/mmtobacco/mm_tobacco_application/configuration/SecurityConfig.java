@@ -20,23 +20,23 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Only admin can access admin panel
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/uploads/**").permitAll() // Allow static files
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/uploads/**").permitAll()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
-                        .loginPage("/admin/login") // Custom login page
-                        .defaultSuccessUrl("/admin/dashboard", true) // Redirect after login
+                        .loginPage("/admin/login")
+                        .defaultSuccessUrl("/admin/dashboard", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/admin/logout")
-                        .logoutSuccessUrl("/index") // Redirect to homepage after logout
+                        .logoutSuccessUrl("/index")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/admin/**", "/api/**")); // ✅ Disable CSRF for this route
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/admin/**", "/api/**"));
 
         return http.build();
     }
@@ -44,7 +44,7 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder().encode("admin123")) // Hardcoded password
+                .password(passwordEncoder().encode("admin123"))
                 .roles("ADMIN")
                 .build();
 

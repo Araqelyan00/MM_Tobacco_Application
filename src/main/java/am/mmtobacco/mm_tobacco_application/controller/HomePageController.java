@@ -17,18 +17,18 @@ public class HomePageController {
 
     @GetMapping("/")
     public String redirectToIndex() {
-        return "redirect:/index";  // Redirect root path to /index
+        return "redirect:/index";
     }
 
     @GetMapping("/index")
     public String homePage(Model model) {
-        List<Product> latestProducts = productService.getLatestProducts(3); // Fetch last 3 products
-        model.addAttribute("latestProducts", latestProducts); // Pass to Thymeleaf
+        List<Product> latestProducts = productService.getLatestProducts(3);
+        model.addAttribute("latestProducts", latestProducts);
         return "/index";
     }
 
     @GetMapping("/age-restricted")
     public String showAccessDeniedPage() {
-        return "/age-restricted";  // Load the "Access Denied" page
+        return "/age-restricted";
     }
 }

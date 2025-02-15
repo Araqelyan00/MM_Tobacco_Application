@@ -83,6 +83,7 @@ h1, h2, h3 {
 
 .cart-icon {
     margin-right: 1rem;
+    text-decoration: none;
 }
 
 
@@ -145,42 +146,62 @@ h1, h2, h3 {
     color: #000000;
 }
 
+/* Products */
+
+/* Desktop: 3 rows × 3 columns = 9 products per page */
 .product-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(3, auto); /* 3 rows */
+    gap: 25px; /* Increase gap for better spacing */
     justify-content: center;
-    gap: 20px;
+    align-items: start;
+    padding: 20px; /* Add padding around the grid */
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
+/* Improve Product Cards */
 .product-card {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px; /* Rounded corners */
     text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    width: 30%; /* Adjust width so 3 items fit in a row */
     padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 320px; /* Ensure products don't stretch too much */
+    margin: auto;
 }
+
+
+/*.row {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    width: 100%;*/
+/*}*/
 
 .product-card:hover {
     transform: scale(1.05);
 }
 
-.product-image {
-    background: #ccc;
+.product-card .product-image {
+    background: #ffffff;
     height: 300px;
     margin-bottom: 1rem;
     border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Modal */
+.product-card .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Product modal */
+
 .modal {
     display: flex;
     align-items: center;
@@ -253,11 +274,9 @@ h1, h2, h3 {
     font-size: 1.2rem;
 }
 
-/* Newsletter Section */
-
+/* Footer */
 .footer {
     margin-top: 60px;
-    /* margin-bottom: 30px; */
     border-top: solid 1px #000;
 
 }
@@ -270,6 +289,7 @@ h1, h2, h3 {
     margin: 30px auto;
 }
 
+/* Newsletter Section */
 .newsletter .newsletter-containter {
     justify-items: baseline;
 }
@@ -294,6 +314,7 @@ h1, h2, h3 {
     padding: 0px 10px;
 }
 
+/* Map */
 .map {
     flex: 1;
     padding-left: 10%;
@@ -444,7 +465,7 @@ h1, h2, h3 {
 }
 
 .contact form textarea {
-    resize: none; /* Prevents resizing */
+    resize: none;
 }
 
 .contact form button {
@@ -523,7 +544,7 @@ h1, h2, h3 {
     background-color: #ddd;
 }
 
-/* 📌 Стили всплывающих уведомлений */
+/* Notifications */
 .toast {
     position: fixed;
     bottom: 20px;
@@ -580,3 +601,292 @@ h1, h2, h3 {
 .chart_container select {
     width: 200px;
 }
+
+
+/* ================= Mobile & Tablet Responsiveness ================= */
+
+/* General container width adjustment */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+}
+
+/* Responsive Header */
+@media screen and (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header .nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .header .nav ul li {
+        margin: 5px 0;
+    }
+
+    .cart-language {
+        margin-top: 10px;
+    }
+}
+
+/* Hero Section */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 50px 20px;
+        text-align: center;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .hero-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Product Grid */
+/* ================= Responsive Product Grid (Catalogue Page) ================= */
+
+
+/* Tablet: 2 Columns, Better Spacing */
+@media screen and (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(250px, 1fr)); /* 2 columns with better width */
+        grid-template-rows: auto; /* Auto rows */
+        gap: 20px; /* Better spacing */
+        padding: 10px; /* Add padding for better layout */
+    }
+
+    .product-card {
+        width: 100%; /* Ensure cards take full width within column */
+        max-width: 320px; /* Prevent them from getting too wide */
+        margin: auto; /* Center align them */
+    }
+}
+
+/* Mobile View (Below 768px) - 1 Column */
+@media screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 column */
+        grid-template-rows: auto; /* Adjust automatically */
+        gap: 10px;
+    }
+
+    .product-card {
+        width: 100%; /* Full width on mobile */
+        margin: auto;
+    }
+}
+
+/* Extra Small Screens (Below 480px) */
+@media screen and (max-width: 480px) {
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .product-card p {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Footer */
+@media screen and (max-width: 768px) {
+    .footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter .btn {
+        width: 100%;
+    }
+
+    .map {
+        padding-left: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* Tablet: Stack Elements Properly */
+@media screen and (max-width: 1024px) {
+    .footer .footer-container {
+        flex-direction: column; /* Stack elements */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .newsletter .input-area {
+        width: 80%;
+        margin-bottom: 10px; /* Add spacing between input and button */
+    }
+
+    .newsletter .btn {
+        width: 50%; /* Adjust button width */
+    }
+
+    .map {
+        width: 100%; /* Full width on tablet */
+        padding-left: 0;
+        margin-top: 20px; /* Add spacing above the map */
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 250px; /* Reduce height slightly */
+    }
+}
+
+
+/* Cart Table */
+@media screen and (max-width: 768px) {
+    .cart-header {
+        display: none; /* Hide table header on mobile */
+    }
+
+    .cart-item {
+        display: flex;
+        flex-direction: column; /* Stack elements in a card-like format */
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        margin-bottom: 10px;
+    }
+
+    .cart-item img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .cart-item input[type="number"] {
+        width: 100px;
+        font-size: 1rem;
+    }
+
+    .cart-item .removeButton {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .cart-summary {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .cart-summary .btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Contact Form */
+@media screen and (max-width: 768px) {
+    .contact form {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+
+/* ================= Responsive Modals ================= */
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Reduce width for mobile screens */
+        max-width: none;
+        padding: 20px;
+    }
+
+    .modal-product {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .modal-product-image {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .modal-product-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .modal-product-info p {
+        font-size: 1rem;
+    }
+
+    .modal-product-info .btn {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 95%; /* Make modal even smaller on very small screens */
+        padding: 15px;
+    }
+
+    .modal-product-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .modal-product-info p {
+        font-size: 0.9rem;
+    }
+
+    .modal-product-info .btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .close-btn {
+        font-size: 1.3rem;
+    }
+}
+
+

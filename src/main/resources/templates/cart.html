@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Tobacco - Cart</title>
+    <title>MM Tobacco | Cart</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,12 +14,12 @@
         <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="catalogue">Catalogue</a></li>
-                <li><a href="contact">Contact Us</a></li>
+                <li><a href="/api/catalogue">Catalogue</a></li>
+                <li><a href="/api/contact">Contact Us</a></li>
             </ul>
         </nav>
         <div class="cart-language">
-            <a href="cart" class="cart-icon">🛒</a>
+            <a href="/api/cart" class="cart-icon">🛒</a>
             <select name="" id="select">
                 <option value="" selected>ENG</option>
                 <option value="">RUS</option>
@@ -29,7 +29,6 @@
     </div>
 </header>
 
-<!-- Cart Section -->
 <section class="cart">
     <h2>Your Cart</h2>
     <div class="cart-table">
@@ -40,7 +39,7 @@
             <span>Total</span>
             <span>Actions</span>
         </div>
-        <div id="cartItems"></div> <!-- Cart items will be dynamically loaded here -->
+        <div id="cartItems"></div>
     </div>
     <div class="cart-summary">
         <p>Subtotal: <span id="subtotal">$0.00</span></p>
@@ -50,23 +49,19 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
-        <!-- Newsletter Section -->
         <div class="newsletter">
             <div class="newsletter-containter">
                 <h3>Sign up for our newsletter</h3>
                 <p>Be the first to know about our special offers, new product launches, and events.</p>
             </div>
 
-            <!-- Newsletter Form -->
             <form action="/api/newsletter" method="post">
                 <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn">Sign up</button>
             </form>
 
-            <!-- Success/Error Messages -->
             <p th:if="${message}" style="color: green;">[[${message}]]</p>
             <p th:if="${error}" style="color: red;">[[${error}]]</p>
         </div>

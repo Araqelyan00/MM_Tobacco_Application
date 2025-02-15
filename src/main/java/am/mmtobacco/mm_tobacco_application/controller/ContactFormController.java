@@ -22,27 +22,22 @@ public class ContactFormController {
         this.emailService = emailService;
     }
 
-    /** 📌 Рендеринг страницы "Контакты" */
     @GetMapping
     public String contactPage() {
-        return "contact"; // Возвращает HTML-страницу
+        return "contact";
     }
 
-    /** 📌 API: Обработка формы контакта */
     @PostMapping("/submit")
     @ResponseBody
     public ResponseEntity<Contacts> submitForm(@Valid @ModelAttribute Contacts form) {
-        // 📌 Сохранение данных в базе
         Contacts savedForm = contactFormService.saveForm(form);
 
-        // 📌 Отправка email пользователю
         String userEmailBody = String.format(
                 "Hello %s %s,\n\nYour request has been submitted. We will contact you soon!\n\nYour Order:\n%s",
                 form.getFirstName(), form.getLastName(), form.getMessage()
         );
         emailService.sendEmail(form.getEmail(), "Your Request is Received", userEmailBody);
 
-        // 📌 Отправка уведомления администратору
         String adminEmailBody = String.format(
                 "New Order Request:\n\nName: %s %s\nPhone number: %s\nMessenger: %s\nE-mail: %s\nMessage: %s",
                 form.getFirstName(), form.getLastName(), form.getPhone(), form.getMessenger(), form.getEmail(), form.getMessage(), form.getMessage()

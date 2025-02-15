@@ -36,7 +36,6 @@ public class ContactFormService {
         return contactFormRepository.findTop10ByOrderByDateDesc();
     }
 
-    // ✅ Get paginated and filtered requests
     public Page<Contacts> getRequests(String status, LocalDate date, int page, int size) {
         return contactFormRepository.findByStatusAndDate(
                 status.equals("all") ? null : status, date, PageRequest.of(page, size));

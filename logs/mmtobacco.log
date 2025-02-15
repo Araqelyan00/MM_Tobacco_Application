@@ -1,25 +1,25 @@
-2025-02-10T19:13:19.722+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 23748 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:13:19.728+04:00 DEBUG 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:13:19.730+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:13:19.801+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T19:13:19.801+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T19:13:20.535+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:13:20.586+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:13:20.920+04:00  WARN 23748 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:13:20.982+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:13:21.318+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:13:21.336+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:13:21.336+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:13:21.394+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:13:21.395+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1592 ms
-2025-02-10T19:13:21.566+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:13:21.648+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T19:13:21.713+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:13:22.034+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:13:22.072+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T19:13:22.516+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cd76600
-2025-02-10T19:13:22.518+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T19:13:22.635+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-02-15T09:46:52.066+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 376 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
+2025-02-15T09:46:52.071+04:00 DEBUG 376 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-15T09:46:52.072+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
+2025-02-15T09:46:52.127+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-02-15T09:46:52.127+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-02-15T09:46:53.066+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-15T09:46:53.147+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2025-02-15T09:46:54.344+04:00  WARN 376 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2025-02-15T09:46:54.454+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2025-02-15T09:46:54.782+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-15T09:46:54.794+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-15T09:46:54.795+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-15T09:46:54.875+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-15T09:46:54.876+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2747 ms
+2025-02-15T09:46:55.074+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-15T09:46:55.140+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-02-15T09:46:55.197+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-15T09:46:55.482+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-15T09:46:55.510+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-15T09:46:55.879+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9a5ca95
+2025-02-15T09:46:55.880+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-15T09:46:55.973+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.39
@@ -27,213 +27,46 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-02-10T19:13:24.091+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:13:24.601+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:13:25.108+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T19:13:26.646+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:13:26.754+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:13:27.621+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:13:27.673+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:13:27.684+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 8.371 seconds (process running for 15.257)
-2025-02-10T19:13:27.790+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:13:27.791+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:13:27.792+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T19:18:44.981+04:00  INFO 23748 --- [MM_Tobacco_Application] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-2025-02-10T19:18:44.990+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:18:45.179+04:00  INFO 23748 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:18:45.199+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:18:45.205+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-02-10T19:18:45.230+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-02-10T19:18:45.384+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 23748 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:18:45.384+04:00 DEBUG 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:18:45.384+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:18:45.752+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:18:45.768+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:18:45.886+04:00  WARN 23748 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:18:45.888+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:18:45.987+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:18:45.988+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:18:45.988+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:18:46.031+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:18:46.031+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 644 ms
-2025-02-10T19:18:46.128+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:18:46.132+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:18:46.154+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:18:46.156+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2025-02-10T19:18:46.180+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d89d7cc
-2025-02-10T19:18:46.181+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2025-02-10T19:18:46.182+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:18:46.278+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:18:46.296+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:18:46.645+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:18:46.656+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:18:47.082+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:18:47.094+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:18:47.100+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 1.8 seconds (process running for 334.678)
-2025-02-10T19:18:47.103+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-02-10T19:18:48.531+04:00  INFO 23748 --- [MM_Tobacco_Application] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
-2025-02-10T19:18:48.533+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:18:48.605+04:00  INFO 23748 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:18:48.609+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:18:48.609+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2025-02-10T19:18:48.614+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2025-02-10T19:18:48.713+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 23748 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:18:48.714+04:00 DEBUG 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:18:48.714+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:18:48.964+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:18:48.978+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:18:49.053+04:00  WARN 23748 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:18:49.054+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:18:49.105+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:18:49.106+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:18:49.106+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:18:49.140+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:18:49.141+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 424 ms
-2025-02-10T19:18:49.210+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:18:49.214+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:18:49.223+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:18:49.224+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2025-02-10T19:18:49.238+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40d87d93
-2025-02-10T19:18:49.238+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2025-02-10T19:18:49.240+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:18:49.315+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:18:49.325+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:18:49.598+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:18:49.614+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:18:50.104+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:18:50.125+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:18:50.132+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 1.456 seconds (process running for 337.71)
-2025-02-10T19:18:50.134+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-02-10T19:19:03.485+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:19:03.486+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:19:03.487+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T19:19:36.507+04:00  INFO 23748 --- [MM_Tobacco_Application] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-2025-02-10T19:19:36.510+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-11] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:19:36.631+04:00  INFO 23748 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:19:36.635+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:19:36.636+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
-2025-02-10T19:19:36.644+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
-2025-02-10T19:19:36.789+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 23748 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:19:36.790+04:00 DEBUG 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:19:36.790+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:19:37.169+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:19:37.191+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:19:37.317+04:00  WARN 23748 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:19:37.320+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:19:37.440+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:19:37.441+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:19:37.441+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:19:37.491+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:19:37.491+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 698 ms
-2025-02-10T19:19:37.588+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:19:37.594+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:19:37.609+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:19:37.610+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
-2025-02-10T19:19:37.633+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1da496bc
-2025-02-10T19:19:37.633+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
-2025-02-10T19:19:37.636+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:19:37.833+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:19:37.853+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:19:38.259+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:19:38.279+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:19:38.912+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:19:38.939+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:19:38.947+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 2.21 seconds (process running for 386.525)
-2025-02-10T19:19:38.949+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-02-10T19:19:39.111+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:19:39.111+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:19:39.113+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-02-10T19:19:40.381+04:00  INFO 23748 --- [MM_Tobacco_Application] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
-2025-02-10T19:19:40.382+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-15] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:19:40.480+04:00  INFO 23748 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:19:40.482+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:19:40.482+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
-2025-02-10T19:19:40.488+04:00  INFO 23748 --- [MM_Tobacco_Application] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
-2025-02-10T19:19:40.602+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 23748 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:19:40.602+04:00 DEBUG 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:19:40.602+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:19:40.966+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:19:40.984+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:19:41.079+04:00  WARN 23748 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:19:41.080+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:19:41.159+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:19:41.160+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:19:41.160+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:19:41.217+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:19:41.218+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 613 ms
-2025-02-10T19:19:41.343+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:19:41.352+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:19:41.384+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:19:41.388+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
-2025-02-10T19:19:41.419+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6db9a9eb
-2025-02-10T19:19:41.419+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
-2025-02-10T19:19:41.422+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:19:41.756+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:19:41.772+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:19:42.195+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:19:42.219+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:19:42.784+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:19:42.812+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:19:42.820+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 2.264 seconds (process running for 390.398)
-2025-02-10T19:19:42.823+04:00  INFO 23748 --- [MM_Tobacco_Application] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2025-02-10T19:19:45.001+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:19:45.001+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:19:45.002+04:00  INFO 23748 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T19:27:15.077+04:00  INFO 23748 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:27:15.997+04:00  INFO 23748 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:27:16.001+04:00  INFO 23748 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:27:16.002+04:00  INFO 23748 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
-2025-02-10T19:27:16.045+04:00  INFO 23748 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
-2025-02-10T19:31:11.669+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 45320 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:31:11.672+04:00 DEBUG 45320 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:31:11.673+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:31:11.727+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T19:31:11.728+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T19:31:12.408+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:31:12.457+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:31:12.725+04:00  WARN 45320 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:31:12.771+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:31:13.055+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:31:13.067+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:31:13.068+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:31:13.120+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:31:13.121+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1392 ms
-2025-02-10T19:31:13.251+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:31:13.343+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T19:31:13.417+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:31:13.687+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:31:13.714+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T19:31:13.980+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16a4721a
-2025-02-10T19:31:13.981+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T19:31:14.060+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-02-15T09:46:57.097+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-15T09:46:57.184+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-15T09:46:57.446+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-02-15T09:46:58.393+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-02-15T09:46:58.467+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-02-15T09:46:59.111+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-02-15T09:46:59.145+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-15T09:46:59.151+04:00  INFO 376 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 7.485 seconds (process running for 8.842)
+2025-02-15T09:47:01.403+04:00  INFO 376 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-15T09:47:01.404+04:00  INFO 376 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-15T09:47:01.405+04:00  INFO 376 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-15T09:51:47.709+04:00  INFO 376 --- [MM_Tobacco_Application] [http-nio-8080-exec-3] a.m.m.service.ProductService             : Fetching product by ID: 10
+2025-02-15T09:58:30.197+04:00  INFO 376 --- [MM_Tobacco_Application] [http-nio-8080-exec-9] a.m.m.service.ProductService             : Fetching product by ID: 2
+2025-02-15T10:01:19.046+04:00  INFO 376 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-15T10:01:19.201+04:00  INFO 376 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-02-15T10:01:19.211+04:00  INFO 376 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-15T10:01:19.219+04:00  INFO 376 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-15T10:01:19.232+04:00  INFO 376 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-15T22:56:33.729+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 29948 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
+2025-02-15T22:56:33.731+04:00 DEBUG 29948 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-02-15T22:56:33.732+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
+2025-02-15T22:56:33.783+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-02-15T22:56:33.783+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-02-15T22:56:34.667+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-15T22:56:34.720+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+2025-02-15T22:56:34.968+04:00  WARN 29948 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2025-02-15T22:56:35.012+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2025-02-15T22:56:35.268+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-15T22:56:35.279+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-15T22:56:35.280+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-15T22:56:35.334+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-15T22:56:35.334+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1550 ms
+2025-02-15T22:56:35.467+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-15T22:56:35.530+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-02-15T22:56:35.560+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-15T22:56:35.792+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-15T22:56:35.822+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-15T22:56:36.141+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c46d657
+2025-02-15T22:56:36.142+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-15T22:56:36.222+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.39
@@ -241,197 +74,22 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-02-10T19:31:14.840+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:31:14.887+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:31:15.095+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T19:31:16.013+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:31:16.075+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:31:16.723+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:31:16.762+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:31:16.771+04:00  INFO 45320 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 5.558 seconds (process running for 6.375)
-2025-02-10T19:33:46.297+04:00  INFO 45320 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T19:33:47.076+04:00  INFO 45320 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T19:33:47.261+04:00  INFO 45320 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:33:47.267+04:00  INFO 45320 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-02-10T19:33:47.355+04:00  INFO 45320 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-02-10T19:33:54.282+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 41776 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:33:54.284+04:00 DEBUG 41776 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:33:54.285+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:33:54.352+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T19:33:54.353+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T19:33:56.067+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:33:56.123+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:33:56.413+04:00  WARN 41776 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:33:56.441+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:33:56.692+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:33:56.708+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:33:56.709+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:33:56.765+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:33:56.766+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2413 ms
-2025-02-10T19:33:56.913+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:33:56.971+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T19:33:57.000+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:33:57.223+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:33:57.252+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T19:33:57.485+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23176d9b
-2025-02-10T19:33:57.487+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T19:33:57.557+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:33:58.355+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:33:58.401+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:33:58.611+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T19:33:59.581+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:33:59.648+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:34:00.361+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:34:00.404+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:34:00.413+04:00  INFO 41776 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 6.676 seconds (process running for 7.593)
-2025-02-10T19:34:15.498+04:00  INFO 41776 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:34:15.499+04:00  INFO 41776 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:34:15.501+04:00  INFO 41776 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-02-10T19:58:55.536+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 14076 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T19:58:55.538+04:00 DEBUG 14076 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T19:58:55.539+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T19:58:55.580+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T19:58:55.581+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T19:58:56.388+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T19:58:56.433+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
-2025-02-10T19:58:56.694+04:00  WARN 14076 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T19:58:56.736+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T19:58:56.972+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T19:58:56.982+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T19:58:56.982+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T19:58:57.032+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T19:58:57.033+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1452 ms
-2025-02-10T19:58:57.156+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T19:58:57.233+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T19:58:57.265+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T19:58:57.485+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T19:58:57.511+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T19:58:57.814+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@30a430c3
-2025-02-10T19:58:57.816+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T19:58:57.888+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T19:58:58.622+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T19:58:58.675+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T19:58:58.893+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T19:58:59.796+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T19:58:59.871+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T19:59:00.535+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T19:59:00.569+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T19:59:00.576+04:00  INFO 14076 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 5.386 seconds (process running for 11.918)
-2025-02-10T19:59:25.932+04:00  INFO 14076 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T19:59:25.933+04:00  INFO 14076 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T19:59:25.934+04:00  INFO 14076 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T20:04:13.077+04:00  INFO 14076 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T20:04:13.122+04:00  INFO 14076 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T20:04:13.126+04:00  INFO 14076 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T20:04:13.128+04:00  INFO 14076 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-02-10T20:04:13.153+04:00  INFO 14076 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-02-10T20:04:22.737+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 20160 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T20:04:22.739+04:00 DEBUG 20160 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T20:04:22.740+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T20:04:22.803+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T20:04:22.804+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T20:04:23.756+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T20:04:23.804+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
-2025-02-10T20:04:24.048+04:00  WARN 20160 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T20:04:24.076+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T20:04:24.300+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T20:04:24.312+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T20:04:24.312+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T20:04:24.372+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T20:04:24.372+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1565 ms
-2025-02-10T20:04:24.508+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T20:04:24.567+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T20:04:24.594+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T20:04:24.800+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T20:04:24.825+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T20:04:25.061+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23176d9b
-2025-02-10T20:04:25.062+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T20:04:25.126+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T20:04:25.813+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T20:04:25.850+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T20:04:26.023+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T20:04:26.911+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T20:04:26.971+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T20:04:27.611+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T20:04:27.645+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T20:04:27.653+04:00  INFO 20160 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 5.341 seconds (process running for 12.418)
-2025-02-10T20:04:33.974+04:00  INFO 20160 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T20:04:33.975+04:00  INFO 20160 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T20:04:33.976+04:00  INFO 20160 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T20:10:27.454+04:00  INFO 20160 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-02-10T20:10:27.499+04:00  INFO 20160 --- [MM_Tobacco_Application] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-02-10T20:10:27.504+04:00  INFO 20160 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T20:10:27.509+04:00  INFO 20160 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-02-10T20:10:27.517+04:00  INFO 20160 --- [MM_Tobacco_Application] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-02-10T20:10:30.325+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Starting MmTobaccoApplication using Java 17.0.13 with PID 3260 (C:\java_projects\algoritms\MM_Tobacco_Application\target\classes started by Aram in C:\java_projects\algoritms\MM_Tobacco_Application)
-2025-02-10T20:10:30.327+04:00 DEBUG 3260 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Running with Spring Boot v3.4.1, Spring v6.2.1
-2025-02-10T20:10:30.328+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : No active profile set, falling back to 1 default profile: "default"
-2025-02-10T20:10:30.367+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-02-10T20:10:30.368+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-02-10T20:10:30.950+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-10T20:10:30.990+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
-2025-02-10T20:10:31.219+04:00  WARN 3260 --- [MM_Tobacco_Application] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-02-10T20:10:31.244+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2025-02-10T20:10:31.451+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-02-10T20:10:31.461+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-02-10T20:10:31.462+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2025-02-10T20:10:31.512+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-02-10T20:10:31.512+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1144 ms
-2025-02-10T20:10:31.627+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-10T20:10:31.677+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-02-10T20:10:31.704+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-10T20:10:31.907+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-10T20:10:31.931+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-10T20:10:32.136+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6259f22
-2025-02-10T20:10:32.138+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-10T20:10:32.205+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.39
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-02-10T20:10:32.861+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-10T20:10:32.895+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-10T20:10:33.068+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-02-10T20:10:33.911+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2025-02-10T20:10:33.974+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2025-02-10T20:10:34.886+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-02-10T20:10:34.927+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-02-10T20:10:34.934+04:00  INFO 3260 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 5.11 seconds (process running for 5.898)
-2025-02-10T20:10:38.756+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-02-10T20:10:38.757+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-02-10T20:10:38.758+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-02-10T20:29:11.922+04:00  WARN 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource catalogue.]
-2025-02-10T20:29:17.968+04:00  WARN 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource catalogue.]
-2025-02-10T22:18:11.315+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-8] a.m.m.service.ProductService             : Fetching product by ID: 2
-2025-02-10T22:18:14.915+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-7] a.m.m.service.ProductService             : Fetching product by ID: 4
-2025-02-10T22:18:35.710+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] a.m.m.service.ProductService             : Fetching all products
-2025-02-10T22:59:22.645+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-9] a.m.m.service.ProductService             : Fetching product by ID: 12
-2025-02-10T22:59:26.079+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] a.m.m.service.ProductService             : Fetching product by ID: 11
-2025-02-10T22:59:30.328+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-7] a.m.m.service.ProductService             : Fetching product by ID: 10
-2025-02-10T22:59:39.157+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-7] a.m.m.service.ProductService             : Fetching product by ID: 9
-2025-02-10T23:00:58.478+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-4] a.m.m.service.ProductService             : Fetching product by ID: 7
-2025-02-10T23:06:13.523+04:00  INFO 3260 --- [MM_Tobacco_Application] [http-nio-8080-exec-9] a.m.m.service.ProductService             : Fetching product by ID: 6
+2025-02-15T22:56:36.915+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-15T22:56:36.975+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-15T22:56:37.198+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-02-15T22:56:38.168+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-02-15T22:56:38.245+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-02-15T22:56:38.951+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-02-15T22:56:39.003+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-15T22:56:39.011+04:00  INFO 29948 --- [MM_Tobacco_Application] [restartedMain] a.m.m.MmTobaccoApplication               : Started MmTobaccoApplication in 5.728 seconds (process running for 12.75)
+2025-02-15T22:56:39.238+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-15T22:56:39.238+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-15T22:56:39.240+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-02-15T23:15:39.721+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-3] a.m.m.service.ProductService             : Fetching product by ID: 10
+2025-02-15T23:15:53.811+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-6] a.m.m.service.ProductService             : Fetching product by ID: 11
+2025-02-15T23:16:39.746+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-6] a.m.m.service.ProductService             : Fetching product by ID: 2
+2025-02-15T23:20:27.643+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-4] a.m.m.service.ProductService             : Fetching product by ID: 12
+2025-02-15T23:20:33.500+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-2] a.m.m.service.ProductService             : Fetching product by ID: 3
+2025-02-15T23:20:35.016+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-8] a.m.m.service.ProductService             : Fetching product by ID: 4
+2025-02-15T23:35:42.696+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-6] a.m.m.service.ProductService             : Fetching product by ID: 5
+2025-02-15T23:35:44.615+04:00  INFO 29948 --- [MM_Tobacco_Application] [http-nio-8080-exec-8] a.m.m.service.ProductService             : Fetching product by ID: 6
