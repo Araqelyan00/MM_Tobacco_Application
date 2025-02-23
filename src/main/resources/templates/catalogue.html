@@ -21,8 +21,8 @@
             <a href="/api/cart" class="cart-icon">🛒</a>
             <select name="" id="select">
                 <option value="" selected>ENG</option>
-                <option value="">RUS</option>
-                <option value="">ARM</option>
+<!--                <option value="">RUS</option>-->
+<!--                <option value="">ARM</option>-->
             </select>
 
         </div>
@@ -30,21 +30,25 @@
 </header>
 
 <section class="catalogue">
+    <div class="head-filters-for-catalogue">
     <h2>Our Products</h2>
+    <form class="filters-for-catalogue" method="get" action="/api/catalogue">
+        <label for="minPrice">Min </label>
+        <input type="number" name="minPrice" id="minPrice" min="0" max="100" placeholder="$0" step="1" th:value="${minPrice}">
 
-<!--    <div class="product-grid">-->
-<!--        <div class="row" th:each="rowIndex : ${#numbers.sequence(0, products.size() - 1, 3)}">-->
-<!--            <div class="product-card" th:each="product, iterStat : ${products}"-->
-<!--                 th:if="${iterStat.index >= rowIndex and iterStat.index < rowIndex + 3}"-->
-<!--                 th:data-id="${product.id}">-->
-<!--                <div class="product-image">-->
-<!--                    <img th:src="${product.imageUrl}" alt="Product Image">-->
-<!--                </div>-->
-<!--                <h3 th:text="${product.name}"></h3>-->
-<!--                <p th:text="'$' + ${product.price}"></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+        <label for="maxPrice">Max </label>
+        <input type="number" name="maxPrice" id="maxPrice" min="0" max="100" placeholder="$100" step="10" th:value="${maxPrice}">
+
+        <label for="category">Category </label>
+        <select name="category" id="category" th:value="${category}">
+            <option value="">All</option>
+            <option value="tobacco">Tobacco</option>
+            <option value="accessories">Accessories</option>
+            <option value="cigar">Cigar</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    </div>
     <div class="product-grid">
         <div class="product-card" th:each="product, iterStat : ${products}"
              th:if="${iterStat.index < 9}" th:data-id="${product.id}">
@@ -58,14 +62,12 @@
 
 
     <div class="pagination">
-        <a th:if="${currentPage > 0}" th:href="@{/api/catalogue(page=${currentPage - 1})}">« Prev</a>
 
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
             <a th:href="@{/api/catalogue(page=${i})}" th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
         </span>
 
-        <a th:if="${currentPage < totalPages - 1}" th:href="@{/api/catalogue(page=${currentPage + 1})}">Next »</a>
     </div>
 </section>
 
@@ -85,19 +87,27 @@
             <p th:if="${message}" style="color: green;">[[${message}]]</p>
             <p th:if="${error}" style="color: red;">[[${error}]]</p>
         </div>
-        <div class="map">
-            <div style="position:relative;overflow:hidden;"><a
-                    href="https://yandex.com/maps/org/mm_tobacco/156062979204/?utm_medium=mapframe&utm_source=maps"
-                    style="color:#eee;font-size:12px;position:absolute;top:0px;">Mm Tobacco</a><a
-                    href="https://yandex.com/maps/10258/vanadzor/category/tobacco_and_smoking_accessories_shop/184107903/?utm_medium=mapframe&utm_source=maps"
-                    style="color:#eee;font-size:12px;position:absolute;top:14px;">Магазин табака и курительных
-                принадлежностей в Ванадзоре</a><a
-                    href="https://yandex.com/maps/10258/vanadzor/category/vape_shop/89800553252/?utm_medium=mapframe&utm_source=maps"
-                    style="color:#eee;font-size:12px;position:absolute;top:28px;">Вейп-шоп в Ванадзоре</a><iframe
-                    src="https://yandex.com/map-widget/v1/?ll=44.494599%2C40.808005&mode=poi&poi%5Bpoint%5D=44.494538%2C40.808044&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D156062979204&z=20.28"
-                    width="100%" height="300" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
-            </div>
-        </div>
+        <div class="map" id="map" style="width: 100%; height: 300px;"></div>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=en_RU" type="text/javascript"></script>
+        <script>
+            ymaps.ready(function () {
+                var myMap = new ymaps.Map('map', {
+                    center: [40.808044, 44.494538],
+                    zoom: 20
+                });
+
+                var myPlacemark = new ymaps.Placemark([40.808044, 44.494538], {
+                    hintContent: 'MM Tobacco',
+                    balloonContent: 'MM Tobacco location'
+                });
+                myMap.geoObjects.add(myPlacemark);
+
+                function centerMap(newCoords) {
+                    myMap.setCenter(newCoords);
+                    myPlacemark.geometry.setCoordinates(newCoords);
+                }
+            });
+        </script>
     </div>
 </footer>
 

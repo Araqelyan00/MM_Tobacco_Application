@@ -57,8 +57,10 @@ h1, h2, h3 {
 }
 
 .header .logo a {
-    color: #fff;
+    -webkit-text-stroke: 1px white;
+    color: #000;
     text-decoration: none;
+    font-size: 2rem;
 }
 
 .header .nav ul {
@@ -148,6 +150,41 @@ h1, h2, h3 {
 
 /* Products */
 
+.filters-for-catalogue {
+    margin-left: 5%;
+}
+
+.filters-for-catalogue input{
+    height: 30px;
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.filters-for-catalogue label {
+    font-size: 1rem;
+}
+
+.filters-for-catalogue select {
+    height: 34px;
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filters-for-catalogue button {
+    height: 34px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #000;
+    color: #fff;
+}
+.filters-for-catalogue button:hover {
+    background: #262626;
+}
+
 /* Desktop: 3 rows × 3 columns = 9 products per page */
 .product-grid {
     display: grid;
@@ -172,12 +209,32 @@ h1, h2, h3 {
     margin: auto;
 }
 
+/* About us */
+.about-us{
+    margin: 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-/*.row {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    width: 100%;*/
-/*}*/
+}
+.about-us .left-col {
+    width: 50%;
+    height: 500px;
+    background-image: url('../images/about-us.jpg');
+    border-radius: 15px;
+}
+
+.about-us .right-col {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.about-us .right-col p {
+    font-size: 1.5rem;
+}
 
 .product-card:hover {
     transform: scale(1.05);
@@ -613,7 +670,7 @@ h1, h2, h3 {
 }
 
 /* Responsive Header */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .header .container {
         flex-direction: column;
         text-align: center;
@@ -634,7 +691,7 @@ h1, h2, h3 {
 }
 
 /* Hero Section */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .hero {
         height: auto;
         padding: 50px 20px;
@@ -656,6 +713,46 @@ h1, h2, h3 {
         padding: 0.8rem 1.5rem;
     }
 }
+
+
+/* Responsive adjustments for tablets (max-width: 768px) */
+@media screen and (max-width: 1024px) {
+    .about-us {
+        flex-direction: column;
+        margin: 0 5%;
+    }
+    .about-us .left-col{
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+    }
+
+    .about-us .right-col {
+
+        width: 100%;
+    }
+    .about-us .left-col {
+        height: 300px; /* Reduced height for smaller screens */
+    }
+    .about-us .right-col p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive adjustments for mobiles (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .about-us {
+        margin: 0 2%;
+        background-size: cover;
+        background-position: center;
+    }
+    .about-us .right-col p {
+        font-size: 1rem;
+    }
+}
+
+
+
 
 /* Product Grid */
 /* ================= Responsive Product Grid (Catalogue Page) ================= */

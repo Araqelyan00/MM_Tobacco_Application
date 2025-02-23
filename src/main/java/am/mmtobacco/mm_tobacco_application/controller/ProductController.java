@@ -21,19 +21,19 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
-    public String catalogue(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "9") int size,
-            Model model) {
-
-        Page<Product> productPage = productService.getProducts(page, size);
-        model.addAttribute("products", productPage.getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", productPage.getTotalPages());
-
-        return "catalogue";
-    }
+//    @GetMapping
+//    public String catalogue(
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "9") int size,
+//            Model model) {
+//
+//        Page<Product> productPage = productService.getProducts(page, size);
+//        model.addAttribute("products", productPage.getContent());
+//        model.addAttribute("currentPage", page);
+//        model.addAttribute("totalPages", productPage.getTotalPages());
+//
+//        return "catalogue";
+//    }
 
     @GetMapping("/products")
     @ResponseBody
@@ -73,7 +73,7 @@ public class ProductController {
     @ResponseBody
     public Page<Product> getPaginatedProducts(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "6") int size) {
+            @RequestParam(defaultValue = "9") int size) {
         return productService.getProducts(page, size);
     }
 
@@ -86,15 +86,27 @@ public class ProductController {
         return productService.filterProducts(minPrice, maxPrice, category);
     }
 
-    @GetMapping("/products/paginated-filtered")
-    @ResponseBody
-    public Page<Product> getFilteredAndPaginatedProducts(
+//    @GetMapping("/products/paginated-filtered")
+    @GetMapping
+//    @ResponseBody
+    public String catalogue(
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
             @RequestParam(required = false) String category,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "6") int size) {
-        return productService.filterProductsWithPagination(minPrice, maxPrice, category, page, size);
+            @RequestParam(defaultValue = "9") int size,
+            Model model) {
+
+        Page<Product> filteredProductsPage = productService.filterProductsWithPagination(minPrice, maxPrice, category, page, size);
+
+        model.addAttribute("products", filteredProductsPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", filteredProductsPage.getTotalPages());
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("category", category);
+
+        return "catalogue";
     }
 }
 

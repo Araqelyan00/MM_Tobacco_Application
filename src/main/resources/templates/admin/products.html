@@ -17,14 +17,17 @@
             flex-direction: column;
             gap: 20px;
         }
+
         .sidebar h2 {
             margin: 0;
             font-size: 18px;
         }
+
         .sidebar ul {
             list-style: none;
             padding: 0;
         }
+
         .sidebar ul li {
             padding: 15px 30px;
             cursor: pointer;
@@ -32,24 +35,29 @@
             align-items: center;
             gap: 10px;
         }
+
         .sidebar ul a {
             text-decoration: none;
             color: white;
         }
+
         .sidebar ul .active {
             color: #000;
             background-color: #f4f4f9;
         }
+
         .sidebar ul li.active, .sidebar ul li:hover {
             color: black;
             background-color: #f4f4f9;
             border-top: #000 0.25px solid;
             border-bottom: #000 0.25px solid;
         }
+
         .logout_link {
             text-decoration: none;
             color: white;
         }
+
         .product-card {
             background: #fff;
             padding: 15px;
@@ -59,25 +67,30 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .product-card img {
             max-width: 100%;
         }
+
         .product-card h3 {
             margin: 0;
             font-size: 16px;
             font-weight: bold;
         }
+
         .product-card p {
             margin: 0;
             font-size: 14px;
             color: #666;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
             gap: 5px;
             padding: 20px;
         }
+
         .pagination button {
             padding: 8px 12px;
             border: none;
@@ -86,25 +99,31 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .pagination button.active {
             background: #444;
         }
+
         .sidebar_and_content {
             display: flex;
         }
+
         .sidebar_and_content .content {
             width: 100%;
         }
+
         .title_of_page {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .content {
             margin: 30px;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
+
         .add_product {
             border: black 1px solid;
             text-decoration: none;
@@ -114,6 +133,7 @@
             cursor: pointer;
             color: #000;
         }
+
         .edit-btn {
             background: #003366;
             color: white;
@@ -123,6 +143,7 @@
             cursor: pointer;
             text-decoration: none;
         }
+
         .delete-btn {
             background: #ffffff;
             color: #ff0000;
@@ -147,9 +168,15 @@
 <div class="sidebar_and_content">
     <div class="sidebar">
         <ul>
-            <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
-            <a href="/admin/products" class="activ"><li class="active">📦 Products</li></a>
-            <a href="/admin/requests"><li>📄 Requests</li></a>
+            <a href="/admin/dashboard">
+                <li>📊 Dashboard</li>
+            </a>
+            <a href="/admin/products" class="activ">
+                <li class="active">📦 Products</li>
+            </a>
+            <a href="/admin/requests">
+                <li>📄 Requests</li>
+            </a>
         </ul>
     </div>
 
@@ -162,20 +189,18 @@
         <!-- Products List -->
         <section class="catalogue">
             <div class="product-grid">
-                <div class="row" th:each="rowIndex : ${#numbers.sequence(0, products.size() - 1, 3)}">
-                    <div class="product-card" th:each="product, iterStat : ${products}"
-                         th:if="${iterStat.index >= rowIndex and iterStat.index < rowIndex + 3}"
-                         th:data-id="${product.id}">
-                        <div class="product-image">
-                            <img th:src="${product.imageUrl}" alt="Product Image">
-                        </div>
-                        <h3 th:text="${product.name}"></h3>
-                        <p th:text="'$' + ${product.price}"></p>
+                <div class="product-card" th:each="product, iterStat : ${products}"
+                     th:if="${iterStat.index < 9}" th:data-id="${product.id}">
+                    <div class="product-image">
+                        <img th:src="${product.imageUrl}" alt="Product Image">
+                    </div>
+                    <h3 th:text="${product.name}"></h3>
+                    <p th:text="'$' + ${product.price}"></p>
 
-                        <div class="admin-actions">
-                            <a th:href="@{/admin/product-details/{id}(id=${product.id})}" class="edit-btn">Details</a>
-                            <a href="#" class="delete-btn" th:attr="onclick='deleteProduct(\'' + ${product.id} + '\')'">❌ Delete</a>
-                        </div>
+                    <div class="admin-actions">
+                        <a th:href="@{/admin/product-details/{id}(id=${product.id})}" class="edit-btn">Details</a>
+                        <a href="#" class="delete-btn" th:attr="onclick='deleteProduct(\'' + ${product.id} + '\')'">❌
+                            Delete</a>
                     </div>
                 </div>
             </div>

@@ -493,4 +493,51 @@ function logoutUser() {
 }
 
 
+// document.getElementById("filterForm").addEventListener("submit", function(event) {
+//     event.preventDefault(); // предотвращаем стандартное поведение формы
+//
+//     // Получаем значения фильтров
+//     const minPrice = event.target.minPrice.value;
+//     const maxPrice = event.target.maxPrice.value;
+//     const category = event.target.category.value;
+//
+//     // Формируем строку параметров
+//     const params = new URLSearchParams();
+//     if (minPrice) params.append("minPrice", minPrice);
+//     if (maxPrice) params.append("maxPrice", maxPrice);
+//     if (category) params.append("category", category);
+//
+//     // Можно добавить параметры пагинации, если нужно
+//     params.append("page", 0);
+//     params.append("size", 9);
+//
+//     // Отправляем запрос на сервер
+//     fetch(`/api/catalogue/products/paginated-filtered?${params.toString()}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             // Обновляем отображение товаров на странице
+//             const productGrid = document.querySelector(".product-grid");
+//             productGrid.innerHTML = ""; // очищаем текущие товары
+//
+//             data.content.forEach(product => {
+//                 const card = document.createElement("div");
+//                 card.className = "product-card";
+//                 card.setAttribute("data-id", product.id);
+//                 card.innerHTML = `
+//                   <div class="product-image">
+//                       <img src="${product.imageUrl}" alt="Product Image">
+//                   </div>
+//                   <h3>${product.name}</h3>
+//                   <p>$${product.price.toFixed(2)}</p>
+//               `;
+//                 productGrid.appendChild(card);
+//
+//                 // Привяжите обработчик клика к карточке для открытия модального окна, если необходимо
+//                 card.addEventListener("click", () => openProductModal(product.id));
+//             });
+//
+//             // Если требуется, обновите пагинацию (например, currentPage и totalPages)
+//         })
+//         .catch(error => console.error("Ошибка при фильтрации:", error));
+// });
 
