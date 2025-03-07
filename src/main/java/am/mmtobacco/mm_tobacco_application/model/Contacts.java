@@ -16,22 +16,22 @@ public class Contacts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Имя обязательно")
+    @NotBlank(message = "Name is required")
     private String firstName;
 
-    @NotBlank(message = "Фамилия обязательна")
+    @NotBlank(message = "Surname is required")
     private String lastName;
 
-    @NotBlank(message = "E-mail обязателен")
-    @Email(message = "E-mail должен быть корректным")
+    @NotBlank(message = "E-mail is required")
+    @Email(message = "E-mail must be correct")
     private String email;
 
-    @NotBlank(message = "Номер телефона обязателен")
-    @Pattern(regexp = "\\+?[0-9]{7,15}", message = "Номер телефона должен быть корректным")
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = "\\+?[0-9]{7,15}", message = "Phone number must be correct")
 
     private String phone;
 
-    @NotBlank(message = "Выбор мессенджера обязателен")
+    @NotBlank(message = "Choosing a messenger is mandatory")
     private String messenger;
     
     private String message;

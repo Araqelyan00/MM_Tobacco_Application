@@ -541,3 +541,37 @@ function logoutUser() {
 //         .catch(error => console.error("Ошибка при фильтрации:", error));
 // });
 
+function toggleUpload(type) {
+    if (type === 'file') {
+        document.getElementById("fileUpload").style.display = "block";
+        document.getElementById("urlUpload").style.display = "none";
+    } else {
+        document.getElementById("fileUpload").style.display = "none";
+        document.getElementById("urlUpload").style.display = "block";
+    }
+}
+
+function previewFile() {
+    const file = document.getElementById("productImage").files[0];
+    const preview = document.getElementById("previewImage");
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function previewUrl() {
+    const url = document.getElementById("imageUrl").value;
+    const preview = document.getElementById("previewImage");
+
+    if (url) {
+        preview.src = url;
+    } else {
+        preview.src = "";
+    }
+}
+

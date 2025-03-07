@@ -1,10 +1,12 @@
 package am.mmtobacco.mm_tobacco_application.controller;
 
 import am.mmtobacco.mm_tobacco_application.model.Contacts;
+import am.mmtobacco.mm_tobacco_application.model.NewsletterSubscriber;
 import am.mmtobacco.mm_tobacco_application.model.Product;
 import am.mmtobacco.mm_tobacco_application.service.ContactFormService;
+import am.mmtobacco.mm_tobacco_application.service.EmailService;
+import am.mmtobacco.mm_tobacco_application.service.NewsletterSubscriberService;
 import am.mmtobacco.mm_tobacco_application.service.ProductService;
-import org.springdoc.webmvc.core.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,13 +32,17 @@ import java.util.List;
 @RequestMapping("/admin")
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
+    private final EmailService emailService;
     private final ProductService productService;
     private final ContactFormService contactFormService;
+    private final NewsletterSubscriberService newsletterSubscriberService;
 
     @Autowired
-    public AdminController(ProductService productService, ContactFormService contactFormService) {
+    public AdminController(EmailService emailService, ProductService productService, ContactFormService contactFormService, NewsletterSubscriberService newsletterSubscriberService) {
+        this.emailService = emailService;
         this.productService = productService;
         this.contactFormService = contactFormService;
+        this.newsletterSubscriberService = newsletterSubscriberService;
     }
 
     @GetMapping("/login")
@@ -89,6 +96,18 @@ public class AdminController {
         return "admin/requests";
     }
 
+    @GetMapping("subscribers")
+    public String manageSubscribers(@RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "10") int size,
+                                    Model model) {
+        Page<NewsletterSubscriber> subscribers = newsletterSubscriberService.getSubscribers(page, size);
+        model.addAttribute("subscribers", subscribers.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", subscribers.getTotalPages());
+
+        return "admin/newsSubscribers";
+    }
+
     @GetMapping("/request-details/{id}")
     public String requestDetails(@PathVariable Long id, Model model) {
         Contacts request = contactFormService.getRequestById(id);
@@ -114,7 +133,6 @@ public class AdminController {
     }
 
 
-
     @GetMapping("/add-product")
     public String addProductForm() {
         return "admin/addProduct";
@@ -125,33 +143,46 @@ public class AdminController {
                              @RequestParam("description") String description,
                              @RequestParam("price") double price,
                              @RequestParam("category") String category,
-                             @RequestParam("image") MultipartFile image,
+                             @RequestParam(value = "image", required = false) MultipartFile image,
+                             @RequestParam(value = "imageUrl", required = false) String imageUrl,
                              Model model) throws IOException {
 
-        String uploadDir = "src/main/resources/static/uploads/";
-        File uploadFolder = new File(uploadDir);
-        if (!uploadFolder.exists()) {
-            uploadFolder.mkdirs();
-        }
+        String finalImageUrl = "";
 
-        String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
-        Path filePath = Paths.get(uploadDir + fileName);
-        Files.write(filePath, image.getBytes());
+        if (image != null && !image.isEmpty()) {
+            String uploadDir = "src/main/resources/static/uploads/";
+            File uploadFolder = new File(uploadDir);
+            if (!uploadFolder.exists()) {
+                uploadFolder.mkdirs();
+            }
+
+            String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+            Path filePath = Paths.get(uploadDir + fileName);
+            Files.write(filePath, image.getBytes());
+
+            finalImageUrl = "/uploads/" + fileName;
+        } else if (imageUrl != null && !imageUrl.isBlank()) {
+            finalImageUrl = imageUrl;
+        } else {
+            model.addAttribute("message", "Please provide an image file or URL.");
+            return "/admin/addProduct";
+        }
 
         Product product = new Product();
         product.setName(name);
         product.setDescription(description);
         product.setPrice(price);
         product.setCategory(category);
-        product.setImageUrl("/uploads/" + fileName);
+        product.setImageUrl(finalImageUrl);
 
         productService.createProduct(product);
 
-        model.addAttribute("imageUrl", "/uploads/" + fileName);
+        model.addAttribute("imageUrl", finalImageUrl);
         model.addAttribute("message", "Product added successfully!");
 
         return "/admin/addProduct";
     }
+
 
     @GetMapping("/product-details/{id}")
     public String productDetails(@PathVariable Long id, Model model) {
@@ -214,8 +245,6 @@ public class AdminController {
     }
 
 
-
-
     @DeleteMapping("/delete-product/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         try {
@@ -224,5 +253,29 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting product: " + e.getMessage());
         }
+    }
+
+    @PostMapping("/notify-all")
+    public String notifyAllSubscribers(@RequestParam String subject,
+                                       @RequestParam String message,
+                                       RedirectAttributes redirectAttributes){
+        List<NewsletterSubscriber> subscribers = newsletterSubscriberService.getAllSubscribers();
+
+        if (subscribers.isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "❌ No subscribers found.");
+            return "redirect:/admin/subscribers";
+        }
+
+        for (NewsletterSubscriber subscriber : subscribers) {
+            emailService.sendEmail(subscriber.getEmail(), subject, message);
+        }
+
+        redirectAttributes.addFlashAttribute("message", "✅ Newsletter sent successfully!");
+        return "redirect:/admin/subscribers";
+    }
+
+    @GetMapping("/notify-page")
+    public String notifyPage() {
+        return "admin/notification";
     }
 }

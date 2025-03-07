@@ -1,6 +1,8 @@
 package am.mmtobacco.mm_tobacco_application.controller;
 
+import am.mmtobacco.mm_tobacco_application.model.NewsletterSubscriber;
 import am.mmtobacco.mm_tobacco_application.service.EmailService;
+import am.mmtobacco.mm_tobacco_application.service.NewsletterSubscriberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -9,9 +11,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/api/newsletter")
 public class NewsletterController {
     private final EmailService emailService;
+    private final NewsletterSubscriberService newsletterSubscriberService;
 
-    public NewsletterController(EmailService emailService) {
+    public NewsletterController(EmailService emailService, NewsletterSubscriberService newsletterSubscriberService) {
         this.emailService = emailService;
+        this.newsletterSubscriberService = newsletterSubscriberService;
     }
 
     @PostMapping
@@ -20,7 +24,7 @@ public class NewsletterController {
             redirectAttributes.addFlashAttribute("error", "❌ Email is required.");
             return "redirect:/";
         }
-
+        newsletterSubscriberService.save(new NewsletterSubscriber(email));
         String userEmailBody = "Hi!\n\nYou have successfully registered to receive our news. We will inform you about new products!";
         emailService.sendEmail(email, "Your request has been accepted.", userEmailBody);
 

@@ -15,18 +15,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Название продукта обязательно")
-    @Size(max = 100, message = "Название продукта должно быть не длиннее 100 символов")
+    @NotBlank(message = "Product name is required")
+    @Size(max = 100, message = "The product name must be no longer than 100 characters.")
     private String name;
 
-    @NotNull(message = "Цена обязательна")
-    @Min(value = 0, message = "Цена не может быть отрицательной")
+    @NotNull(message = "Price is required")
+    @Min(value = 0, message = "The price cannot be negative")
     private Double price;
 
-    @NotBlank(message = "Категория обязательна")
+    @NotBlank(message = "Category is mandatory")
     private String category;
 
-    @Size(max = 500, message = "Описание не должно превышать 500 символов")
+    @Size(max = 500, message = "The description should not exceed 500 characters.")
     private String description;
 
     private String imageUrl;

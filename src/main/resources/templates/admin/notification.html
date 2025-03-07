@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Tobacco | Product Details</title>
+    <title>MM Tobacco | Notification</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -39,7 +39,7 @@
         .sidebar ul a.activ{
             color: #000;
         }
-        
+
         .sidebar ul li.active, .sidebar ul li:hover {
             color: black;
             background-color: #f4f4f9;
@@ -103,17 +103,11 @@
             resize: none;
             height: 200px;
         }
-        .image-placeholder {
-            background: #ccc;
-            max-width: 740px;
-            max-height: 740px;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            align-items: center;
-            display: flex;
-            justify-content: center;
+
+        input[type="file"] {
+            display: none;
         }
+
         .button-group {
             display: flex;
             justify-content: flex-end;
@@ -128,76 +122,73 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            align-content: center;
         }
-        .delete-btn {
+
+        .product-info .form-group{
+            margin-bottom: 20px;
+        }
+
+        .cancel-btn {
             background: none;
             border: 1px solid #000;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            color: black;
+            color: #000;
         }
-        .product-info .form-group{
-            margin-bottom: 20px;
-        }
+
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
-            <div class="logout">
-                <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
-            </div>
-        </div>
-    </header>
-    <div class="sidebar_and_content">
-        <div class="sidebar">
-            <ul>
-                <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
-                <a href="/admin/products" class="activ"><li class="active">📦 Products</li></a>
-                <a href="/admin/requests"><li>📄 Requests</li></a>
-                <a href="/admin/subscribers"><li>📰 Subscribers</li></a>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="title_of_page">
-                <h3>Product Details</h3>
-                <a href="/admin/products" style="text-decoration: none; cursor: pointer;">❌</a>
-            </div>
-
-            <div class="product-details">
-                <form class="product-form">
-                    <div class="image-placeholder">
-                        <img th:src="${product.imageUrl}" alt="Product Image" width="100%">
-                    </div>
-                    <div class="product-info">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input type="text" th:value="${product.name}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea disabled th:text="${product.description}"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <input type="text" th:value="${product.category}" disabled>                        </div>
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text" th:value="'$' + ${product.price}" disabled>
-                        </div>
-                        <div class="button-group">
-                            <a class="edit-btn" th:href="@{/admin/edit-product/{id}(id=${product.id})}">EDIT</a>
-                            <a href="#" class="delete-btn" th:attr="onclick='deleteProduct(\'' + ${product.id} + '\')'">❌ Delete</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<header class="header">
+    <div class="container">
+        <h1 class="logo"><a href="/admin/dashboard">MM Tobacco</a></h1>
+        <div class="logout">
+            <a href="#" onclick="logoutUser()" class="logout_link">Logout</a>
         </div>
     </div>
-    <script src="/js/script.js"></script>
+</header>
+<div class="sidebar_and_content">
+    <div class="sidebar">
+        <ul>
+            <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
+            <a href="/admin/products"><li>📦 Products</li></a>
+            <a href="/admin/requests"><li>📄 Requests</li></a>
+            <a href="/admin/subscribers" class="activ"><li class="active">📰 Subscribers</li></a>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="title_of_page">
+            <h3>Add Product</h3>
+            <a href="/admin/subscribers" style="text-decoration: none; cursor: pointer;">❌</a>
+        </div>
+
+        <p id="successMessage" th:if="${message}" style="color: green; font-weight: bold;">
+            <span th:text="${message}"></span>
+        </p>
+
+        <div class="product-details">
+            <form class="product-form" action="/admin/notify-all" method="post">
+                <div class="product-info">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" name="subject" placeholder="Enter the subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Enter your message" required></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="edit-btn">SUBMIT</button>
+                        <a href="/admin/subscribers" class="cancel-btn">CANCEL</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Tobacco | Products</title>
+    <title>MM Tobacco | Requests</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -41,9 +41,8 @@
             color: white;
         }
 
-        .sidebar ul .active {
+        .sidebar ul a.activ {
             color: #000;
-            background-color: #f4f4f9;
         }
 
         .sidebar ul li.active, .sidebar ul li:hover {
@@ -58,30 +57,47 @@
             color: white;
         }
 
-        .product-card {
+        .content {
+            margin: 30px;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .recent-requests, .charts {
             background: #fff;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            max-height: 100%;
+
+
         }
 
-        .product-card img {
-            max-width: 100%;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .product-card h3 {
-            margin: 0;
-            font-size: 16px;
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .status {
             font-weight: bold;
         }
 
-        .product-card p {
-            margin: 0;
-            font-size: 14px;
-            color: #666;
+        .status.in-progress {
+            color: #007bff;
+        }
+
+        .status.cancelled {
+            color: #ff9800;
+        }
+
+        .status.completed {
+            color: #4caf50;
         }
 
         .pagination {
@@ -124,7 +140,61 @@
             gap: 20px;
         }
 
-        .add_product {
+        .filters {
+            display: flex;
+            font-size: small;
+        }
+
+        .filter_by_status {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter_by_status select {
+            height: 25px;
+            margin-left: 3px;
+        }
+
+        .choose_day {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .choose_day input {
+            height: 25px;
+            width: 18px;
+            border: none;
+            background-color: #f4f4f9;
+            margin-left: 3px;
+        }
+
+        .sub_button {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .sub_button #submit_button {
+            display: flex;
+            align-items: center;
+            padding: 4px 10px;
+            background: #f4f4f9;
+            border-radius: 5px;
+            border: 1px black solid;
+        }
+
+        .table_body td a {
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+            border: 1px black solid;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #f4f4f9;
+        }
+
+        .notify_all {
             border: black 1px solid;
             text-decoration: none;
             padding: 5px 10px;
@@ -132,26 +202,6 @@
             border-radius: 5px;
             cursor: pointer;
             color: #000;
-        }
-
-        .edit-btn {
-            background: #003366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .delete-btn {
-            background: #ffffff;
-            color: #ff0000;
-            padding: 10px 20px;
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
         }
     </style>
 </head>
@@ -164,57 +214,49 @@
         </div>
     </div>
 </header>
-
 <div class="sidebar_and_content">
     <div class="sidebar">
         <ul>
             <a href="/admin/dashboard">
                 <li>📊 Dashboard</li>
             </a>
-            <a href="/admin/products" class="activ">
-                <li class="active">📦 Products</li>
+            <a href="/admin/products">
+                <li>📦 Products</li>
             </a>
-            <a href="/admin/requests">
+            <a href="/admin/requests" class="active">
                 <li>📄 Requests</li>
             </a>
-            <a href="/admin/subscribers">
-                <li>📰 Subscribers</li>
-            </a>
+            <a href="/#" class="active"><li class="active">📰 Subscribers</li></a>
         </ul>
     </div>
-
     <div class="content">
         <div class="title_of_page">
-            <h3>All Products</h3>
-            <a href="/admin/add-product" class="add_product">➕ Add New Product</a>
+            <h2>All Subscribers</h2>
+            <a href="/admin/notify-page" class="notify_all">Notify All</a>
         </div>
 
-        <!-- Products List -->
-        <section class="catalogue">
-            <div class="product-grid">
-                <div class="product-card" th:each="product, iterStat : ${products}"
-                     th:if="${iterStat.index < 9}" th:data-id="${product.id}">
-                    <div class="product-image">
-                        <img th:src="${product.imageUrl}" alt="Product Image">
-                    </div>
-                    <h3 th:text="${product.name}"></h3>
-                    <p th:text="'$' + ${product.price}"></p>
+        <table>
+            <thead>
+            <tr>
+                <th>Subscriber ID</th>
+                <th>E-mail</th>
+            </tr>
+            </thead>
+            <tbody class="table_body">
+            <tr th:each="subscriber : ${subscribers}">
+                <td th:text="${subscriber.id}"></td>
+                <td th:text="${subscriber.email}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-                    <div class="admin-actions">
-                        <a th:href="@{/admin/product-details/{id}(id=${product.id})}" class="edit-btn">Details</a>
-                        <a href="#" class="delete-btn" th:attr="onclick='deleteProduct(\'' + ${product.id} + '\')'">❌
-                            Delete</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pagination -->
         <div class="pagination">
+
             <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:href="@{/admin/products(page=${i})}" th:text="${i + 1}"
-                   th:classappend="${i == currentPage} ? 'active' : ''"></a>
-            </span>
+        <a th:href="@{/admin/subscribers(page=${i}, size=10)}"
+           th:text="${i + 1}" th:classappend="${i == currentPage} ? 'active' : ''"></a>
+    </span>
+
         </div>
 
     </div>

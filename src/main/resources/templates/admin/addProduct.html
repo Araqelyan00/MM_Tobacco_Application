@@ -175,6 +175,7 @@
                 <a href="/admin/dashboard"><li>📊 Dashboard</li></a>
                 <a href="/admin/products" class="activ"><li class="active">📦 Products</li></a>
                 <a href="/admin/requests"><li>📄 Requests</li></a>
+                <a href="/admin/subscribers"><li>📰 Subscribers</li></a>
             </ul>
         </div>
         <div class="content">
@@ -191,12 +192,27 @@
                 <form class="product-form" action="/admin/add-product" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}">
                     <div class="image">
-                        <label class="title-of-add-image">Product Image</label>
-                        <label for="productImage" class="image-label">Upload a file</label>
-                        <input type="file" name="image" id="productImage" required >
-                    <div class="image-placeholder">
-                        <img th:src="${imageUrl}" id="previewImage" alt="Product Image" width="100%">
-                    </div>
+                        <div class="toggle-upload">
+                            <label>
+                                <input type="radio" name="uploadType" value="file" checked onclick="toggleUpload('file')"> Upload File
+                            </label>
+                            <label>
+                                <input type="radio" name="uploadType" value="url" onclick="toggleUpload('url')"> Use URL
+                            </label>
+                        </div>
+
+                        <div id="fileUpload">
+                            <label for="productImage" class="image-label">Upload a file</label>
+                            <input type="file" name="image" id="productImage" onchange="previewFile()">
+                        </div>
+
+                        <div id="urlUpload" style="display: none;">
+                            <input type="text" name="imageUrl" id="imageUrl" placeholder="Enter image URL" oninput="previewUrl()">
+                        </div>
+
+                        <div class="image-placeholder">
+                            <img id="previewImage" alt="Product Image" width="100%">
+                        </div>
                     </div>
                     <div class="product-info">
                         <div class="form-group">
