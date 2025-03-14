@@ -203,6 +203,39 @@
             cursor: pointer;
             color: #000;
         }
+
+        .delete-btn {
+            border: black 1px solid;
+            color: black;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .delete-btn:hover {
+            background: darkred;
+            color: white;
+        }
+        .subscribers {
+            display: flex;
+            align-items: center;
+        }
+        .subscribers-email-input {
+            height: 26px;
+            width: 250px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .new-subscriber-btn {
+            border: black 1px solid;
+            height: 30px;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-right: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -226,13 +259,21 @@
             <a href="/admin/requests" class="active">
                 <li>📄 Requests</li>
             </a>
-            <a href="/#" class="active"><li class="active">📰 Subscribers</li></a>
+            <a href="/#" class="active">
+                <li class="active">📰 Subscribers</li>
+            </a>
         </ul>
     </div>
     <div class="content">
         <div class="title_of_page">
             <h2>All Subscribers</h2>
+            <div class="subscribers">
+            <form action="/api/newsletter" method="post">
+                <input class="subscribers-email-input" type="email" name="email" placeholder="Enter subscriber's email" required>
+                <button type="submit" class="new-subscriber-btn">Add new subscriber</button>
+            </form>
             <a href="/admin/notify-page" class="notify_all">Notify All</a>
+            </div>
         </div>
 
         <table>
@@ -240,24 +281,32 @@
             <tr>
                 <th>Subscriber ID</th>
                 <th>E-mail</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody class="table_body">
             <tr th:each="subscriber : ${subscribers}">
                 <td th:text="${subscriber.id}"></td>
                 <td th:text="${subscriber.email}"></td>
+                <td>
+                    <form th:action="@{/admin/subscribers/delete}" method="post"
+                          onsubmit="return confirm('Are you sure?')">
+                        <input type="hidden" name="id" th:value="${subscriber.id}">
+                        <button type="submit" class="delete-btn">❌ Delete</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
 
-        <div class="pagination">
 
-            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-        <a th:href="@{/admin/subscribers(page=${i}, size=10)}"
-           th:text="${i + 1}" th:classappend="${i == currentPage} ? 'active' : ''"></a>
-    </span>
-
+        <div class="pagination" th:if="${totalPages > 1}">
+        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+        <a th:href="@{/admin/subscribers(page=${i - 1}, size=10)}"
+           th:text="${i}" th:classappend="${(i - 1) == currentPage} ? 'active' : ''"></a>
+        </span>
         </div>
+
 
     </div>
 </div>

@@ -255,10 +255,12 @@ public class AdminController {
         }
     }
 
+
     @PostMapping("/notify-all")
     public String notifyAllSubscribers(@RequestParam String subject,
                                        @RequestParam String message,
-                                       RedirectAttributes redirectAttributes){
+                                       @RequestParam(value = "attachment", required = false) MultipartFile attachment,
+                                       RedirectAttributes redirectAttributes) {
         List<NewsletterSubscriber> subscribers = newsletterSubscriberService.getAllSubscribers();
 
         if (subscribers.isEmpty()) {
@@ -266,16 +268,42 @@ public class AdminController {
             return "redirect:/admin/subscribers";
         }
 
+        byte[] attachmentBytes = null;
+        String attachmentName = null;
+
+        if (attachment != null && !attachment.isEmpty()) {
+            try {
+                attachmentBytes = attachment.getBytes();
+                attachmentName = attachment.getOriginalFilename();
+            } catch (IOException e) {
+                redirectAttributes.addFlashAttribute("error", "❌ Failed to process attachment.");
+                return "redirect:/admin/subscribers";
+            }
+        }
+
         for (NewsletterSubscriber subscriber : subscribers) {
-            emailService.sendEmail(subscriber.getEmail(), subject, message);
+            emailService.sendEmail(subscriber.getEmail(), subject, message, attachmentBytes, attachmentName);
         }
 
         redirectAttributes.addFlashAttribute("message", "✅ Newsletter sent successfully!");
         return "redirect:/admin/subscribers";
     }
 
+
     @GetMapping("/notify-page")
     public String notifyPage() {
         return "admin/notification";
     }
+
+    @PostMapping("/subscribers/delete")
+    public String deleteSubscriber(@RequestParam Long id, RedirectAttributes redirectAttributes) {
+        try {
+            newsletterSubscriberService.deleteById(id);
+            redirectAttributes.addFlashAttribute("message", "✅ Subscriber deleted successfully!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "❌ Failed to delete subscriber.");
+        }
+        return "redirect:/admin/subscribers";
+    }
+
 }

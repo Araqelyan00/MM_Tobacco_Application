@@ -186,6 +186,7 @@
     <div class="content">
         <div class="title_of_page">
             <h3>All Products</h3>
+
             <a href="/admin/add-product" class="add_product">➕ Add New Product</a>
         </div>
 
@@ -210,10 +211,10 @@
         </section>
 
         <!-- Pagination -->
-        <div class="pagination">
-            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:href="@{/admin/products(page=${i})}" th:text="${i + 1}"
-                   th:classappend="${i == currentPage} ? 'active' : ''"></a>
+        <div class="pagination" th:if="${totalPages > 0}">
+            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{/admin/products(page=${i - 1})}" th:text="${i}"
+                   th:classappend="${(i - 1) == currentPage} ? 'active' : ''"></a>
             </span>
         </div>
 

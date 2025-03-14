@@ -61,11 +61,10 @@
     </div>
 
 
-    <div class="pagination">
-
-        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-            <a th:href="@{/api/catalogue(page=${i})}" th:text="${i + 1}"
-               th:classappend="${i == currentPage} ? 'active' : ''"></a>
+    <div class="pagination" th:if="${totalPages > 0}">
+        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+            <a th:href="@{/api/catalogue(page=${i -1})}" th:text="${i}"
+               th:classappend="${(i - 1) == currentPage} ? 'active' : ''"></a>
         </span>
 
     </div>

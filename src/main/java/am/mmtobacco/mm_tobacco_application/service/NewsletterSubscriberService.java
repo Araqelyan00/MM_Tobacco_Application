@@ -29,4 +29,9 @@ public class NewsletterSubscriberService {
     public List<NewsletterSubscriber> getAllSubscribers() {
         return newsletterSubscriberRepository.findAll();
     }
+
+    public void deleteById(Long id) {
+        newsletterSubscriberRepository.deleteById(Math.toIntExact(id));
+    }
+
 }

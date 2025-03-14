@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewsletterSubscriberRepository extends JpaRepository<NewsletterSubscriber, Integer> {
 
-
 }
