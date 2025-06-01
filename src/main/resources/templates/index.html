@@ -10,9 +10,9 @@
 
 <div id="ageVerificationModal" class="modal-verification">
     <div class="modal-for-age-verification">
-        <h2>Are you 18 or older?</h2>
-        <button id="yesBtn">Yes</button>
-        <button id="noBtn">No</button>
+        <h2>Արդյո՞ք Դուք 18 տարեկան կամ ավելի մեծ եք:</h2>
+        <button id="yesBtn">Այո</button>
+        <button id="noBtn">Ոչ</button>
     </div>
 </div>
 
@@ -50,16 +50,16 @@
         <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="/api/catalogue">Catalogue</a></li>
-                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/catalogue">Տեսականի</a></li>
+                <li><a href="/api/contact">Կապ մեզ հետ</a></li>
             </ul>
         </nav>
         <div class="cart-language">
             <a href="/api/cart" class="cart-icon">🛒</a>
             <select name="" id="select">
-                <option value="" selected>ENG</option>
+<!--                <option value="">ENG</option>-->
 <!--                <option value="">RUS</option>-->
-<!--                <option value="">ARM</option>-->
+                <option value="" selected>ARM</option>
             </select>
 
         </div>
@@ -67,29 +67,34 @@
 </header>
 
 <section class="hero">
-    <h2>Discover quality</h2>
-    <p>The highest quality European tobacco assortment․<br>
-        Exclusive offers for unique and demanding customers!</p>
-    <a href="/api/catalogue" class="hero-btn">Order now</a>
+    <h2>Բացահայտեք որակը</h2>
+    <p>Եվրոպական ծխախոտի ամենաբարձր որակի տեսականին։<br>
+        Բացառիկ առաջարկներ եզակի և պահանջկոտ հաճախորդների համար։</p>
+    <a href="/api/catalogue" class="hero-btn">Պատվիրեք հիմա</a>
 </section>
 
 <div class="latest-arrivals-section">
-    <h2>About Us</h2>
+    <h2>Մեր մասին</h2>
 </div>
 <section class="about-us">
     <div class="left-col"></div>
     <div class="right-col">
-        <p>Welcome to the official MM Tobacco website. We appreciate your visit and recognize that you are in search of
-            a distinguished alternative to conventional cigarettes. As the exclusive representative for several leading
-            European tobacco companies in Armenia, our primary focus is on importing premium tobacco products from
-            Europe. Since our establishment in 2020, we have consistently updated our portfolio and expanded our network
-            of strategic partnerships to ensure the highest quality offerings.</p>
+        <p>Բարի գալուստ MM Tobacco-ի պաշտոնական կայք։ Մենք գնահատում
+            ենք Ձեր այցելությունը և գիտակցում ենք, որ Դուք փնտրում եք
+            ավանդական ծխախոտի առանձնահատուկ այլընտրանք։ Որպես մի քանի
+            առաջատար եվրոպական ծխախոտային ընկերությունների բացառիկ
+            ներկայացուցիչ Հայաստանում, մեր հիմնական ուշադրության
+            կենտրոնում է Եվրոպայից բարձրակարգ ծխախոտային արտադրանքի
+            ներմուծումը։ 2020 թվականին մեր հիմնադրումից ի վեր մենք
+            մշտապես թարմացրել ենք մեր պորտֆոլիոն և ընդլայնել ռազմավարական
+            գործընկերությունների ցանցը՝ ապահովելու համար ամենաբարձր
+            որակի առաջարկները։</p>
     </div>
 </section>
 
 <section class="latest-arrivals">
     <div class="latest-arrivals-section">
-        <h2>Our Latest Arrivals</h2>
+        <h2>Նոր տեսականի</h2>
     </div>
     <div class="product-grid">
         <div class="product-card" th:each="product : ${latestProducts}" th:data-id="${product.id}">
@@ -97,7 +102,7 @@
                 <img th:src="${product.imageUrl}" alt="Product Image">
             </div>
             <h3 th:text="${product.name}"></h3>
-            <p th:text="'$' + ${product.price}"></p>
+            <p th:text="${product.price} + ' Դ'"></p>
         </div>
     </div>
 </section>
@@ -106,13 +111,13 @@
     <div class="footer-container">
         <div class="newsletter">
             <div class="newsletter-containter">
-                <h3>Sign up for our newsletter</h3>
-                <p>Be the first to know about our special offers, new product launches, and events.</p>
+                <h3>Գրանցվեք մեր նորությունների համար</h3>
+                <p>Առաջինը տեղեկացեք հատուկ առաջարկների, նոր ապրանքների և միջոցառումների մասին։</p>
             </div>
 
             <form action="/api/newsletter" method="post">
-                <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn">Sign up</button>
+                <input class="input-area" type="email" name="email" placeholder="Մուտքագրեք Ձեր Mail-ը" required>
+                <button type="submit" class="btn">Գրանցվել</button>
             </form>
 
             <p th:if="${message}" style="color: green;">[[${message}]]</p>

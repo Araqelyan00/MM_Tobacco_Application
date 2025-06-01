@@ -12,37 +12,37 @@
     <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
     <nav class="nav">
       <ul>
-        <li><a href="/api/catalogue">Catalogue</a></li>
-        <li><a href="/api/contact">Contact Us</a></li>
+        <li><a href="/api/catalogue">Տեսականի</a></li>
+        <li><a href="/api/contact">Կապ մեզ հետ</a></li>
       </ul>
     </nav>
     <div class="cart-language">
       <a href="/api/cart" class="cart-icon">🛒</a>
       <select name="" id="select">
-        <option value="" selected>ENG</option>
+<!--        <option value="">ENG</option>-->
 <!--        <option value="">RUS</option>-->
-<!--        <option value="">ARM</option>-->
+        <option value="" selected>ARM</option>
       </select>
 
     </div>
   </div>
 </header>
 <section class="contact">
-  <h2>Contact Us</h2>
+  <h2>Կապ մեզ հետ</h2>
   <form action="/api/contact/submit" method="post" target="hidden_iframe" id="contactForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="firstName" placeholder="Your name" required>
+<!--    <label for="name">Անուն:</label>-->
+    <input type="text" id="name" name="firstName" placeholder="Անուն" required>
 
-    <label for="surname">Surname:</label>
-    <input type="text" id="surname" name="lastName" placeholder="Your surname" required>
+<!--    <label for="surname">Ազգանուն:</label>-->
+    <input type="text" id="surname" name="lastName" placeholder="Ազգանուն" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Your email" required>
+<!--    <label for="email">Մեյլ:</label>-->
+    <input type="email" id="email" name="email" placeholder="Mail" required>
 
-    <label for="phone-number">Phone number:</label>
-    <input type="text" id="phone-number" name="phone" placeholder="Your phone number" required>
+<!--    <label for="phone-number">Հեռախոսահամար:</label>-->
+    <input type="text" id="phone-number" name="phone" placeholder="Հեռախոսահամար" required>
 
-    <label>Choose messenger for contact with you:</label>
+    <label>Ընտրեք Messenger-ը՝ ձեզ հետ կապվելու համար:</label>
     <div class="checkbox-group">
       <div>
         <input type="checkbox" id="telegram" name="messenger" value="Telegram">
@@ -60,10 +60,10 @@
     <div>
       <input type="hidden" id="cartData" name="message">
     </div>
-    <button type="submit" class="btn">Send Message</button>
+    <button type="submit" class="btn">Ուղարկել հայտ</button>
   </form>
 
-  <p id="successMessage" style="display: none; color: green; font-weight: bold;">Ваш запрос успешно отправлен!</p>
+  <p id="successMessage" style="display: none; color: green; font-weight: bold;">Ձեր հարցումը հաջողությամբ ուղարկվել է։</p>
 
   <iframe name="hidden_iframe" style="display: none;" onload="showSuccessMessage()"></iframe>
 
@@ -73,13 +73,13 @@
   <div class="footer-container">
     <div class="newsletter">
       <div class="newsletter-containter">
-        <h3>Sign up for our newsletter</h3>
-        <p>Be the first to know about our special offers, new product launches, and events.</p>
+        <h3>Գրանցվեք մեր նորությունների համար</h3>
+        <p>Առաջինը տեղեկացեք հատուկ առաջարկների, նոր ապրանքների և միջոցառումների մասին։</p>
       </div>
 
       <form action="/api/newsletter" method="post">
-        <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit" class="btn">Sign up</button>
+        <input class="input-area" type="email" name="email" placeholder="Մուտքագրեք Ձեր Mail-ը" required>
+        <button type="submit" class="btn">Գրանցվել</button>
       </form>
       <p th:if="${message}" style="color: green;">[[${message}]]</p>
       <p th:if="${error}" style="color: red;">[[${error}]]</p>

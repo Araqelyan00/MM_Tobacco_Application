@@ -10,7 +10,7 @@ function getCart() {
         }
         return cart;
     } catch (error) {
-        console.error("❌ Error parsing cart:", error);
+        console.error("❌ Սխալ՝ զամբյուղը վերլուծելիս:", error);
         localStorage.removeItem("cart");
         return [];
     }
@@ -47,7 +47,7 @@ function addToCart(productId) {
     }
 
     saveCart(cart);
-    showToast("✅ The product has been added to the cart!");
+    showToast("✅ Ապրանքը ավելացվել է զամբյուղին։");
     updateCart();
 }
 
@@ -61,7 +61,7 @@ function removeFromCart(productId) {
         cartItemElement.remove();
     }
 
-    showToast("❌ The product has been removed from the cart!", "error");
+    showToast("❌ Ապրանքը հեռացվել է զամբյուղից։", "error");
     updateCart();
 }
 
@@ -79,8 +79,8 @@ function openProductModal(productId) {
                     <div class="modal-product-info">
                         <h3 style="font-size: 1.5rem">${product.name}</h3>
                         <p>${product.description}</p>
-                        <p><strong>Price : $${product.price.toFixed(2)}</strong></p>
-                        <button class="btn add-to-cart" data-id="${product.id}">Add to Cart</button>
+                        <p><strong>Գինը : ${product.price.toFixed(2)} Դ</strong></p>
+                        <button class="btn add-to-cart" data-id="${product.id}">Ավելացնել զամբյուղ</button>
                         
                     </div>
                 </div>
@@ -90,7 +90,7 @@ function openProductModal(productId) {
 
             document.querySelector(".add-to-cart").addEventListener("click", () => addToCart(product.id));
         })
-        .catch(error => console.error("❌ Error receiving product:", error));
+        .catch(error => console.error("❌ Սխալ՝ ապրանքի ստացման ժամանակ:", error));
 }
 
 // 📌 Product Card Click Handlers
@@ -119,7 +119,7 @@ function updateCart() {
     cartContainer.innerHTML = "";
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>🛒 Your cart is empty.</p>";
+        cartContainer.innerHTML = "<p>🛒 Ձեր զամբյուղը դատարկ է։</p>";
         updateTotals(0);
         return;
     }
@@ -142,7 +142,7 @@ function updateCart() {
                     <span>$${product.price.toFixed(2)}</span>
                     <input type="number" value="${item.quantity}" min="1" class="cart-quantity" data-id="${product.id}">
                     <span class="cart-item-total">$${itemTotal.toFixed(2)}</span>
-                    <button class="removeButton remove-btn" data-id="${product.id}">Remove</button>
+                    <button class="removeButton remove-btn" data-id="${product.id}">Հեռացնել</button>
                 `;
                 cartContainer.appendChild(cartItem);
                 cartItem.querySelector(".cart-quantity").addEventListener("input", function () {
@@ -165,7 +165,7 @@ function updateCart() {
                     removeFromCart(Number(this.dataset.id));
                 });
             })
-            .catch(error => console.error("❌ Error while receiving the goods:", error));
+            .catch(error => console.error("❌ Սխալ՝ ապրանքը ստանալու ժամանակ։", error));
 
         promises.push(productPromise);
     });
@@ -190,13 +190,15 @@ function updateTotals() {
                 let tax = subtotal * 0.10;
                 let total = subtotal + tax;
 
-                document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-                document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-                document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+                document.getElementById("subtotal").textContent = `${subtotal.toFixed(2)}`;
+                document.getElementById("tax").textContent = `${tax.toFixed(2)}`;
+                document.getElementById("total").textContent = `${total.toFixed(2)}`;
             })
-            .catch(error => console.error("❌ Error updating totals:", error));
+            .catch(error => console.error("❌ Ընդհանուր թվերի թարմացման սխալ։", error));
     });
 }
+
+
 
 
 // 📌 Refresh cart on page load
@@ -206,7 +208,7 @@ if (checkoutBtn) {
     checkoutBtn.addEventListener("click", function () {
         let cart = getCart();
         if (cart.length === 0) {
-            alert("❌ Your cart is empty.");
+            alert("❌ Ձեր զամբյուղը դատարկ է։");
             return;
         }
 
@@ -235,9 +237,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 cartDataInput.value = cartSummary;
             })
-            .catch(error => console.error("❌ Error loading products:", error));
+            .catch(error => console.error("❌ Սխալ՝ ապրանքներ բեռնելիս։", error));
     } else {
-        console.log("Cart is empty or cartData input not found.");
+        console.log("Զամբյուղը դատարկ է կամ cartData մուտքագրումը չի գտնվել։");
     }
 });
 
@@ -276,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tableBody.innerHTML += row;
             });
         })
-        .catch(error => console.error("❌ Error loading recent requests:", error));
+        .catch(error => console.error("❌ Վերջին հարցումները բեռնելիս սխալ առաջացավ։", error));
 
     const ctx = document.getElementById('requestsChart').getContext('2d');
     let chartInstance;
@@ -286,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (!data || data.length === 0) {
-                    console.error("❌ No request data available for graph");
+                    console.error("❌ Գրաֆիկի համար հարցման տվյալներ հասանելի չեն։");
                     return;
                 }
 
@@ -303,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 renderChart(labels, requestsCount);
             })
-            .catch(error => console.error("❌ Error loading requests for graph:", error));
+            .catch(error => console.error("❌ Գրաֆիկի համար հարցման տվյալներ հասանելի չեն:", error));
     }
 
     function processDailyData(data) {
@@ -492,55 +494,6 @@ function logoutUser() {
         .catch(error => console.error('Logout failed:', error));
 }
 
-
-// document.getElementById("filterForm").addEventListener("submit", function(event) {
-//     event.preventDefault(); // предотвращаем стандартное поведение формы
-//
-//     // Получаем значения фильтров
-//     const minPrice = event.target.minPrice.value;
-//     const maxPrice = event.target.maxPrice.value;
-//     const category = event.target.category.value;
-//
-//     // Формируем строку параметров
-//     const params = new URLSearchParams();
-//     if (minPrice) params.append("minPrice", minPrice);
-//     if (maxPrice) params.append("maxPrice", maxPrice);
-//     if (category) params.append("category", category);
-//
-//     // Можно добавить параметры пагинации, если нужно
-//     params.append("page", 0);
-//     params.append("size", 9);
-//
-//     // Отправляем запрос на сервер
-//     fetch(`/api/catalogue/products/paginated-filtered?${params.toString()}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Обновляем отображение товаров на странице
-//             const productGrid = document.querySelector(".product-grid");
-//             productGrid.innerHTML = ""; // очищаем текущие товары
-//
-//             data.content.forEach(product => {
-//                 const card = document.createElement("div");
-//                 card.className = "product-card";
-//                 card.setAttribute("data-id", product.id);
-//                 card.innerHTML = `
-//                   <div class="product-image">
-//                       <img src="${product.imageUrl}" alt="Product Image">
-//                   </div>
-//                   <h3>${product.name}</h3>
-//                   <p>$${product.price.toFixed(2)}</p>
-//               `;
-//                 productGrid.appendChild(card);
-//
-//                 // Привяжите обработчик клика к карточке для открытия модального окна, если необходимо
-//                 card.addEventListener("click", () => openProductModal(product.id));
-//             });
-//
-//             // Если требуется, обновите пагинацию (например, currentPage и totalPages)
-//         })
-//         .catch(error => console.error("Ошибка при фильтрации:", error));
-// });
-
 function toggleUpload(type) {
     if (type === 'file') {
         document.getElementById("fileUpload").style.display = "block";
@@ -575,3 +528,44 @@ function previewUrl() {
     }
 }
 
+/////////////////////
+document.addEventListener("DOMContentLoaded", async function () {
+    const totalElement = document.getElementById("total");
+    const currencySelect = document.getElementById("currency");
+    let exchangeRates = {}; // Храним курсы валют
+
+    async function fetchExchangeRates() {
+        try {
+            const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD"); // API с курсами валют
+            const data = await response.json();
+            exchangeRates = data.rates; // Сохраняем курсы валют
+        } catch (error) {
+            console.error("Error fetching exchange rates:", error);
+        }
+    }
+
+    async function updateCurrency() {
+        const selectedCurrency = currencySelect.value;
+        const usdTotal = parseFloat(totalElement.dataset.usd); // Получаем сумму в USD
+        if (!isNaN(usdTotal) && exchangeRates[selectedCurrency]) {
+            const convertedTotal = (usdTotal * exchangeRates[selectedCurrency]).toFixed(2);
+            totalElement.textContent = `${convertedTotal} ${selectedCurrency}`;
+        }
+    }
+
+    // Загружаем курсы валют при загрузке страницы
+    await fetchExchangeRates();
+
+    // Обновляем сумму при смене валюты
+    currencySelect.addEventListener("change", updateCurrency);
+
+    // Пример: Обновление суммы в USD (замените 100 на реальную сумму корзины)
+    function updateTotalAmount(usdAmount) {
+        totalElement.dataset.usd = usdAmount; // Сохраняем сумму в USD
+        totalElement.textContent = `${usdAmount} USD`; // Отображаем в USD
+        updateCurrency(); // Пересчитываем в выбранную валюту
+    }
+
+    // Симуляция обновления суммы корзины (подставьте свою логику)
+    updateTotalAmount(100); // Например, сумма корзины = 100$
+});

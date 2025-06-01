@@ -8,44 +8,50 @@
 </head>
 <body>
 
-<!-- Header -->
 <header class="header">
     <div class="container">
         <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="/api/catalogue">Catalogue</a></li>
-                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/catalogue">Տեսականի</a></li>
+                <li><a href="/api/contact">Կապ մեզ հետ</a></li>
             </ul>
         </nav>
         <div class="cart-language">
             <a href="/api/cart" class="cart-icon">🛒</a>
             <select name="" id="select">
-                <option value="" selected>ENG</option>
+<!--                <option value="">ENG</option>-->
 <!--                <option value="">RUS</option>-->
-<!--                <option value="">ARM</option>-->
+                <option value="" selected>ARM</option>
             </select>
         </div>
     </div>
 </header>
 
 <section class="cart">
-    <h2>Your Cart</h2>
+    <h2>Զամբյուղ</h2>
     <div class="cart-table">
         <div class="cart-header">
-            <span>Product</span>
-            <span>Price</span>
-            <span>Quantity</span>
-            <span>Total</span>
-            <span>Actions</span>
+            <span>Ապրանք</span>
+            <span>Գին</span>
+            <span>Քանակ</span>
+            <span>Գին X Քանակ</span>
+            <span>Գործողություն</span>
         </div>
         <div id="cartItems"></div>
     </div>
     <div class="cart-summary">
-        <p>Subtotal: <span id="subtotal">$0.00</span></p>
-        <p>Tax (10%): <span id="tax">$0.00</span></p>
-        <p><strong>Total:</strong> <span id="total">$0.00</span></p>
-        <button class="btn checkout-btn">Checkout</button>
+<!--        <label for="currency">Currency:</label>-->
+<!--        <select id="currency">-->
+<!--            <option value="USD" selected>USD ($)</option>-->
+<!--            <option value="EUR">EUR (€)</option>-->
+<!--            <option value="RUB">RUB (₽)</option>-->
+<!--            <option value="AMD">AMD (֏)</option>-->
+<!--        </select>-->
+        <p>Գումարային: <span id="subtotal">0 Դ</span></p>
+        <p>Սպասարկում (10%): <span id="tax">0 Դ</span></p>
+        <p><strong>Ընդհանուր:</strong> <span id="total" data-usd="0">0 Դ</span></p>
+        <button class="btn checkout-btn">Գրանցել պատվեր</button>
     </div>
 </section>
 
@@ -53,13 +59,13 @@
     <div class="footer-container">
         <div class="newsletter">
             <div class="newsletter-containter">
-                <h3>Sign up for our newsletter</h3>
-                <p>Be the first to know about our special offers, new product launches, and events.</p>
+                <h3>Գրանցվեք մեր նորությունների համար</h3>
+                <p>Առաջինը տեղեկացեք հատուկ առաջարկների, նոր ապրանքների և միջոցառումների մասին։</p>
             </div>
 
             <form action="/api/newsletter" method="post">
-                <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn">Sign up</button>
+                <input class="input-area" type="email" name="email" placeholder="Մուտքագրեք Ձեր Mail-ը" required>
+                <button type="submit" class="btn">Գրանցվել</button>
             </form>
 
             <p th:if="${message}" style="color: green;">[[${message}]]</p>

@@ -24,7 +24,7 @@ public class NewsletterController {
                                       @RequestHeader(value = "referer", required = false) String referer) {
         if (email == null || email.isBlank()) {
             redirectAttributes.addFlashAttribute("error", "❌ Email is required.");
-            return referer != null ? "redirect:" + referer : "redirect:/"; // Redirect back or to home
+            return referer != null ? "redirect:" + referer : "redirect:/";
         }
 
         newsletterSubscriberService.save(new NewsletterSubscriber(email));
@@ -37,6 +37,6 @@ public class NewsletterController {
 
         redirectAttributes.addFlashAttribute("message", "✅ You have successfully subscribed to the newsletter!");
 
-        return referer != null ? "redirect:" + referer : "redirect:/"; // Redirect back to the page user was on
+        return referer != null ? "redirect:" + referer : "redirect:/";
     }
 }

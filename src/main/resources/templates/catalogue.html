@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<!-- Header -->
 <header class="header">
     <div class="container">
         <h1 class="logo"><a href="/index">MM Tobacco</a></h1>
         <nav class="nav">
             <ul>
-                <li><a href="/api/catalogue">Catalogue</a></li>
-                <li><a href="/api/contact">Contact Us</a></li>
+                <li><a href="/api/catalogue">Տեսականի</a></li>
+                <li><a href="/api/contact">Կապ մեզ հետ</a></li>
             </ul>
         </nav>
         <div class="cart-language">
             <a href="/api/cart" class="cart-icon">🛒</a>
             <select name="" id="select">
-                <option value="" selected>ENG</option>
+<!--                <option value="">ENG</option>-->
 <!--                <option value="">RUS</option>-->
-<!--                <option value="">ARM</option>-->
+                <option value="" selected>ARM</option>
             </select>
 
         </div>
@@ -31,22 +30,24 @@
 
 <section class="catalogue">
     <div class="head-filters-for-catalogue">
-    <h2>Our Products</h2>
+    <h2>Մեր տեսականին</h2>
     <form class="filters-for-catalogue" method="get" action="/api/catalogue">
-        <label for="minPrice">Min </label>
-        <input type="number" name="minPrice" id="minPrice" min="0" max="100" placeholder="$0" step="1" th:value="${minPrice}">
+        <label for="minPrice">Նվազագույն </label>
+        <input type="number" name="minPrice" id="minPrice" min="0" max="100000" placeholder="0 Դ" step="1000" th:value="${minPrice}">
 
-        <label for="maxPrice">Max </label>
-        <input type="number" name="maxPrice" id="maxPrice" min="0" max="100" placeholder="$100" step="10" th:value="${maxPrice}">
+        <label for="maxPrice">Առավելագույն </label>
+        <input type="number" name="maxPrice" id="maxPrice" min="0" max="100000" placeholder="100․000 Դ" step="1000" th:value="${maxPrice}">
 
-        <label for="category">Category </label>
+        <label for="category">Տեսակ </label>
         <select name="category" id="category" th:value="${category}">
-            <option value="">All</option>
-            <option value="tobacco">Tobacco</option>
-            <option value="accessories">Accessories</option>
-            <option value="cigar">Cigar</option>
+            <option value="">Բոլորը</option>
+            <option value="accessories">Աքսեսուար</option>
+            <option value="tobacco">Թութուն</option>
+            <option value="cigar">Սարք</option>
+            <option value="cigar">Սիգար</option>
+            <option value="cigar">Սիգարիլա</option>
         </select>
-        <button type="submit">Filter</button>
+        <button type="submit">Ֆիլտրել</button>
     </form>
     </div>
     <div class="product-grid">
@@ -56,7 +57,7 @@
                 <img th:src="${product.imageUrl}" alt="Product Image">
             </div>
             <h3 th:text="${product.name}"></h3>
-            <p th:text="'$' + ${product.price}"></p>
+            <p th:text="${product.price} + ' Դ'"></p>
         </div>
     </div>
 
@@ -74,13 +75,13 @@
     <div class="footer-container">
         <div class="newsletter">
             <div class="newsletter-containter">
-                <h3>Sign up for our newsletter</h3>
-                <p>Be the first to know about our special offers, new product launches, and events.</p>
+                <h3>Գրանցվեք մեր նորությունների համար</h3>
+                <p>Առաջինը տեղեկացեք հատուկ առաջարկների, նոր ապրանքների և միջոցառումների մասին։</p>
             </div>
 
             <form action="/api/newsletter" method="post">
-                <input class="input-area" type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn">Sign up</button>
+                <input class="input-area" type="email" name="email" placeholder="Մուտքագրեք Ձեր Mail-ը" required>
+                <button type="submit" class="btn">Գրանցվել</button>
             </form>
 
             <p th:if="${message}" style="color: green;">[[${message}]]</p>
